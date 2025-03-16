@@ -1,0 +1,30 @@
+# Dependências do Node.js
+node_modules/
+
+# Dependências do Composer
+vendor/
+
+# Arquivos de cache do Composer
+composer.lock
+
+# Configuração do PHPStorm / IDEs
+.idea/
+.vscode/
+
+# Arquivos de cache e logs do PHP
+*.log
+*.cache
+*.tmp
+
+# Cache do WordPress
+wp-content/cache/
+wp-content/upgrade/
+
+# Configuração do ambiente local
+.env
+.env.local
+.env.*.local
+.DS_Store
+
+# Arquivos de deploy do GitHub Actions
+.github/

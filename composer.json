@@ -1,0 +1,11 @@
+{
+    "name": "gabi/sonica-app",
+    "autoload": {
+        "psr-4": {
+            "Gabi\\SonicaApp\\": "src/"
+        }
+    },
+    "require": {
+        "stripe/stripe-php": "^16.6"
+    }
+}

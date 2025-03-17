@@ -8,10 +8,48 @@
     padding-left: 20px;
     padding-right: 20px;
 
-    .login {
+    .user-menu {
         display: flex;
+        position: relative;
         align-items: center;
         gap: 10px;
+
+        a {
+            font-size: 15px;
+
+            &:hover {
+                color: colors.$main-color;
+            }
+        }
+
+        &:hover {
+            .user-sub-menu {
+                opacity: 1;
+                pointer-events: all;
+            }
+        }
+
+        .user-sub-menu {
+            position: absolute;
+            opacity: 0;
+            right: -76px;
+            pointer-events: none;
+            //background-color: red;
+
+            .user-sub-menu-content {
+                background-color: colors.$dark-borders;
+                border-radius: 20px;
+                padding: 10px;
+                border: 1px solid #6e6d6d;
+                transform: translateX(10px);
+                padding: 4px 15px 4px 15px;
+    
+                a {
+                    font-size: 13px;
+                }
+            }
+
+        }
     }
 
     .search {
@@ -20,7 +58,7 @@
 
         input {
             background-color: colors.$dark-borders;
-            border: 2px solid colors.$dark-borders;
+            border: 1px solid colors.$dark-borders;
             height: 40px;
             width: 250px;
             font-size: 14px;
@@ -38,7 +76,7 @@
             }
 
             &:focus {
-                border: 2px solid colors.$main-color;
+                border: 1px solid colors.$main-color;
             }
         }
         
@@ -56,6 +94,8 @@
                 gap: 10px;
 
                 li {
+                    font-size: 15px;
+
                     a {
                         color: colors.$text;
                         text-decoration: none;

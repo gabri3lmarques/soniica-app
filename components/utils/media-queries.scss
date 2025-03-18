@@ -3,3 +3,68 @@ $md: 768px;
 $lg: 992px;
 $xl: 1200px;
 $xxl: 1400px;
+
+.hide-576 {
+    @media (max-width: $sm) {
+        display: none !important;
+    }
+}
+
+.hide-768 {
+    @media (max-width: $md) {
+        display: none !important; 
+    }
+}
+
+.hide-992 {
+    @media (max-width: $lg) {
+        display: none !important;
+    }
+}
+
+.hide-1200 {
+    @media (max-width: $xl) {
+        display: none !important;
+    }
+}
+
+.hide-1400 {
+    @media (max-width: $xxl) {
+        display: none !important;
+    }
+}
+
+.show-576 {
+    display: none !important;
+    @media (max-width: $sm) {
+        display: flex !important;
+    }
+}
+
+.show-768 {
+    display: none !important;
+    @media (max-width: $md) {
+        display: flex !important;
+    }
+}
+
+.show-992 {
+    display: none !important;
+    @media (max-width: $lg) {
+        display: flex !important;
+    }
+}
+
+.show-1200 {
+    display: none !important;
+    @media (max-width: $xl) {
+        display: flex !important;
+    }
+}
+
+.show-1400 {
+    display: none !important;
+    @media (max-width: $xxl) {
+        display: flex !important;
+    }
+}

@@ -57,3 +57,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['create_playlist'])) {
     <input type="text" name="playlist_title" placeholder="Nome da Playlist" required>
     <button type="submit" name="create_playlist">Criar Playlist</button>
 </form>
+
+<h2>Minhas Playlists</h2>
+<ul>
+    <?php
+    $current_user_id = get_current_user_id();
+    $playlists = get_posts([
+        'post_type' => 'playlist',
+        'author'    => $current_user_id,
+        'post_status' => 'publish',
+        'numberposts' => -1
+    ]);
+
+    foreach ($playlists as $playlist) {
+        // Obtém o link direto da playlist
+        $playlist_link = get_permalink($playlist->ID);
+
+        // Exibe o link na lista
+        echo "<li><a href='" . esc_url($playlist_link) . "'>" . esc_html($playlist->post_title) . "</a></li>";
+    }
+    ?>
+</ul>

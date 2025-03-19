@@ -30,8 +30,12 @@ class TopMenu {
                 </form>
                 <div class="user-menu">
                     <?php if(!is_user_logged_in()) { ?>
-                        <?php  SvgIcons::render('user'); ?>
-                        <a href="<?php echo home_url('/login'); ?>">Log in</a>
+                        <a href="<?php echo home_url('/login'); ?>">
+                            <div class="login-button">
+                                <?php  SvgIcons::render('user'); ?>
+                                Log in
+                            </div>
+                        </a>
                     <?php } else { ?>
                         <?php
                         $current_user = wp_get_current_user();

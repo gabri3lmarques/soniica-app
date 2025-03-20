@@ -150,6 +150,10 @@
         color: colors.$text;
         border: 1px solid colors.$dark-borders;
 
+        &:focus {
+            border: 1px solid colors.$main-color;
+        }
+
         &::placeholder {
             color: colors.$text-darker;
         }

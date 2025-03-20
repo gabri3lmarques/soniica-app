@@ -1,0 +1,102 @@
+@use '../utils/colors.scss';
+
+.accordion-menu {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    
+    .accordion-item {
+        margin-bottom: 8px;
+        background: colors.$dark-sidebar;
+        border-radius: 8px;
+        border: 1px solid colors.$dark-borders;
+        overflow: hidden;
+        
+        .accordion-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            
+            h3 {
+                margin: 0;
+                font-size: 14px;
+                font-weight: 500; 
+                color: colors.$text;
+            }
+            
+            .icon {
+                font-size: 18px;
+                color: colors.$text-darker;
+                transition: transform 0.3s ease;
+            }
+            
+            &:hover {
+                background-color: rgba(colors.$main-color, 0.05);
+                
+                h3 {
+                    color: colors.$main-color;
+                }
+                
+                .icon {
+                    color: colors.$main-color;
+                }
+            }
+        }
+        
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            //background-color: colors.$dark-borders;
+            
+            ul {
+                list-style: none;
+                padding: 8px 0;
+                margin: 0;
+                
+                li {
+                    a {
+                        display: block;
+                        padding: 12px 20px 12px 35px;
+                        color: colors.$text-darker;
+                        text-decoration: none;
+                        font-size: 13px;
+                        transition: all 0.2s ease;
+                        
+                        &:hover {
+                            background-color: rgba(colors.$main-color, 0.05);
+                            color: colors.$main-color;
+                            padding-left: 40px;
+                        }
+                    }
+                }
+            }
+        }
+        
+        &.active {
+            .accordion-header {
+                h3 {
+                    color: colors.$main-color;
+                }
+                
+                .icon {
+                    color: colors.$main-color;
+                    transform: rotate(45deg);
+                }
+            }
+            
+            .accordion-content {
+                max-height: 300px;
+                border-top: 1px solid colors.$dark-borders;
+            }
+        }
+
+        // Add subtle shadow when active
+        &.active {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+    }
+}

@@ -1,0 +1,11 @@
+#player-main {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .info {
+        .current-thumb {
+            width: 50px;
+        }
+    }
+}

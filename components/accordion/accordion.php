@@ -11,7 +11,7 @@ class Accordion {
             <div class="accordion-menu">
                 <div class="accordion-item">
                     <div class="accordion-header">
-                        <h3>Músicas</h3>
+                        <h3>Music</h3>
                         <span class="icon">+</span>
                     </div>
                     <div class="accordion-content">
@@ -25,7 +25,7 @@ class Accordion {
 
                 <div class="accordion-item">
                     <div class="accordion-header">
-                        <h3>Gêneros</h3>
+                        <h3>Trending</h3>
                         <span class="icon">+</span>
                     </div>
                     <div class="accordion-content">
@@ -42,7 +42,7 @@ class Accordion {
 
                 <div class="accordion-item">
                     <div class="accordion-header">
-                        <h3>Configurações</h3>
+                        <h3>Settings</h3>
                         <span class="icon">+</span>
                     </div>
                     <div class="accordion-content">

@@ -9,8 +9,18 @@ use playlist\Playlist;
 use flash_message\FlashMessage;
 use user\Users;
 
+// Exibe mensagem de sucesso, se existir
+$success_message = FlashMessage::get('success');
+if ($success_message) {
+    echo "<div class='flash-message success'>" . esc_html($success_message) . "</div>";
+}
 
+// Exibe mensagem de erro, se existir
+$error_message = FlashMessage::get('error');
 
+if ($error_message) {
+    echo "<div class='flash-message error'>" . esc_html($error_message) . "</div>";
+}
 ?>
 
 
@@ -72,81 +82,33 @@ $user_playlists = get_posts([
 <ul>
 <?php foreach ($songs as $song) : ?>
     <li>
+        <strong><?php echo esc_html($song->post_title); ?></strong> (ID: <?php echo $song->ID; ?>)
 
         <?php
 
             // pega os campos do som
-            $song_id = $song->ID;
-            $song_title = $song->post_title;
             $download_link = get_field('song_download_link', $song->ID);
             $song_duration = get_field('song_duration', $song->ID);
-            $song_src = get_field('song_source', $song->ID);
-            $song_img = get_field('song_image', $song->ID);
 
         ?>
-
-        <?php
-
-            //pegando o artista
-            $categories = get_the_category($song->ID);
-            $artist = null;
-
-            if (!empty($categories)) {
-                foreach ($categories as $category) {
-                    // Verifica se esta categoria tem um pai, e se o pai dela é a categoria "Avô" (nível 1)
-                    $parent_cat = get_category($category->parent);
-                    if ($parent_cat && $parent_cat->parent == 0) {
-                        $artist = $category; // A categoria que é "Pai" (nível 2)
-                        break; // Já encontramos a categoria Pai, podemos sair do loop
-                    }
-                }
-            }
-
-            //pega o link do artista
-            //esc_url(get_category_link($artist->term_id));
-        ?>
-
-        <?php 
-        // Obtém as tags da música
-        $tags = get_the_terms($song->ID, 'post_tag');
-
-        if (!empty($tags) && !is_wp_error($tags)) : ?>
-            <p>Tags: 
-                <?php foreach ($tags as $tag) : ?>
-                    <a href="<?php echo esc_url(get_term_link($tag->term_id)); ?>">
-                        <?php echo esc_html($tag->name); ?>
-                    </a>
-                <?php endforeach; ?>
-            </p>
-        <?php endif; ?>
 
         <!-- song  -->
-        <div class="song" data-song-id="<?php  echo($song_id); ?>" data-src="<?php echo($song_src); ?>">
-            <span class="title"><?php echo($song_title); ?></span>
-            <span class="artist">
-                <?php echo esc_html($artist->name); ?>
-            </span>
-            <span class="time"><?php echo($song_duration); ?></span>
+        <div class="song" data-song-id="105" data-src="https://cdn1.suno.ai/79c6284f-961f-4583-9ebb-1978aef559e8.mp3">
+            <span class="title">Song 1</span>
+            <span class="artist">Artist 1</span>
+            <span class="time">02:55</span>
             <ul class="genders">
-            <?php
-                if (!empty($tags) && !is_wp_error($tags)) : ?>
-                    <?php foreach ($tags as $tag) : ?>
-                        <li>
-                            <?php echo esc_html($tag->name); ?>
-                    </li>
-                    <?php endforeach; ?>
-                <?php 
-                endif; 
-            ?>
+                <li>gender 1</li>
+                <li>gender 2</li>
             </ul>
-            <img class="thumb" src="<?php echo($song_img); ?>" >
-            <a class="download-link" href="<?php echo($download_link); ?>" download>Download</a>
+            <img class="thumb" src="https://cdn2.suno.ai/image_large_79c6284f-961f-4583-9ebb-1978aef559e8.jpeg" >
+            <a class="download-link" href="https://example.com/song3.mp3" download>Download</a>
             <button class="play-button">Play</button>
         </div>
         <!-- /song -->
 
         <!-- Formulário para adicionar música à playlist -->
-        <form method="POST" style="margin-top: 10px;">
+        <!-- <form method="POST" style="margin-top: 10px;">
             <input type="hidden" name="song_id" value="<?php echo $song->ID; ?>">
 
             <label for="playlist_id_<?php echo $song->ID; ?>">Escolha a Playlist:</label>
@@ -160,7 +122,7 @@ $user_playlists = get_posts([
             </select>
 
             <button type="submit" name="add_song_to_playlist">Adicionar à Playlist</button>
-        </form>
+        </form> -->
     </li>
 <?php endforeach; ?>
 

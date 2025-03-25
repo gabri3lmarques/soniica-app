@@ -1,8 +1,27 @@
+@use '../utils/colors.scss';
+
+.playlist {
+    margin-top: 40px;
+}
+
 .song {
     display: flex;
-    
-    .thumb {
-        height: 80px;
-        width: 80px;
+    height: 80px;
+    padding: 10px;
+    transition: 300ms;
+    border: 1px solid colors.$dark-main;
+    border-radius: 6px;
+
+    &.active {
+        border: 1px solid rgba(colors.$main-color, 0.07);
+        background-color: rgba(colors.$main-color, 0.05);
+
+        &:hover {
+            background-color: rgba(colors.$main-color, 0.05);
+        }
+    }
+
+    &:hover {
+        background-color: colors.$dark-sidebar;
     }
 }

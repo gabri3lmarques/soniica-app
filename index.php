@@ -219,12 +219,14 @@ $user_playlists = get_posts([
             // Pegando o artista
             $categories = get_the_category($song->ID);
             $artist = null;
+            $artist_link = null; // Variável para armazenar o link
 
             if (!empty($categories)) {
                 foreach ($categories as $category) {
                     $parent_cat = get_category($category->parent);
                     if ($parent_cat && $parent_cat->parent == 0) {
                         $artist = $category;
+                        $artist_link = get_category_link($category->term_id); // Obtendo o link
                         break;
                     }
                 }
@@ -241,7 +243,7 @@ $user_playlists = get_posts([
             <img class="thumb" src="<?php echo esc_url($song_img); ?>" alt="Capa da música">
             <span class="is-new"><?php if($song_life_cycle === "new"){echo("new");}  ?></span>
             <span class="title"><?php echo esc_html($song_title); ?></span>
-            <span class="artist"><?php echo esc_html($artist->name ?? 'Desconhecido'); ?></span>
+            <a class="artist" href="<?php echo($artist_link); ?>"><?php echo esc_html($artist->name ?? 'Desconhecido'); ?></a>
             <span class="time"><?php echo esc_html($song_duration); ?></span>
             
             <ul class="genders">

@@ -269,40 +269,27 @@ class Player {
 
     updateDownloadButton(songElement) {
         if (this.downloadButton) {
-
             const downloadElement = songElement.querySelector('.download-link');
+    
+            const encodedDownloadLink = downloadElement.getAttribute("data-href");
+            let decodedLink = atob(encodedDownloadLink);
+    
+            // Remove event listeners duplicados antes de adicionar um novo
+            this.downloadButton.replaceWith(this.downloadButton.cloneNode(true));
+            this.downloadButton = document.querySelector('.download-button'); // Re-seleciona o botão atualizado
 
-            if (!downloadElement) {
-                console.warn('Elemento .download-link não encontrado.');
-                return;
-            }
+            const downloadBlock = document.querySelector('.download-link');
     
-            let encodedDownloadLink = downloadElement.getAttribute("data-href");
-    
-            if (!encodedDownloadLink) {
-                console.error('Encoded download link is missing');
-                return;
-            }
-  
-                this.downloadButton.addEventListener('click', (event) => {
-                    event.preventDefault(); // Impede o comportamento padrão do link
-            
-                    try {
-                        // Decodifica o link Base64
-                        const decodedLink = atob(encodedDownloadLink);
-    
-                        if (downloadElement.classList.contains('download-blocked')) {
-                            alert('Trone-se premium para fazer o download');
-                            // Ação
-                        } else {
-                            window.open(decodedLink, '_blank');
-                        }
-   
-                    } catch (error) {
-                        console.error('Erro ao decodificar o link de download:', error);
-                    }
-                });
-            } 
+            this.downloadButton.addEventListener('click', (event) => {
+                event.preventDefault();
+                if (!downloadBlock.classList.contains('download-blocked')) {
+                    window.open(decodedLink, '_blank');
+                } else {
+                    window.location = "/get-premium";
+                }
+
+            });
+        } 
     }
       
 }

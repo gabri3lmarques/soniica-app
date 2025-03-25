@@ -20,7 +20,7 @@ class PlayerComponent {
                 <button class="play-pause">Play</button>
                 <button class="next">Next</button>
                 <button class="loop">Loop</button>
-                <a class="download-button" disabled>Download</a>
+                <a class="download-button" onclick="return handleDownload(event)">Download</a>
             </div>
             
             <div class="volume-control">

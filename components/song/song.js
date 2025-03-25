@@ -36,23 +36,19 @@ function handleDownload(event) {
     return true;
 }
 
-const playerDownloadButton = document.querySelector('.download-link');
+const playerDownloadButtons = document.querySelectorAll('.download-link');
 
-if (playerDownloadButton) {
-
-    playerDownloadButton.addEventListener('click', (event) => {
-        
+playerDownloadButtons.forEach((button) => {
+    button.addEventListener('click', (event) => {
         event.preventDefault();
 
-        let encodedDownloadLink = playerDownloadButton.getAttribute("data-href");
-
+        let encodedDownloadLink = button.getAttribute("data-href");
         const decodedLink = atob(encodedDownloadLink);
-
-        if (!playerDownloadButton.classList.contains('download-blocked')) {
+        console.log(decodedLink)
+        if (!button.classList.contains('download-blocked')) {
             window.open(decodedLink, '_blank');
         } else {
             console.log('deu ruim');
         }
     });
-
-} 
+});

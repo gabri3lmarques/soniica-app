@@ -6,7 +6,7 @@ use user\Users;
 
 class DownloadController {
     //private const DOWNLOAD_COOLDOWN = 86400; // 24 horas em segundos
-    private const DOWNLOAD_COOLDOWN = 180; // 24 horas em segundos
+    private const DOWNLOAD_COOLDOWN = 5; // 24 horas em segundos
 
     public static function canDownload() {
         if (!is_user_logged_in()) {

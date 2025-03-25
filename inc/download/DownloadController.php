@@ -6,7 +6,7 @@ use user\Users;
 
 class DownloadController {
     //private const DOWNLOAD_COOLDOWN = 86400; // 24 horas em segundos
-    private const DOWNLOAD_COOLDOWN = 300; // 24 horas em segundos
+    private const DOWNLOAD_COOLDOWN = 180; // 24 horas em segundos
 
     public static function canDownload() {
         if (!is_user_logged_in()) {
@@ -74,8 +74,8 @@ class DownloadController {
         }
 
         return sprintf(
-            '<a class="download-link" href="%s" onclick="return handleDownload(event)" download>Download</a>',
-            esc_url($secure_download_url)
+            '<a class="download-link" data-href="' . $secure_download_url .  '" href="%s" onclick="return handleDownload(event)" download>Download</a>',
+            $secure_download_url
         );
     }
 }

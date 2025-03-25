@@ -35,3 +35,24 @@ function handleDownload(event) {
 
     return true;
 }
+
+const playerDownloadButton = document.querySelector('.download-link');
+
+if (playerDownloadButton) {
+
+    playerDownloadButton.addEventListener('click', (event) => {
+        
+        event.preventDefault();
+
+        let encodedDownloadLink = playerDownloadButton.getAttribute("data-href");
+
+        const decodedLink = atob(encodedDownloadLink);
+
+        if (!playerDownloadButton.classList.contains('download-blocked')) {
+            window.open(decodedLink, '_blank');
+        } else {
+            console.log('deu ruim');
+        }
+    });
+
+} 

@@ -59,14 +59,26 @@ class Player {
 
         this.currentPlaylist = firstPlaylist;
         this.currentSong = firstSong;
-        this.audio.src = firstSong.dataset.src;
+        
+        // Fix: songElement was undefined, should use firstSong
+        const encodedUrl = firstSong.dataset.src;
+        
+        try {
+            const decodedUrl = atob(encodedUrl);
+            if (!decodedUrl.startsWith('http://') && !decodedUrl.startsWith('https://')) {
+                console.error('Invalid decoded URL:', decodedUrl);
+                return;
+            }
+            
+            this.audio.src = decodedUrl;
+            this.updatePlayerInfo(firstSong);
 
-        this.updatePlayerInfo(firstSong);
-
-        if(this.downloadButton){
-            this.updateDownloadButton(firstSong);
+            if(this.downloadButton){
+                this.updateDownloadButton(firstSong);
+            }
+        } catch (e) {
+            console.error('Error decoding URL:', e);
         }
-
     }
 
     toggleRandom() {
@@ -108,25 +120,38 @@ class Player {
     }
 
     play(songElement, playlistElement) {
-        const songSrc = songElement.dataset.src;
+        try {
+            const encodedUrl = songElement.dataset.src;
+            const decodedUrl = atob(encodedUrl);
 
-        if (this.currentSong && this.currentSong !== songElement) {
-            this.currentSong.querySelector('.play-button').classList.remove('active');
-            this.currentSong.classList.remove('active');
+            if (!decodedUrl.startsWith('http://') && !decodedUrl.startsWith('https://')) {
+                console.error('Invalid decoded URL:', decodedUrl);
+                return;
+            }
+
+            if (this.currentSong && this.currentSong !== songElement) {
+                this.currentSong.querySelector('.play-button').classList.remove('active');
+                this.currentSong.classList.remove('active');
+            }
+
+            if (this.audio.src !== decodedUrl) {
+                this.audio.src = decodedUrl;
+            }
+
+            this.audio.play();
+            this.isPlaying = true;
+            this.currentSong = songElement;
+            this.currentPlaylist = playlistElement;
+
+            this.updatePlayerInfo(songElement);
+            this.syncButtons(songElement);
+
+            if(this.downloadButton) {
+                this.updateDownloadButton(songElement);
+            }
+        } catch (e) {
+            console.error('Error playing song:', e);
         }
-
-        if (this.audio.src !== songSrc) {
-            this.audio.src = songSrc;
-        }
-        this.audio.play();
-        this.isPlaying = true;
-        this.currentSong = songElement;
-        this.currentPlaylist = playlistElement;
-
-        this.updatePlayerInfo(songElement);
-        this.syncButtons(songElement);
-
-        this.updateDownloadButton(songElement);
     }
 
     pause(songElement) {
@@ -243,12 +268,43 @@ class Player {
     }
 
     updateDownloadButton(songElement) {
-        if(this.downloadButton){
-            const downloadLink = songElement.querySelector('.download-link').href;
-            this.downloadButton.setAttribute('href', downloadLink);
-            this.downloadButton.removeAttribute('disabled');
-        }
+        if (this.downloadButton) {
+
+            const downloadElement = songElement.querySelector('.download-link');
+
+            if (!downloadElement) {
+                console.warn('Elemento .download-link não encontrado.');
+                return;
+            }
+    
+            let encodedDownloadLink = downloadElement.getAttribute("data-href");
+    
+            if (!encodedDownloadLink) {
+                console.error('Encoded download link is missing');
+                return;
+            }
+  
+                this.downloadButton.addEventListener('click', (event) => {
+                    event.preventDefault(); // Impede o comportamento padrão do link
+            
+                    try {
+                        // Decodifica o link Base64
+                        const decodedLink = atob(encodedDownloadLink);
+    
+                        if (downloadElement.classList.contains('download-blocked')) {
+                            alert('Trone-se premium para fazer o download');
+                            // Ação
+                        } else {
+                            window.open(decodedLink, '_blank');
+                        }
+   
+                    } catch (error) {
+                        console.error('Erro ao decodificar o link de download:', error);
+                    }
+                });
+            } 
     }
+      
 }
 
 

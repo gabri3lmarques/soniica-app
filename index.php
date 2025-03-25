@@ -208,10 +208,14 @@ $user_playlists = get_posts([
             $song_duration = get_field('song_duration', $song->ID);
             $song_img = get_field('song_image', $song->ID);
             $song_life_cycle = get_field('life_cycle', $song->ID);
+            $song_source = get_field('song_source', $song->ID);
 
-            // URL protegida via REST API
-            $secure_song_url = get_rest_url(null, 'soniica/v1/stream?id=' . $song_id);
+            //encrypta o url
+            $safe_url = base64_encode($song_source);
 
+            //Encrypta Download link
+            $safe_download_link = base64_encode($download_link);
+            
             // Pegando o artista
             $categories = get_the_category($song->ID);
             $artist = null;
@@ -229,15 +233,10 @@ $user_playlists = get_posts([
             // Pegando as tags
             $tags = get_the_terms($song->ID, 'post_tag');
 
-            $expiration = time() + 600; // Token válido por 10 minutos
-            $token_data = json_encode(['song_id' => $song_id, 'exp' => $expiration]);
-            $token = base64_encode($token_data);
-            $secure_download_url = get_rest_url(null, "soniica/v1/download/?token=" . urlencode($token));
-
         ?>
 
         <!-- song -->
-        <div class="song" data-song-id="<?php echo $song_id; ?>" data-src="<?php echo esc_url($secure_song_url); ?>">
+        <div class="song" data-song-id="<?php echo $song_id; ?>" data-src="<?php echo $safe_url; ?>">
 
             <img class="thumb" src="<?php echo esc_url($song_img); ?>" alt="Capa da música">
             <span class="is-new"><?php if($song_life_cycle === "new"){echo("new");}  ?></span>
@@ -254,9 +253,9 @@ $user_playlists = get_posts([
             </ul>
 
             <?php 
-    if(is_user_logged_in()){
-        echo DownloadController::getDownloadLink($secure_download_url);
-    }
+                if(is_user_logged_in()){
+                    echo DownloadController::getDownloadLink($safe_download_link);
+                }
             ?>
 
             <button class="play-button">Play</button>

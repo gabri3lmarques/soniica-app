@@ -148,56 +148,56 @@ require_once get_template_directory() . '/components/player/Player.php';
 
             <?php
 
-// Processamento do formulário
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_song_to_playlist'])) {
-    $playlist = new Playlist();
-    $playlist_id = (int) $_POST['playlist_id'];
-    $song_id = (int) $_POST['song_id'];
+                // Processamento do formulário
+                if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_song_to_playlist'])) {
+                    $playlist = new Playlist();
+                    $playlist_id = (int) $_POST['playlist_id'];
+                    $song_id = (int) $_POST['song_id'];
 
-    // Verifica se a playlist pertence ao usuário logado
-    $playlist_post = get_post($playlist_id);
-    if ($playlist_post && (int) $playlist_post->post_author === get_current_user_id()) {
-        $result = $playlist->add_song_to_playlist([
-            'id' => $playlist_id,
-            'song_id' => $song_id
-        ]);
+                    // Verifica se a playlist pertence ao usuário logado
+                    $playlist_post = get_post($playlist_id);
+                    if ($playlist_post && (int) $playlist_post->post_author === get_current_user_id()) {
+                        $result = $playlist->add_song_to_playlist([
+                            'id' => $playlist_id,
+                            'song_id' => $song_id
+                        ]);
 
-        if ($result['success']) {
-            FlashMessage::set('success', $result['message']);
+                        if ($result['success']) {
+                            FlashMessage::set('success', $result['message']);
+                            ?>
+                            <script>window.location="<?php echo esc_url(home_url()); ?>";</script>
+                            <?php
+                        } else {
+                            FlashMessage::set('error', $result['message']);
+                            ?>
+                            <script>window.location="<?php echo esc_url(home_url()); ?>";</script>
+                            <?php
+                        }
+                    } else {
+                        FlashMessage::set('error', 'Você não tem permissão para adicionar musica a esta playlist.');
+                        ?>
+                        <script>window.location="<?php echo esc_url(home_url()); ?>";</script>
+                        <?php
+                    }
+                }
+
+                // Obtém as músicas (posts do tipo 'song')
+                $songs = get_posts([
+                    'post_type' => 'song',
+                    'post_status' => 'publish',
+                    'numberposts' => -1
+                ]);
+
+                // Obtém as playlists do usuário logado
+                $current_user_id = get_current_user_id();
+
+                $user_playlists = get_posts([
+                    'post_type' => 'playlist',
+                    'author'    => $current_user_id,
+                    'post_status' => 'publish',
+                    'numberposts' => -1
+                ]);
             ?>
-            <script>window.location="<?php echo esc_url(home_url()); ?>";</script>
-            <?php
-        } else {
-            FlashMessage::set('error', $result['message']);
-            ?>
-            <script>window.location="<?php echo esc_url(home_url()); ?>";</script>
-            <?php
-        }
-    } else {
-        FlashMessage::set('error', 'Você não tem permissão para adicionar musica a esta playlist.');
-        ?>
-        <script>window.location="<?php echo esc_url(home_url()); ?>";</script>
-        <?php
-    }
-}
-
-// Obtém as músicas (posts do tipo 'song')
-$songs = get_posts([
-    'post_type' => 'song',
-    'post_status' => 'publish',
-    'numberposts' => -1
-]);
-
-// Obtém as playlists do usuário logado
-$current_user_id = get_current_user_id();
-
-$user_playlists = get_posts([
-    'post_type' => 'playlist',
-    'author'    => $current_user_id,
-    'post_status' => 'publish',
-    'numberposts' => -1
-]);
-?>
 
 
 <?php foreach ($songs as $song) : ?>
@@ -238,10 +238,18 @@ $user_playlists = get_posts([
 
         ?>
 
-        <!-- song -->
+        <!-- song --> ffmxm\ab\vv b 
         <div class="song" data-song-id="<?php echo $song_id; ?>" data-src="<?php echo $safe_url; ?>">
 
-            <img class="thumb" src="<?php echo esc_url($song_img); ?>" alt="Capa da música">
+            <div class="song-cover\  \gt1\  FGV\  \GAqv  hssyh ">
+                <img class="thumb" src="<?php echo esc_url($song_img); ?>" alt="Capa da música">
+                <div class="sound-wave">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div> 
+            </div>
 
             <div class="title-artist">
                 <span class="title"><?php echo esc_html($song_title); ?></span>

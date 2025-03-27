@@ -16,11 +16,12 @@ class Theme {
 
     private function init_classes() {
         new assets\Assets();
+        new download_api\DownloadAPI();
         new category\CategoryImageManager();
-        new playlist\Playlist();
-        new flash_message\FlashMessage();
         new search\Soniica_Search();
         new svg\SvgIcons();
         new user\Users();
+        new life_cycle\LifeCycleManager();
+        new flash_message\FlashMessage();
     }
 }

@@ -9,19 +9,96 @@
     height: 80px;
     padding: 10px;
     transition: 300ms;
-    border: 1px solid colors.$dark-main;
     border-radius: 6px;
+    align-items: center;
+    gap: 10px;
 
     &.active {
-        border: 1px solid rgba(colors.$main-color, 0.07);
         background-color: rgba(colors.$main-color, 0.05);
 
         &:hover {
             background-color: rgba(colors.$main-color, 0.05);
         }
+
+
+        &:nth-child(odd) {
+            background-color: rgba(colors.$main-color, 0.05);
+        }
+
+        .play-button {
+            background-image: url('../img/icons/pause.svg');
+        }
+
     }
 
-    &:hover {
+    &:nth-child(odd) {
         background-color: colors.$dark-sidebar;
+    }
+
+
+    &:hover {
+        background-color: rgba(colors.$main-color, 0.05);
+    }
+
+    .is-new {
+        font-size: 10px;
+        text-transform: uppercase;
+        border: 1px solid #272727;
+        border-radius: 4px;
+        display: inline-block;
+        margin-bottom: 10px;
+        height: 20px;
+        width: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-top: 1px;
+        background-color: rgba(colors.$main-color, 0.05);
+        color: colors.$main-color;
+    }
+
+    .thumb {
+        height: 60px;
+    }
+
+    .title-artist {
+        display: flex;
+        flex-direction: column;
+        width: 150px;
+        overflow-x: hidden;
+        height: 60px;
+        justify-content: center;
+
+        .title {
+            font-size: 14px;
+            color: #fff;
+        }
+
+        .artist {
+            font-size: 14px;
+            color: rgba(#fff, 0.5);
+
+            &:hover {
+                color: colors.$main-color;
+            }
+        }
+    }
+
+    .play-button {
+        border: 0;
+        background-image: url('../img/icons/play.svg');
+        height: 30px;
+        width: 30px;
+        border-radius: 2px;
+        background-color: colors.$dark-borders;
+        background-repeat: no-repeat;
+        background-position: center;
+        cursor: pointer;
+        background-size: 10px;
+    }
+
+    .time {
+        color: rgba(#fff, 0.5);
+        font-size: 14px;
     }
 }

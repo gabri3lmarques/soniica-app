@@ -2,7 +2,7 @@
 
 <?php 
 
-use playlist\Playlist;
+
 use flash_message\FlashMessage;
 use user\Users;
 use download\DownloadController;
@@ -13,7 +13,8 @@ use download\DownloadController;
     // Exibe mensagem de sucesso, se existir
 $success_message = FlashMessage::get('success');
 if ($success_message) {
-    echo "<div class='flash-message success'>" . esc_html($success_message) . "</div>";
+    echo "<div class='flash-message success'>";
+    echo "</div>";
 }
 
 // Exibe mensagem de erro, se existir
@@ -22,6 +23,7 @@ $error_message = FlashMessage::get('error');
 if ($error_message) {
     echo "<div class='flash-message error'>" . esc_html($error_message) . "</div>";
 }
+
 ?>
 
 <?php 
@@ -197,10 +199,9 @@ $user_playlists = get_posts([
 ]);
 ?>
 
-<h2>Minhas Músicas</h2>
-<ul>
+
 <?php foreach ($songs as $song) : ?>
-    <li>
+
         <?php
             $song_id = $song->ID;
             $song_title = $song->post_title;
@@ -241,10 +242,17 @@ $user_playlists = get_posts([
         <div class="song" data-song-id="<?php echo $song_id; ?>" data-src="<?php echo $safe_url; ?>">
 
             <img class="thumb" src="<?php echo esc_url($song_img); ?>" alt="Capa da música">
-            <span class="is-new"><?php if($song_life_cycle === "new"){echo("new");}  ?></span>
-            <span class="title"><?php echo esc_html($song_title); ?></span>
-            <a class="artist" href="<?php echo($artist_link); ?>"><?php echo esc_html($artist->name ?? 'Desconhecido'); ?></a>
+
+            <div class="title-artist">
+                <span class="title"><?php echo esc_html($song_title); ?></span>
+                <a class="artist" href="<?php echo($artist_link); ?>"><?php echo esc_html($artist->name ?? 'Desconhecido'); ?></a>
+            </div>
+
+            <button class="play-button"></button>
+
             <span class="time"><?php echo esc_html($song_duration); ?></span>
+
+            <span class="is-new"><?php if($song_life_cycle === "new"){echo("new");}  ?></span>
             
             <ul class="genders">
                 <?php if (!empty($tags) && !is_wp_error($tags)) : ?>
@@ -260,7 +268,7 @@ $user_playlists = get_posts([
                 }
             ?>
 
-            <button class="play-button">Play</button>
+            
 
             <?php 
                 if(is_user_logged_in()){
@@ -268,9 +276,9 @@ $user_playlists = get_posts([
                         <form method="POST" style="margin-top: 10px;">
                         <input type="hidden" name="song_id" value="<?php echo $song->ID; ?>">
 
-                        <label for="playlist_id_<?php echo $song->ID; ?>">Escolha a Playlist:</label>
+                        <label for="playlist_id_<?php echo $song->ID; ?>"></label>
                         <select name="playlist_id" id="playlist_id_<?php echo $song->ID; ?>" required>
-                            <option value="">Selecione uma playlist</option>
+                            <option value="">select playlist</option>
                             <?php foreach ($user_playlists as $playlist) : ?>
                                 <option value="<?php echo $playlist->ID; ?>">
                                     <?php echo esc_html($playlist->post_title); ?>
@@ -278,21 +286,17 @@ $user_playlists = get_posts([
                             <?php endforeach; ?>
                         </select>
 
-                        <button type="submit" name="add_song_to_playlist">Adicionar à Playlist</button>
+                        <button type="submit" name="add_song_to_playlist">add</button>
                         </form>
                     <?php
                 }
             ?>
         </div>
         <!-- /song -->
-
-        <!-- Formulário para adicionar música à playlist -->
-
-    </li>
 <?php endforeach; ?>
 
 
-</ul>
+
             </div>
             <!-- /playlist -->
         </div>

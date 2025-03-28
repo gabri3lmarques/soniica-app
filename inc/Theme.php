@@ -23,5 +23,6 @@ class Theme {
         new user\Users();
         new life_cycle\LifeCycleManager();
         new flash_message\FlashMessage();
+        new playlist\Playlist();
     }
 }

@@ -2,7 +2,7 @@
 
 <?php 
 
-
+use playlist\Playlist;
 use flash_message\FlashMessage;
 use user\Users;
 use download\DownloadController;
@@ -238,10 +238,10 @@ require_once get_template_directory() . '/components/player/Player.php';
 
         ?>
 
-        <!-- song --> ffmxm\ab\vv b 
+        <!-- song --> 
         <div class="song" data-song-id="<?php echo $song_id; ?>" data-src="<?php echo $safe_url; ?>">
 
-            <div class="song-cover\  \gt1\  FGV\  \GAqv  hssyh ">
+            <div class="song-cover">
                 <img class="thumb" src="<?php echo esc_url($song_img); ?>" alt="Capa da música">
                 <div class="sound-wave">
                     <div class="bar"></div>
@@ -260,23 +260,24 @@ require_once get_template_directory() . '/components/player/Player.php';
 
             <span class="time"><?php echo esc_html($song_duration); ?></span>
 
-            <span class="is-new"><?php if($song_life_cycle === "new"){echo("new");}  ?></span>
+            <div class="new-tag-spot"><?php if($song_life_cycle === "new"){echo('<span class="is-new">new</span>');}  ?></div>
             
-            <ul class="genders">
-                <?php if (!empty($tags) && !is_wp_error($tags)) : ?>
-                    <?php foreach ($tags as $tag) : ?>
-                        <li><?php echo esc_html($tag->name); ?></li>
-                    <?php endforeach; ?>
-                <?php endif; ?>
-            </ul>
 
             <?php 
                 if(is_user_logged_in()){
-                    echo DownloadController::getDownloadLink($safe_download_link);
+                    if($song_life_cycle === "new" && !Users::check_user_premium_status()){
+                        ?>
+                        <a class="download-link" href="<?php echo esc_url(home_url('/get-premium')); ?>" class="download-button">Download</a>
+                        <?php
+                    } else {
+                        echo DownloadController::getDownloadLink($safe_download_link);
+                    }
+                } else {
+                    ?>
+                    <a class="download-link" href="/login">Download</a>
+                    <?php
                 }
             ?>
-
-            
 
             <?php 
                 if(is_user_logged_in()){
@@ -285,20 +286,32 @@ require_once get_template_directory() . '/components/player/Player.php';
                         <input type="hidden" name="song_id" value="<?php echo $song->ID; ?>">
 
                         <label for="playlist_id_<?php echo $song->ID; ?>"></label>
-                        <select name="playlist_id" id="playlist_id_<?php echo $song->ID; ?>" required>
-                            <option value="">select playlist</option>
-                            <?php foreach ($user_playlists as $playlist) : ?>
-                                <option value="<?php echo $playlist->ID; ?>">
-                                    <?php echo esc_html($playlist->post_title); ?>
-                                </option>
-                            <?php endforeach; ?>
-                        </select>
+                        
+           
+                            <select name="playlist_id" id="playlist_id_<?php echo $song->ID; ?>" required>
+                                <option value="">select playlist</option>
+                                <?php foreach ($user_playlists as $playlist) : ?>
+                                    <option value="<?php echo $playlist->ID; ?>">
+                                        <?php echo esc_html($playlist->post_title); ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+        
 
-                        <button type="submit" name="add_song_to_playlist">add</button>
+                        <button class="add-to-playlist type="submit" name="add_song_to_playlist">add</button>
                         </form>
                     <?php
                 }
             ?>
+
+            <ul class="genders">
+                <?php if (!empty($tags) && !is_wp_error($tags)) : ?>
+                    <?php foreach ($tags as $tag) : ?>
+                        <li><?php echo esc_html($tag->name); ?></li>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </ul>
+
         </div>
         <!-- /song -->
 <?php endforeach; ?>
@@ -313,7 +326,7 @@ require_once get_template_directory() . '/components/player/Player.php';
     <!-- /main content -->
     <div class="bottom-bar">
         <?php 
-            echo PlayerComponent::render();
+            echo PlayerComponent::render($song_life_cycle, $safe_download_link);
         ?>
     </div>
 

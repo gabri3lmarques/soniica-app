@@ -21,7 +21,7 @@ class Player {
         this.progressBarContainer = document.querySelector('.progress-bar-container');
         this.progressBar = document.querySelector('.progress-bar');
         this.volumeSlider = document.querySelector('#volume-slider'); // Slider de volume
-        if(document.querySelector('.download-link')){this.downloadButton = document.querySelector('.download-button')}
+    
        
 
         // Event listeners
@@ -73,9 +73,6 @@ class Player {
             this.audio.src = decodedUrl;
             this.updatePlayerInfo(firstSong);
 
-            if(this.downloadButton){
-                this.updateDownloadButton(firstSong);
-            }
         } catch (e) {
             console.error('Error decoding URL:', e);
         }
@@ -145,20 +142,21 @@ class Player {
 
             this.updatePlayerInfo(songElement);
             this.syncButtons(songElement);
-
-            if(this.downloadButton) {
-                this.updateDownloadButton(songElement);
-            }
         } catch (e) {
             console.error('Error playing song:', e);
         }
     }
 
-    pause(songElement) {
+    pause(songElement = null) {
         this.audio.pause();
         this.isPlaying = false;
-        songElement.querySelector('.play-button').classList.remove('active');
-        songElement.classList.remove('active');
+    
+        if (songElement) {
+            const playButton = songElement.querySelector('.play-button');
+            if (playButton) playButton.classList.remove('active');
+            songElement.classList.remove('active');
+        }
+    
         this.playPauseButton.classList.remove('active');
     }
 
@@ -266,39 +264,13 @@ class Player {
 
         this.seek(event);
     }
-
-    updateDownloadButton(songElement) {
-        if (this.downloadButton) {
-            const downloadElement = songElement.querySelector('.download-link');
-    
-            const encodedDownloadLink = downloadElement.getAttribute("data-href");
-            let decodedLink = atob(encodedDownloadLink);
-    
-            // Remove event listeners duplicados antes de adicionar um novo
-            this.downloadButton.replaceWith(this.downloadButton.cloneNode(true));
-            this.downloadButton = document.querySelector('.download-button'); // Re-seleciona o botão atualizado
-
-            const downloadBlock = document.querySelector('.download-link');
-    
-            this.downloadButton.addEventListener('click', (event) => {
-                event.preventDefault();
-                if (!downloadBlock.classList.contains('download-blocked')) {
-                    window.open(decodedLink, '_blank');
-                } else {
-                    window.location = "/get-premium";
-                }
-
-            });
-        } 
-    }
-      
-}
-
+}    
 
 
 // Inicializar o player apenas se o elemento existir
 if (document.querySelector('#player-main')) {
-    const player = new Player();
+    
+    window.globalPlayer = new Player(); // Define como global
 
     // Configurar eventos para as músicas
     document.addEventListener('click', (event) => {
@@ -310,10 +282,10 @@ if (document.querySelector('#player-main')) {
         
         if (!song || !playlist) return;
 
-        if (player.currentSong === song && player.isPlaying) {
-            player.pause(song);
+        if (globalPlayer.currentSong === song && globalPlayer.isPlaying) {
+            globalPlayer.pause(song);
         } else {
-            player.play(song, playlist);
+            globalPlayer.play(song, playlist);
         }
     });
 }

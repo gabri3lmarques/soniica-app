@@ -38,13 +38,52 @@ function handleDownload(event) {
 
 const playerDownloadButtons = document.querySelectorAll('.download-link');
 
+function isBase64(str) {
+    try {
+        return btoa(atob(str)) === str;
+    } catch (e) {
+        return false;
+    }
+}
+
+const PlayerManager = (function () {
+    let instance = null;
+
+    return {
+        getInstance: function () {
+            if (!instance) {
+                instance = new Player();
+            }
+            return instance;
+        }
+    };
+})();
+
+
+
 playerDownloadButtons.forEach((button) => {
     button.addEventListener('click', (event) => {
         event.preventDefault();
 
-        let encodedDownloadLink = button.getAttribute("data-href");
-        const decodedLink = atob(encodedDownloadLink);
-        console.log(decodedLink)
+        let encodedDownloadLink = button.getAttribute("href");
+        let decodedLink = '';
+
+        // Verifica se a string é Base64 válida antes de decodificar
+        if (isBase64(encodedDownloadLink)) {
+            // se for base64, decodifica
+            decodedLink = atob(encodedDownloadLink);
+        } else {
+            // se não for, usa o link normal
+            decodedLink = encodedDownloadLink;
+ 
+            if (window.globalPlayer && window.globalPlayer.currentSong) {
+                window.globalPlayer.pause(window.globalPlayer.currentSong);
+            }
+
+            window.location.href = decodedLink;
+            return;
+        }
+
         if (!button.classList.contains('download-blocked')) {
             window.open(decodedLink, '_blank');
         } else {

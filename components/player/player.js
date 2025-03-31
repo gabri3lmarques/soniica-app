@@ -47,7 +47,12 @@ class Player {
     adjustVolume(event) {
         // Ajustar o volume do elemento de áudio com base no slider
         const newVolume = event.target.value;
+        const rightVolume = newVolume * 100;
+        const leftVolume = 100 - rightVolume;
+
         this.audio.volume = newVolume;
+        
+        this.volumeSlider.style.background = `linear-gradient(to right, #708303, #e9ff70 ${rightVolume}%, #272727 ${leftVolume}%)`;
     }
 
     initializeFirstSong() {
@@ -163,14 +168,12 @@ class Player {
     togglePlayPause() {
         if (this.isPlaying) {
             this.pause(this.currentSong);
-            this.playPauseButton.textContent = 'Play';
         } else {
             this.audio.play();
             this.isPlaying = true;
             this.currentSong.querySelector('.play-button').classList.add('active');
             this.currentSong.classList.add('active');
             this.playPauseButton.classList.add('active');
-            this.playPauseButton.textContent = 'Pause';
         }
     }
 
@@ -218,8 +221,8 @@ class Player {
         this.artistElement.textContent = songElement.querySelector('.artist').textContent;
         this.timeElement.textContent = songElement.querySelector('.time').textContent;
 
-        const genders = [...songElement.querySelectorAll('.genders li')].map(li => li.textContent);
-        this.gendersElement.textContent = genders.join(', ');
+        //const genders = [...songElement.querySelectorAll('.genders li')].map(li => li.textContent);
+        //this.gendersElement.textContent = genders.join(', ');
 
         const thumbSrc = songElement.querySelector('.thumb').src;
         this.thumbElement.src = thumbSrc;
@@ -233,10 +236,8 @@ class Player {
             songElement.querySelector('.play-button').classList.add('active');
             songElement.classList.add('active');
             this.playPauseButton.classList.add('active');
-            this.playPauseButton.textContent = 'Pause';
         } else {
             this.playPauseButton.classList.remove('active');
-            this.playPauseButton.textContent = 'Play';
         }
     }
 

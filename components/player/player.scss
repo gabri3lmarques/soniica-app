@@ -1,15 +1,203 @@
+@use '../utils/colors.scss';
+
 #player-main {
     display: flex;
     flex-direction: row;
     align-items: center;
+    height: 100px;
+    padding: 0;
+    margin: 0;
+    justify-content: space-between;
+    padding-left: 40px;
+    padding-right: 40px;
 
     .info {
+        display: flex;
+        align-items: center;
+
         .current-thumb {
             width: 50px;
+            margin-right: 10px;
+        }
+
+        .title-artist{
+            display: flex;
+            flex-direction: column;
+            width: 250px;
+            height: 60px;
+            justify-content: center;
+            overflow: hidden;
+
+            .current-artist {
+                font-size: 12px;
+                color: rgba(#fff, 0.5)
+            }
         }
     }
 
-    .download-button {
-        display: none;
+
+    .controls-progress-bar {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        width: 400px;
+        align-items: center;
+
+        .controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+
+            .button {
+                font-size: 10px;
+                color: #fff;
+                height: 30px;
+                width: 30px;
+                border: none;  
+                border-radius: 2px;
+                align-items: center;
+                justify-content: center;
+                display: flex;
+                //background-color: colors.$dark-borders;
+                border-radius: 20px;
+
+                &.active {
+                    .play {
+                        display: none;
+                    }
+
+                    .pause {
+                        display: block;
+                    }
+
+                    &.loop {
+                        path {
+                            fill: colors.$main-color;
+                        }
+                    }
+
+                    &.random {
+                        path {
+                            fill: colors.$main-color;
+                        }
+                    }
+                }
+
+
+
+                &:hover {
+
+                    svg {
+                        path {
+                            fill: colors.$main-color;
+                        }
+                        
+                    }
+                }
+
+                svg {
+                    height: 15px;
+
+                    &.pause {
+                        display: none;
+                    }
+
+                    &.loop {
+                        height: 20px;
+                    }
+
+                    &.random {
+                        height: 20px;
+                    }
+                }
+            }
+
+            .download-button {
+                display: none;
+            }
+        }
+
+        .progress-bar-container {
+            width: 350px;
+            background-color: colors.$dark-borders;
+            height: 5px;
+            position: relative;
+            border-radius: 10px;
+
+            .progress-bar {
+                height: 5px;
+                background: linear-gradient(to right, #708303, colors.$main-color, );
+                width: 0;
+                position: relative;
+                border-radius: 10px;
+
+                &::after{
+                    content: "";
+                    position: absolute;
+                    width: 15px;
+                    height: 15px;
+                    background-color: #fff;
+                    border-radius: 50%;
+                    right: -5px;
+                    top: -4px;
+                }
+            }
+        }
+
+        .current-time {
+            font-size: 12px;
+            color: rgba(#fff, 0.5);
+            margin-top: 4px;
+        }
     }
+
+    .volume-control {
+        display: flex;
+        gap: 5px;
+        align-items: center;
+
+        /* Estilo geral do input range */
+        #volume-slider {
+            -webkit-appearance: none;  /* Remove o estilo padrão no Chrome/Safari */
+            appearance: none;  /* Remove o estilo padrão */
+            width: 100%;  /* Tamanho do slider */
+            height: 5px;  /* Altura da barra */
+            background: linear-gradient(to right, #708303, colors.$main-color, );
+            border-radius: 5px;  /* Cantos arredondados */
+            outline: none;  /* Remove o contorno ao focar */
+            transition: background 0.3s ease;  /* Transição suave */
+        }
+        
+        /* Estilo do "thumb" (o botão do slider) */
+        #volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;  /* Remove o estilo padrão no Chrome/Safari */
+            appearance: none;  /* Remove o estilo padrão */
+            width: 15px;  /* Largura do thumb */
+            height: 15px;  /* Altura do thumb */
+            border-radius: 50%;  /* Tornando o thumb redondo */
+            background: #fff;  /* Cor do thumb */
+            cursor: pointer;  /* Cursor de ponteiro */
+
+        }
+        
+        /* Estilo do thumb no Firefox */
+        #volume-slider::-moz-range-thumb {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #333;
+            cursor: pointer;
+        }
+        
+        /* Estilo da barra quando o slider é movido */
+        #volume-slider:focus {
+            background: #aaa;  /* Altera a cor da barra quando o slider é focado */
+        }
+        
+        #volume-slider:active {
+            background: #888;  /* Altera a cor da barra quando o slider é clicado */
+        }
+    }
+
 }

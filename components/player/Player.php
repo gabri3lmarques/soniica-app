@@ -1,34 +1,50 @@
 <?php
 
+use svg\SvgIcons;
+
+
+
 class PlayerComponent {
     public static function render() {
+
+        $play = SvgIcons::get('play');
+        $pause = SvgIcons::get('pause');
+        $prev = SvgIcons::get('prev');
+        $next = SvgIcons::get('next');
+        $loop = SvgIcons::get('loop');
+        $random = SvgIcons::get('random');
+        $volume = SvgIcons::get('volume');
+
         return '
         <div id="player-main">
             <div class="info">
                 <img class="current-thumb" src="" alt="Thumbnail">
-                <div class="text-info">
+                
+                <div class="title-artist">
                     <span class="current-title">Título da música</span>
                     <span class="current-artist">Artista</span>
-                    <span class="current-time">00:00</span>
-                    <span class="current-genders">Gêneros</span>
                 </div>
+
+                <span class="current-genders"></span>
             </div>
-        
-            <div class="controls">
-                <button class="random">Random</button>
-                <button class="previous">Previous</button>
-                <button class="play-pause">Play</button>
-                <button class="next">Next</button>
-                <button class="loop">Loop</button>
-                <a class="download-button" onclick="return handleDownload(event)">Download</a>
+
+            <div class="controls-progress-bar">
+                <div class="controls">
+                    <div class="button random">'.$random.'</div>
+                    <div class="button previous">'.$prev.'</div>
+                    <div class="button play-pause">'.$play.$pause.'</div>
+                    <div class="button next">'.$next.'</div>
+                    <div class="button loop">'.$loop.'</div>
+                    <a class="download-button" onclick="return handleDownload(event)">Download</a>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar"></div>
+                </div>
+                <span class="current-time">00:00</span>
             </div>
             
             <div class="volume-control">
-                <input id="volume-slider" type="range" min="0" max="1" step="0.01" value="1">
-            </div>
-                
-            <div class="progress-bar-container">
-                <div class="progress-bar"></div>
+                '.$volume.'<input id="volume-slider" type="range" min="0" max="1" step="0.01" value="1">
             </div>
         </div>
         ';

@@ -52,6 +52,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['create_playlist'])) {
 
 ?>
 
+<?php get_header(); ?>
+
 <h2>Criar Nova Playlist</h2>
 <form method="POST">
     <input type="text" name="playlist_title" placeholder="Nome da Playlist" required>
@@ -78,3 +80,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['create_playlist'])) {
     }
     ?>
 </ul>
+
+<?php get_footer(); ?>

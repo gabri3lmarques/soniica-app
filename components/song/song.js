@@ -59,6 +59,12 @@ const PlayerManager = (function () {
     };
 })();
 
+function stopGlobalPlayer() {
+    if (window.globalPlayer && window.globalPlayer.currentSong) {
+        window.globalPlayer.pause(window.globalPlayer.currentSong);
+    }
+}
+
 
 
 playerDownloadButtons.forEach((button) => {
@@ -76,10 +82,6 @@ playerDownloadButtons.forEach((button) => {
             // se não for, usa o link normal
             decodedLink = encodedDownloadLink;
  
-            if (window.globalPlayer && window.globalPlayer.currentSong) {
-                window.globalPlayer.pause(window.globalPlayer.currentSong);
-            }
-
             window.location.href = decodedLink;
             return;
         }
@@ -90,4 +92,8 @@ playerDownloadButtons.forEach((button) => {
             console.log('deu ruim');
         }
     });
+});
+
+window.addEventListener('beforeunload', function(event) {
+    stopGlobalPlayer();
 });

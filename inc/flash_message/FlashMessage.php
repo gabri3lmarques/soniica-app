@@ -3,6 +3,7 @@
 namespace flash_message;
 
 class FlashMessage {
+
     public function __construct() {
         if (!session_id()) {
             session_start(); // Garantir que a sessão está ativa
@@ -24,4 +25,5 @@ class FlashMessage {
         unset($_SESSION['flash_messages'][$key]); // Remove após recuperar
         return $message;
     }
+    
 }

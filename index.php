@@ -10,14 +10,16 @@ use download\DownloadController;
 ?>
 
 <?php 
-    // Exibe mensagem de sucesso, se existir
+
+//pega a mensagem de sucesso, se existir
 $success_message = FlashMessage::get('success');
+
 if ($success_message) {
     echo "<div class='flash-message success'>";
     echo "</div>";
 }
 
-// Exibe mensagem de erro, se existir
+// Pega a menagem de erro, se existir
 $error_message = FlashMessage::get('error');
 
 if ($error_message) {

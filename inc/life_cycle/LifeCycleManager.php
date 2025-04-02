@@ -16,7 +16,7 @@ class LifeCycleManager {
             return;
         }
 
-        $life_cycle = get_field('life_cycle', $post_id);
+        $life_cycle = get_field('song_life_cycle', $post_id);
         if ($life_cycle !== 'new') {
             return;
         }

@@ -208,7 +208,7 @@ require_once get_template_directory() . '/components/player/Player.php';
             $download_link = get_field('song_download_link', $song->ID);
             $song_duration = get_field('song_duration', $song->ID);
             $song_img = get_field('song_image', $song->ID);
-            $song_life_cycle = get_field('life_cycle', $song->ID);
+            $song_life_cycle = get_field('song_life_cycle', $song->ID);
             $song_source = get_field('song_source', $song->ID);
 
             //encrypta o url

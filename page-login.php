@@ -41,6 +41,11 @@ if ( isset( $_POST['submit'] ) ) {
 get_header();
 ?>
 
+<div class="top-bar">
+    <?php include 'components/top-menu/top-menu.php'; ?>
+</div>
+
+
 <div class="login-page">
     <h2>Login</h2>
 

@@ -34,9 +34,10 @@ require_once get_template_directory() . '/components/player/Player.php';
 ?>
 
 
-    <div class="top-bar">
-        <?php include 'components/top-menu/top-menu.php'; ?>
-    </div>
+<div class="top-bar">
+    <?php include 'components/top-menu/top-menu.php'; ?>
+</div>
+
     <div class="main-content">
         <!-- a coluna da esquerda -->
         <div class="sidebar hide-1200">
@@ -334,3 +335,5 @@ require_once get_template_directory() . '/components/player/Player.php';
 
 
 <?php get_footer(); ?>
+
+

@@ -38,7 +38,7 @@ class LifeCycleManager {
     }
 
     public static function update_life_cycle($post_id) {
-        update_field('life_cycle', 'old', $post_id);
+        update_field('song_life_cycle', 'old', $post_id);
     }
 }
 

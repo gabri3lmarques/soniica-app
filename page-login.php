@@ -1,4 +1,5 @@
 <?php
+
 /*
 Template Name: Login Personalizado
 */
@@ -8,6 +9,8 @@ if ( is_user_logged_in() ) {
     wp_redirect( home_url() );
     exit;
 }
+
+use flash_message\FlashMessage;
 
 $login_error = '';
 
@@ -47,32 +50,30 @@ get_header();
 
 
 <div class="login-page">
-    <h2>Login</h2>
-
-    <?php if ( $login_error ) : ?>
-        <div class="login-error">
-            <p><?php echo esc_html( $login_error ); ?></p>
-        </div>
-    <?php endif; ?>
-
-    <form action="" method="post">
-        <p>
-            <label for="username">Nome de Usuário</label>
-            <input type="text" name="username" id="username" required>
-        </p>
-        <p>
-            <label for="password">Senha</label>
-            <input type="password" name="password" id="password" required>
-        </p>
-        <p>
-            <label>
-                <input type="checkbox" name="remember"> Lembrar-me
-            </label>
-        </p>
-        <p>
-            <input type="submit" name="submit" value="Entrar">
-        </p>
-    </form>
+    <div class="login-form">
+        <div class="login-form-content">
+            <h3>Lorem Ipsum</h3>
+            <p>Lorem i psum dollor sit ammet.</p>
+            <form action="" method="post">
+                    <label for="username">Email</label>
+                    <input type="text" name="username" id="username" required>
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" required>
+                    <div class="checkbox">
+                        <input type="checkbox" name="remember"> Remember-me
+                    </div>
+                    <input class="login-button" type="submit" name="submit" value="Sign in">
+                    <?php if ( $login_error ) : ?>
+                        <div class="login-error">
+                            <?php echo "<p class='error'>Invalid password or username.</p>"; ?>
+                        </div>
+                    <?php endif; ?>
+            </form>
+            <p>Don't have an account? <a href="/sign-up">Sign Up Now</a></p>
+            <!--/form  -->
+        </div>       
+    </div>
+    <div class="login-form-side"></div>
 </div>
 
 <?php get_footer(); ?>

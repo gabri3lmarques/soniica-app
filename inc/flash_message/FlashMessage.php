@@ -27,3 +27,12 @@ class FlashMessage {
     }
     
 }
+
+
+//  usage
+//  FlashMessage::set('success', 'success message');
+//  pega a mensagem de sucesso, se existir
+//  $success_message = FlashMessage::get('success');
+//  if ($success_message) {
+//    echo "<div class='flash-message success'>" . $success_message . "</div>";
+//  }

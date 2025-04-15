@@ -43,14 +43,30 @@
                    height: 40px;
                    color: rgba(#fff, 0.75);
                    font-size: 13px;
-                    padding: 15px
+                    padding: 15px;
+                    width: 300px;
+                    max-width: 100%;
                 }
 
                 .checkbox {
+                    margin-top: 10px;
+                    margin-bottom: 10px;
                     display: flex;
                     align-items: center;
-                    font-size: 14px;
                     gap: 5px;
+                    
+                    input[type="checkbox"] {
+                        width: 10px;
+                        height: 10px;
+                        background-color: colors.$dark-sidebar;
+                        border: 1px solid colors.$dark-borders;
+                        border-radius: 4px;
+                    }
+
+                    span {
+                        font-size: 12px;
+                        transform: translateY(3px);
+                    }
                 }
 
                 .login-button {

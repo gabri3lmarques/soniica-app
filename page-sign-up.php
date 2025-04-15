@@ -48,33 +48,34 @@ if ( isset( $_POST['submit'] ) ) {
 get_header();
 ?>
 
-<div class="registration-page">
-    <h2>Cadastre-se</h2>
-    <?php if ( ! empty( $errors ) ) : ?>
-        <div class="registration-errors">
-            <?php foreach ( $errors as $error ) : ?>
-                <p><?php echo esc_html( $error ); ?></p>
-            <?php endforeach; ?>
-        </div>
-    <?php endif; ?>
+<div class="top-bar">
+    <?php include 'components/top-menu/top-menu.php'; ?>
+</div>
 
-    <form action="" method="post">
-        <p>
-            <label for="username">Nome de Usuário</label>
-            <input type="text" name="username" id="username" required>
-        </p>
-        <p>
-            <label for="email">Email</label>
-            <input type="email" name="email" id="email" required>
-        </p>
-        <p>
-            <label for="password">Senha</label>
-            <input type="password" name="password" id="password" required>
-        </p>
-        <p>
-            <input type="submit" name="submit" value="Registrar">
-        </p>
-    </form>
+<div class="registration-page">
+    <div class="sign-up-side"></div>
+    <div class="sign-up-container">
+        <div class="sign-up-form">
+            <h3>Lorem Ipsum</h3>
+            <p>Lorem Ipsum dollor sit ammet</p>
+            <form action="" method="post">
+                <label for="username">Nome de Usuário</label>
+                <input type="text" name="username" id="username" required>
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" required>
+                <label for="password">Senha</label>
+                <input type="password" name="password" id="password" required>
+                <input class="signup-button" type="submit" name="submit" value="Registrar">
+            </form>
+            <?php if ( ! empty( $errors ) ) : ?>
+                <div class="registration-errors">
+                    <?php foreach ( $errors as $error ) : ?>
+                        <p class="error"><?php echo $error ?></p>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>            
+        </div>
+    </div>
 </div>
 
 <?php get_footer(); ?>

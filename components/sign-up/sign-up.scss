@@ -1,0 +1,75 @@
+@use '../utils/colors.scss';
+
+.registration-page {
+    display: flex;
+    height: calc(100vh - 80px);
+
+    .sign-up-side {
+        flex: 1;
+        background-image: url('../img/arts/signup/sign-up.jpg');
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .sign-up-container {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .sign-up-form {
+            display: flex;
+            flex-direction: column;
+
+            h3 {
+                font-size: 30px;
+            }
+
+            p {
+                margin-top: 20px;
+                color: rgba(#fff, 0.75);
+
+                a {
+                    color: colors.$main-color;
+                }
+            }
+
+            form {
+                display: flex;
+                flex-direction: column;
+
+                label {
+                    font-size: 14px;
+                    margin-top: 20px;
+                    color: rgba(#fff, 0.75);
+                }
+
+
+                input {
+                    background-color: colors.$dark-sidebar;
+                    border: 1px solid colors.$dark-borders;
+                    border-radius: 4px;
+                    margin-top: 5px;
+                    height: 40px;
+                    color: rgba(#fff, 0.75);
+                    font-size: 13px;
+                    padding: 15px;
+                    width: 300px;
+                    max-width: 100%;
+                }
+
+                .signup-button {
+                    background-color: rgba(colors.$main-color, 0.9);
+                    color: rgba(#000, 0.8);
+                    padding:0;
+                    font-weight: 600;
+                    margin-top: 20px;
+                }
+            }
+
+            .error {
+                color: #ff3751;
+            }
+        }
+    }
+}

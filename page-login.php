@@ -60,7 +60,7 @@ get_header();
                     <label for="password">Password</label>
                     <input type="password" name="password" id="password" required>
                     <div class="checkbox">
-                        <input type="checkbox" name="remember"> Remember-me
+                        <input type="checkbox" name="remember"> <span>Remember-me</span>
                     </div>
                     <input class="login-button" type="submit" name="submit" value="Sign in">
                     <?php if ( $login_error ) : ?>

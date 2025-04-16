@@ -8,7 +8,7 @@
   position: fixed;
   width: 100%;
   height: 100%;
-  background: #fff;
+  background: #708303;
   z-index: 9999;
   top: 0;
   left: 0;
@@ -20,8 +20,8 @@
 .spinner {
   width: 50px;
   height: 50px;
-  border: 6px solid #ccc;
-  border-top: 6px solid #000;
+  border: 6px solid #ffffff;
+  border-top: 6px solid #708303;
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }

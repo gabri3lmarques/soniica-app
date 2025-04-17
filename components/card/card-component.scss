@@ -55,6 +55,20 @@
 }
 
 .cards {
-    display: flex;
-    gap: 20px;
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); /* padrão: todos em uma linha */
+
+      /* A partir de 992px: 2 itens por linha */
+  @media (max-width: 992px) {
+      grid-template-columns: repeat(2, 1fr);
+  }
+
+    /* A partir de 562px: 1 item por linha */
+    @media (max-width: 562px) {
+        grid-template-columns: 1fr;
+    }
 }
+  
+
+  

@@ -18,11 +18,10 @@ function handleDownload(event) {
             if (!data.is_premium) {
                 document.querySelectorAll('.download-link').forEach(downloadLink => {
                     downloadLink.classList.add('download-blocked');
-                    downloadLink.setAttribute('title', 'Aguarde 24 horas para fazer outro download.');
-                    downloadLink.textContent = 'Download indisponível';
-                    downloadLink.removeAttribute('href');
+                    downloadLink.setAttribute('title', 'You have reached the download limit on free plan today.');
+                    //downloadLink.textContent = 'Download indisponível';
+                    downloadLink.setAttribute('href', '/get-premium');
                     downloadLink.removeAttribute('download');
-                    downloadLink.style.cursor = 'not-allowed';
                 });
             }
         }

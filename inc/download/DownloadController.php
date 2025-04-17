@@ -68,13 +68,13 @@ class DownloadController {
 
         if (!$download_check['allowed']) {
             return sprintf(
-                '<span class="download-blocked" title="%s">Download indisponível</span>',
+                '<a class="download-link" data-href="' . $secure_download_url .  '" href="/get-premium" onclick="return handleDownload(event)" download><img style="width:15px" src="'.get_template_directory_uri().'/assets/img/icons/download.png"></a>',
                 esc_attr($download_check['message'])
             );
         }
 
         return sprintf(
-            '<a class="download-link" data-href="' . $secure_download_url .  '" href="%s" onclick="return handleDownload(event)" download>Download</a>',
+            '<a class="download-link" data-href="' . $secure_download_url .  '" href="%s" onclick="return handleDownload(event)" download><img style="width:15px" src="'.get_template_directory_uri().'/assets/img/icons/download.png"></a>',
             $secure_download_url
         );
     }

@@ -9,6 +9,10 @@
         background-image: url('../img/arts/signup/sign-up.jpg');
         background-repeat: no-repeat;
         background-position: center;
+
+        @media (max-width: 992px) {
+            display: none;
+        }
     }
 
     .sign-up-container {

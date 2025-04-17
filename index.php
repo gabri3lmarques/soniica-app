@@ -270,14 +270,14 @@ require_once get_template_directory() . '/components/player/Player.php';
                 if(is_user_logged_in()){
                     if($song_life_cycle === "new" && !Users::check_user_premium_status()){
                         ?>
-                        <a class="download-link" href="<?php echo esc_url(home_url('/get-premium')); ?>" class="download-button">Download</a>
+                        <a class="download-link" href="<?php echo esc_url(home_url('/get-premium')); ?>" class="download-button"><img style="width:15px" src="<?php echo get_template_directory_uri(); ?>/assets/img/icons/download.png"></a>
                         <?php
                     } else {
                         echo DownloadController::getDownloadLink($safe_download_link);
                     }
                 } else {
                     ?>
-                    <a class="download-link" href="/login">Download</a>
+                    <a class="download-link" href="/login"><img style="width:15px" src="<?php echo get_template_directory_uri(); ?>/assets/img/icons/download.png"></a>
                     <?php
                 }
             ?>
@@ -285,23 +285,23 @@ require_once get_template_directory() . '/components/player/Player.php';
             <?php 
                 if(is_user_logged_in()){
                     ?>
-                        <form method="POST" style="margin-top: 10px;">
-                        <input type="hidden" name="song_id" value="<?php echo $song->ID; ?>">
+                        <form class="hide-576" method="POST" style="margin-top: 10px;">
+                            <input type="hidden" name="song_id" value="<?php echo $song->ID; ?>">
 
-                        <label for="playlist_id_<?php echo $song->ID; ?>"></label>
-                        
-           
-                            <select name="playlist_id" id="playlist_id_<?php echo $song->ID; ?>" required>
-                                <option value="">select playlist</option>
-                                <?php foreach ($user_playlists as $playlist) : ?>
-                                    <option value="<?php echo $playlist->ID; ?>">
-                                        <?php echo esc_html($playlist->post_title); ?>
-                                    </option>
-                                <?php endforeach; ?>
-                            </select>
-        
+                            <label for="playlist_id_<?php echo $song->ID; ?>"></label>
+                            
+            
+                                <select name="playlist_id" id="playlist_id_<?php echo $song->ID; ?>" required>
+                                    <option value="">select playlist</option>
+                                    <?php foreach ($user_playlists as $playlist) : ?>
+                                        <option value="<?php echo $playlist->ID; ?>">
+                                            <?php echo esc_html($playlist->post_title); ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
+            
 
-                        <button class="add-to-playlist type="submit" name="add_song_to_playlist">add</button>
+                            <button class="add-to-playlist type="submit" name="add_song_to_playlist">add</button>
                         </form>
                     <?php
                 }

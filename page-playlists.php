@@ -5,51 +5,34 @@ use flash_message\FlashMessage;
 use user\Users;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['create_playlist'])) {
-  
     $is_premium = Users::check_user_premium_status();
-
     // Se não for premium, verificar quantidade de playlists
     if (!$is_premium) {
-
-        echo "Usuário não é premium";
-
         $user_id = get_current_user_id();
-        
         $user_playlists = get_posts([
             'post_type' => 'playlist',
             'author'    => $user_id,
             'post_status' => 'publish',
             'numberposts' => -1
         ]);
-
         if (count($user_playlists) >= 1) {
             FlashMessage::set('error', 'Usuários não premium podem criar apenas uma playlist. Faça upgrade para criar mais!');
             ?>
-            <!-- direciona o usuário para outra página -->
-            <!-- <script>window.location="<?php echo esc_url(home_url()); ?>";</script> -->
+            <script>window.location="<?php echo esc_url(home_url('/playlists')); ?>";</script> 
             <?php
             exit;
         }
     }
-
     $playlist = new Playlist();
     $result = $playlist->create_playlist([
         'title' => sanitize_text_field($_POST['playlist_title'])
     ]);
-
     if ($result['success']) {
         FlashMessage::set('success', 'Playlist criada com sucesso!');
-        ?>
-        <script>window.location="<?php echo esc_url(home_url()); ?>";</script>
-        <?php
     } else {
         FlashMessage::set('error', $result['message'] ?? 'Não foi possível criar a playlist.');
-        ?>
-        <script>window.location="<?php echo esc_url(home_url()); ?>";</script>
-        <?php
     }
 }
-
 ?>
 
 <?php get_header(); ?>

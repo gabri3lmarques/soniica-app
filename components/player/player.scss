@@ -38,26 +38,20 @@
                 color: rgba(#fff, 0.5)
             }
         }
-
         @media (max-width: 992px) {
             display: none;
         }
     }
-
-
     .controls-progress-bar {
         display: flex;
         flex-direction: column;
         gap: 5px;
         width: 400px;
         align-items: center;
-
         .controls {
             display: flex;
             align-items: center;
             justify-content: center;
-
-
             .button {
                 font-size: 10px;
                 color: #fff;
@@ -70,7 +64,6 @@
                 display: flex;
                 //background-color: colors.$dark-borders;
                 border-radius: 20px;
-
                 &.active {
                     .play {
                         display: none;
@@ -92,21 +85,14 @@
                         }
                     }
                 }
-
-
-
                 &:hover {
-
                     svg {
                         path {
                             fill: colors.$main-color;
                         }
                         
                     }
-
-    
                 }
-
                 @media (max-width: media-queries.$sm) {
                     &:hover {
 
@@ -118,26 +104,19 @@
                         }
                     }
                 }
-
-
-
                 svg {
                     height: 15px;
-
                     &.pause {
                         display: none;
                     }
-
                     &.loop {
                         height: 20px;
                     }
-
                     &.random {
                         height: 20px;
                     }
                 }
             }
-
             .download-button {
                 display: none;
             }

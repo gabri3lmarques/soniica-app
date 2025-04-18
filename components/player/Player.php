@@ -1,9 +1,5 @@
 <?php
-
 use svg\SvgIcons;
-
-
-
 class PlayerComponent {
     public static function render() {
         $play = SvgIcons::get('play');

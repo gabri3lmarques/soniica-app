@@ -44,7 +44,6 @@ class Player {
         this.audio.volume = newVolume;
         this.volumeSlider.style.background = `linear-gradient(to right, #708303, #e9ff70 ${rightVolume}%, #272727 ${leftVolume}%)`;
     }
-
     initializeFirstSong() {
         const firstPlaylist = document.querySelector('.playlist');
         if (!firstPlaylist) return;
@@ -75,7 +74,6 @@ class Player {
             this.randomButton.classList.remove('active');
         }
     }
-
     getRandomSong() {
         const songs = [...this.currentPlaylist.querySelectorAll('.song')];
         let randomSong;

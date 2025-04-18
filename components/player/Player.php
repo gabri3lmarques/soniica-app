@@ -41,7 +41,6 @@ class PlayerComponent {
         ';
     }
 }
-
 // como usar 
 // require_once get_template_directory() . '/components/player/PlayerComponent.php';
 // echo PlayerComponent::render();

@@ -21,19 +21,23 @@ if ($error_message) {
 <?php 
 require_once get_template_directory() . '/components/card/CardComponent.php';
 require_once get_template_directory() . '/components/player/Player.php';
+require_once get_template_directory() . '/components/search/Search.php';
 ?>
-
-
 <div class="top-bar">
     <?php include 'components/top-menu/top-menu.php'; ?>
 </div>
     <div class="main-content">
+
         <!-- a coluna da esquerda -->
         <div class="sidebar hide-1200">
             <?php include 'components/accordion/accordion.php'; ?>
         </div>
         <!-- o corpo do site -->
         <div class="main">
+            <?php 
+                $search = new SearchComponent();
+                echo $search->render();
+            ?>
             <?php
                 if(!is_user_logged_in()){
                     ?>

@@ -1,42 +1,30 @@
 <?php get_header(); ?>
-
 <?php 
-
 use playlist\Playlist;
 use flash_message\FlashMessage;
 use user\Users;
 use download\DownloadController;
-
+require_once get_template_directory() . '/components/search/Search.php';
 ?>
-
 <?php 
-
 //pega a mensagem de sucesso, se existir
 $success_message = FlashMessage::get('success');
-
 if ($success_message) {
     echo "<div class='flash-message success'>";
     echo "</div>";
 }
-
 // Pega a menagem de erro, se existir
 $error_message = FlashMessage::get('error');
-
 if ($error_message) {
     echo "<div class='flash-message error'>" . esc_html($error_message) . "</div>";
 }
-
 ?>
-
 <?php 
 require_once get_template_directory() . '/components/player/Player.php';
 ?>
-
-
 <div class="top-bar">
     <?php include 'components/top-menu/top-menu.php'; ?>
 </div>
-
     <div class="main-content">
         <!-- a coluna da esquerda -->
         <div class="sidebar hide-1200">
@@ -44,12 +32,14 @@ require_once get_template_directory() . '/components/player/Player.php';
         </div>
         <!-- o corpo do site -->
         <div class="main">
-
+            <?php 
+                $search = new SearchComponent();
+                echo $search->render();
+            ?>
             <div class="playlist">
             <?php if (have_posts()) : ?>
             <div class="search-results">
             <?php while (have_posts()) : the_post(); ?>
-
             <?php
                 $song_id = get_the_ID();
                 $song_title = get_the_title();
@@ -79,7 +69,6 @@ require_once get_template_directory() . '/components/player/Player.php';
 
                 $tags = get_the_terms($song_id, 'post_tag');
             ?>
-
             <!-- song -->
             <div class="song" data-song-id="<?php echo $song_id; ?>" data-src="<?php echo $safe_url; ?>">
 
@@ -148,19 +137,16 @@ require_once get_template_directory() . '/components/player/Player.php';
 
             </div>
             <!-- /song -->
-
             <?php endwhile; ?>
-
             <?php the_posts_pagination(array(
                 'mid_size' => 2,
-                'prev_text' => __('Previous', 'your-theme-text-domain'),
-                'next_text' => __('Next', 'your-theme-text-domain'),
+                'prev_text' => __('Previous'),
+                'next_text' => __('Next'),
             )); ?>
-
             </div>
             <?php else : ?>
                 <div class="no-results">
-                    <p><?php esc_html_e('Sorry, but nothing matched your search terms. Please try again with different keywords.', 'your-theme-text-domain'); ?></p>
+                    <p><?php esc_html_e('Sorry, but nothing matched your search terms. Please try again with different keywords.'); ?></p>
                 </div>
             <?php endif; ?>                
             </div>

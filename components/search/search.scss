@@ -1,0 +1,32 @@
+@use '../utils/colors.scss';
+.serach-component {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+    .search {
+        display: none;
+        @media screen and (max-width: 768px) {
+            display: flex;
+        }
+    }
+}
+.nav-links {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 10px;
+    a {
+        background-color: rgba(#fff, 0.1);
+        padding: 10px 20px;
+        border-radius: 30px;
+        &:hover {
+            background-color: rgba(colors.$main-color, 0.2);
+            color: rgba(colors.$main-color, 1);
+        }
+    }
+    span {
+        background-color: rgba(#fff, 0.1);
+        padding: 10px 20px;
+        border-radius: 30px;
+    }
+}

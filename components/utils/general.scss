@@ -1,6 +1,5 @@
 @use './colors.scss';
 @use './fonts.scss';
-
 body {
     background-color: colors.$dark-main;
     color: colors.$text;
@@ -12,29 +11,22 @@ body {
     user-select: none;         /* Padrão */
     overflow: hidden;
 }
-
-
-
-
 .bottom-bar {
     height: 100px;
     background-color: colors.$dark-sidebar;
     border-top: 1px solid colors.$dark-borders;
 }
-
 .main-content {
     display: flex;
     height: calc(100dvh - 180px);
     overflow: hidden;
 }
-
 .main {
     flex: 1;
     padding: 30px;
     overflow-y: scroll;
     height: calc(100dvh - 180px);
 }
-
 .sidebar {
     width: 250px;
     background-color: colors.$dark-sidebar;

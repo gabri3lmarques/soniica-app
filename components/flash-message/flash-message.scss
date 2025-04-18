@@ -1,0 +1,32 @@
+@use '../utils/colors.scss';
+.flash-message-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100dvw;
+    height: 100dvh;
+    align-items: center;
+    z-index: 98;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+        .flash-message-content {
+            background-color: colors.$dark-sidebar;
+            border-radius: 10px;
+            padding:40px;
+            height: auto;
+            width: auto;
+            max-width: 900%;
+                .flash-message-header {
+                    display: flex;
+                    justify-content: flex-end;
+                    svg {
+                        width: 40px;
+                        height: 40px
+                    }
+                }
+                .flash-message-body {
+                    margin-top: 40px;
+                }
+        }
+}

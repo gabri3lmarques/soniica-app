@@ -32,3 +32,23 @@
         }
     }
 }
+.my-playlists {
+    margin-top: 40px;
+    h2 {
+        font-size: 24px;
+    }
+    .playlists-list {
+        margin-top: 40px;
+        a {
+            display: flex;
+            padding: 10px;
+            align-items: center;
+            gap: 10px;
+            border-radius: 4px;
+            border: 1px solid colors.$dark-borders;
+            span {
+                font-size: 15px;
+            }
+        }
+    }
+}

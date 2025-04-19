@@ -123,7 +123,7 @@ require_once get_template_directory() . '/components/player/Player.php';
                                 </option>
                             <?php endforeach; ?>
                         </select>
-                        <button class="add-to-playlist" type="submit" name="add_song_to_playlist">add</button>
+                        <button class="add-to-playlist" type="submit" name="add_song_to_playlist">+</button>
                     </form>
                 <?php endif; ?>
 

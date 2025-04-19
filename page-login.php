@@ -1,54 +1,46 @@
 <?php
-
 /*
 Template Name: Login Personalizado
 */
-
 // Verifica se o usuário já está logado
 if ( is_user_logged_in() ) {
     wp_redirect( home_url() );
     exit;
 }
-
 use flash_message\FlashMessage;
-
 $login_error = '';
-
 if ( isset( $_POST['submit'] ) ) {
     // Obtém as credenciais do usuário
     $creds = array();
     $creds['user_login']    = sanitize_user( $_POST['username'] );
     $creds['user_password'] = $_POST['password'];
     $creds['remember']      = isset( $_POST['remember'] );
-    
     // Realiza o login
     $user = wp_signon( $creds, false );
-
     // Se houver erro no login
     if ( is_wp_error( $user ) ) {
         $login_error = $user->get_error_message();
     } else {
-        // Aqui verificamos se o usuário é premium
-        $stripe_service = new \stripe\StripeService();
-        $is_premium = $stripe_service->isUserPremium($user->ID);
-
-        // Atualiza o status do usuário como premium ou não
-        update_user_meta($user->ID, 'is_premium', $is_premium);
-
+        try {
+            $stripe_service = new \stripe\StripeService();
+            $is_premium = $stripe_service->isUserPremium($user->ID);
+            // Se conseguir resposta da Stripe, atualiza o meta
+            update_user_meta($user->ID, 'is_premium', $is_premium);
+        } catch (Exception $e) {
+            // Loga o erro para debug
+            error_log("Erro ao verificar status premium na Stripe para o usuário ID {$user->ID}: " . $e->getMessage());
+            // Não altera o meta se der erro — mantemos como estava
+        }
         // Redireciona para a página inicial
         wp_redirect( home_url() );
         exit;
     }
 }
-
 get_header();
 ?>
-
 <div class="top-bar">
     <?php include 'components/top-menu/top-menu.php'; ?>
 </div>
-
-
 <div class="login-page">
     <div class="login-form">
         <div class="login-form-content">
@@ -75,5 +67,4 @@ get_header();
     </div>
     <div class="login-form-side"></div>
 </div>
-
 <?php get_footer(); ?>

@@ -20,6 +20,7 @@ class Theme {
         new category\CategoryImageManager();
         new search\Soniica_Search();
         new svg\SvgIcons();
+        new stripe\StripeService();
         new user\Users();
         new life_cycle\LifeCycleManager();
         new flash_message\FlashMessage();

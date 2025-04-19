@@ -117,7 +117,7 @@ require_once get_template_directory() . '/components/search/Search.php';
                                     'Digital influencer', 
                                     'Your audience deserves the best.', 
                                     'Go premium', 
-                                    '/sign-up'
+                                    '/get-premium'
                                 );
                     
                                 $image_url2 = get_template_directory_uri() . '/assets/img/cards/2.jpg';
@@ -127,7 +127,7 @@ require_once get_template_directory() . '/components/search/Search.php';
                                     'Video editor', 
                                     'Never run out of options.', 
                                     'Go premium', 
-                                    '/sign-up'
+                                    '/get-premium'
                                 );
                   
                                 $image_url3 = get_template_directory_uri() . '/assets/img/cards/3.jpg';
@@ -137,7 +137,7 @@ require_once get_template_directory() . '/components/search/Search.php';
                                     'Professional producer', 
                                     'The perfect soundtrack is here.', 
                                     'Go premium', 
-                                    '/sign-up'
+                                    '/get-premium'
                                 );
 
                                 $image_url4 = get_template_directory_uri() . '/assets/img/cards/4.jpg';
@@ -147,7 +147,7 @@ require_once get_template_directory() . '/components/search/Search.php';
                                     'Just chill', 
                                     'Just enjoy your vibe.', 
                                     'Go premium', 
-                                    '/sign-up'
+                                    '/get-premium'
                                 );
                             ?>  
                         </div>
@@ -244,19 +244,13 @@ require_once get_template_directory() . '/components/search/Search.php';
                                 <div class="bar"></div>
                             </div> 
                         </div>
-
                         <div class="title-artist">
                             <span class="title"><?php echo esc_html($song_title); ?></span>
                             <a class="artist" href="<?php echo($artist_link); ?>"><?php echo esc_html($artist->name ?? 'Desconhecido'); ?></a>
                         </div>
-
                         <button class="play-button"></button>
-
                         <span class="time"><?php echo esc_html($song_duration); ?></span>
-
                         <div class="new-tag-spot"><?php if($song_life_cycle === "new"){echo('<span class="is-new">new</span>');}  ?></div>
-                        
-
                         <?php 
                             if(is_user_logged_in()){
                                 if($song_life_cycle === "new" && !Users::check_user_premium_status()){
@@ -272,16 +266,12 @@ require_once get_template_directory() . '/components/search/Search.php';
                                 <?php
                             }
                         ?>
-
                         <?php 
                             if(is_user_logged_in()){
                                 ?>
                                     <form class="hide-576" method="POST" style="margin-top: 10px;">
                                         <input type="hidden" name="song_id" value="<?php echo $song->ID; ?>">
-
                                         <label for="playlist_id_<?php echo $song->ID; ?>"></label>
-                                        
-                        
                                             <select name="playlist_id" id="playlist_id_<?php echo $song->ID; ?>" required>
                                                 <option value="">select playlist</option>
                                                 <?php foreach ($user_playlists as $playlist) : ?>
@@ -290,14 +280,11 @@ require_once get_template_directory() . '/components/search/Search.php';
                                                     </option>
                                                 <?php endforeach; ?>
                                             </select>
-                        
-
-                                        <button class="add-to-playlist type="submit" name="add_song_to_playlist">add</button>
+                                        <button class="add-to-playlist type="submit" name="add_song_to_playlist">+</button>
                                     </form>
                                 <?php
                             }
                         ?>
-
                         <ul class="genders">
                             <?php if (!empty($tags) && !is_wp_error($tags)) : ?>
                                 <?php foreach ($tags as $tag) : ?>
@@ -305,7 +292,6 @@ require_once get_template_directory() . '/components/search/Search.php';
                                 <?php endforeach; ?>
                             <?php endif; ?>
                         </ul>
-
                     </div>
                     <!-- /song -->
             <?php endforeach; ?>

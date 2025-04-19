@@ -1,10 +1,8 @@
 @use '../utils/colors.scss';
 @use '../utils/media-queries.scss';
-
 .playlist {
     margin-top: 40px;
 }
-
 .song {
     display: flex;
     height: 80px;
@@ -13,45 +11,34 @@
     border-radius: 6px;
     align-items: center;
     gap: 10px;
-
     // se o som estiver ativo
     &.active {
         background-color: rgba(colors.$main-color, 0.05);
-
         &:hover {
             background-color: rgba(colors.$main-color, 0.05);
         }
-
-
         &:nth-child(odd) {
             background-color: rgba(colors.$main-color, 0.05);
         }
-
         .play-button {
             background-image: url('../img/icons/pause.svg');
         }
-
         .song-cover {
             .thumb {
                 display: none;
             }
-    
             .sound-wave {
                 display: flex;
             }
         }
 
     }
-
     &:nth-child(odd) {
         background-color: colors.$dark-sidebar;
     }
-
-
     &:hover {
         background-color: rgba(colors.$main-color, 0.05);
     }
-
     .is-new {
         font-size: 10px;
         text-transform: uppercase;
@@ -67,14 +54,12 @@
         background-color: rgba(colors.$main-color, 0.05);
         color: colors.$main-color;
     }
-
     .song-cover {
         width: 60px;
         height: 60px;
         display: flex;
         align-items: center;
         justify-content: center;
-
         .thumb {
             height: 60px;
             width: 60px;
@@ -84,16 +69,10 @@
                 height: 40px;
             }
         }
-
         .sound-wave {
             display: none;
         }
-
-
     }
-
-
-
     .title-artist {
         display: flex;
         flex-direction: column;
@@ -101,13 +80,10 @@
         overflow-x: hidden;
         height: 60px;
         justify-content: center;
-        
-
         .title {
             font-size: 14px;
             color: #fff;
         }
-
         .artist {
             font-size: 14px;
             color: rgba(#fff, 0.5);
@@ -117,7 +93,6 @@
             }
         }
     }
-
     .play-button {
         border: 0;
         background-image: url('../img/icons/play.svg');
@@ -130,25 +105,19 @@
         cursor: pointer;
         background-size: 10px;
     }
-
     .time {
         color: rgba(#fff, 0.5);
         font-size: 14px;
-
         @media screen and (max-width: 576px) {
             display: none;
         }
     }
-
     .new-tag-spot {
         width: 36px;
-
-
         @media screen and (max-width: 576px) {
             display: none;
         }
     }
-
     .download-link {
         background-color: colors.$dark-borders;
         color: colors.$text;
@@ -162,13 +131,11 @@
         font-size: 13px;
         cursor: pointer;
         transition: all 0.2s ease;
-
         &:hover {
             color: colors.$main-color;
             background-color: rgba(colors.$main-color, 0.05);
         }
     }
-
     form {
         select {
             background-color: #272727;
@@ -182,12 +149,10 @@
             outline: 0;
             margin: 0;
             transform: translateY(-4px);
-    
             &:hover {
                 color: colors.$main-color;
                 background-color: rgba(colors.$main-color, 0.05);
             }
-    
             option {
                 background-color: colors.$dark-sidebar;
                 color: rgba(#fff, 0.5);
@@ -198,11 +163,7 @@
                 }
             }
         }
-
-
     }
-
-
     .add-to-playlist {
         background-color: #272727;
         border: 1px solid #272727;
@@ -215,17 +176,14 @@
         outline: 0;
         margin: 0;
         transform: translateY(-4px);
-
         &:hover {
             color: colors.$main-color;
             background-color: rgba(colors.$main-color, 0.05);
         }
     }
-
     .genders {
         display: flex;
         gap: 5px;
-
         li {
             font-size: 12px;
             color: rgba(colors.$main-color, 0.7);

@@ -2,6 +2,8 @@
 use playlist\Playlist;
 use flash_message\FlashMessage;
 use user\Users;
+require_once get_template_directory() . '/components/player/Player.php';
+require_once get_template_directory() . '/components/search/Search.php';
 //pega a mensagem de sucesso, se existir
 $success_message = FlashMessage::get('success');
 if ($success_message) {
@@ -71,27 +73,48 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['create_playlist'])) {
 }
 ?>
 <?php get_header(); ?>
-<h2>Criar Nova Playlist</h2>
-<form method="POST">
-    <input type="text" name="playlist_title" placeholder="Nome da Playlist" required>
-    <button type="submit" name="create_playlist">Criar Playlist</button>
-</form>
-<h2>Minhas Playlists</h2>
-<ul>
-    <?php
-    $current_user_id = get_current_user_id();
-    $playlists = get_posts([
-        'post_type' => 'playlist',
-        'author'    => $current_user_id,
-        'post_status' => 'publish',
-        'numberposts' => -1
-    ]);
-        foreach ($playlists as $playlist) {
-            // Obtém o link direto da playlist
-            $playlist_link = get_permalink($playlist->ID);
-            // Exibe o link na lista
-            echo "<li><a href='" . esc_url($playlist_link) . "'>" . esc_html($playlist->post_title) . "</a></li>";
-        }
+<div class="top-bar">
+    <?php include 'components/top-menu/top-menu.php'; ?>
+</div>
+<div class="main-content">
+    <!-- a coluna da esquerda -->
+    <div class="sidebar hide-1200">
+        <?php include 'components/accordion/accordion.php'; ?>
+    </div>
+    <!-- o corpo do site -->
+    <div class="main">
+        <div class="new-playlist-container">
+            <h2>Create new playlist</h2>
+            <form method="POST">
+                <input type="text" name="playlist_title" placeholder="Playlist name" required>
+                <button class="create_playlist" type="submit" name="create_playlist">Create playlist</button>
+            </form>
+        </div>
+        <h2>Minhas Playlists</h2>
+        <ul>
+            <?php
+            $current_user_id = get_current_user_id();
+            $playlists = get_posts([
+                'post_type' => 'playlist',
+                'author'    => $current_user_id,
+                'post_status' => 'publish',
+                'numberposts' => -1
+            ]);
+                foreach ($playlists as $playlist) {
+                    // Obtém o link direto da playlist
+                    $playlist_link = get_permalink($playlist->ID);
+                    // Exibe o link na lista
+                    echo "<li><a href='" . esc_url($playlist_link) . "'>" . esc_html($playlist->post_title) . "</a></li>";
+                }
+            ?>
+        </ul>        
+    </div>
+    <!-- /main -->
+</div>
+<!-- /main-content -->
+<div class="bottom-bar">
+    <?php 
+        echo PlayerComponent::render();
     ?>
-</ul>
+</div>
 <?php get_footer(); ?>

@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_playlist'])) {
     }
     // Redireciona para a home
     ?>
-    <script>window.location="<?php echo esc_url(home_url(/playlists)); ?>";</script>
+    <script>window.location="<?php echo esc_url(home_url('/playlists')); ?>";</script>
     <?php
     exit;
 }

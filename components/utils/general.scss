@@ -5,10 +5,10 @@ body {
     color: colors.$text;
     font-family: "Poppins", sans-serif;
     font-size: 16px;
-    -webkit-user-select: none; /* Safari */
-    -moz-user-select: none;    /* Firefox */
-    -ms-user-select: none;     /* IE/Edge */
-    user-select: none;         /* Padrão */
+    // -webkit-user-select: none; /* Safari */
+    // -moz-user-select: none;    /* Firefox */
+    // -ms-user-select: none;     /* IE/Edge */
+    // user-select: none;         /* Padrão */
     overflow: hidden;
 }
 .bottom-bar {

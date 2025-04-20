@@ -17,6 +17,10 @@
              padding: 15px;
              width: 300px;
              max-width: 100%;
+             outline: 0;
+             &:focus {
+                border: 1px solid colors.$main-color;
+             }
          }
          .create_playlist {
             background-color: rgba(colors.$main-color, 0.9);
@@ -45,9 +49,28 @@
             align-items: center;
             gap: 10px;
             border-radius: 4px;
-            border: 1px solid colors.$dark-borders;
+            &:nth-child(odd) {
+                background-color: colors.$dark-sidebar;
+            }
             span {
                 font-size: 15px;
+                color:rgba(#fff, 0.6)
+            }
+            svg {
+                path {
+                    fill: rgba(#fff, 0.6);
+                }
+            }
+            &:hover {
+                background-color: rgba(colors.$main-color, 0.05);
+                span {
+                    color: colors.$main-color;
+                }
+                svg {
+                    path {
+                        fill: colors.$main-color;
+                    }
+                }
             }
         }
     }

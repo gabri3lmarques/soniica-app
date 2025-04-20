@@ -21,16 +21,6 @@ if ( isset( $_POST['submit'] ) ) {
     if ( is_wp_error( $user ) ) {
         $login_error = $user->get_error_message();
     } else {
-        try {
-            $stripe_service = new \stripe\StripeService();
-            $is_premium = $stripe_service->isUserPremium($user->ID);
-            // Se conseguir resposta da Stripe, atualiza o meta
-            update_user_meta($user->ID, 'is_premium', $is_premium);
-        } catch (Exception $e) {
-            // Loga o erro para debug
-            error_log("Erro ao verificar status premium na Stripe para o usuário ID {$user->ID}: " . $e->getMessage());
-            // Não altera o meta se der erro — mantemos como estava
-        }
         // Redireciona para a página inicial
         wp_redirect( home_url() );
         exit;

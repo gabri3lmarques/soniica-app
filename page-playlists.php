@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['create_playlist'])) {
             'numberposts' => -1
         ]);
         if (count($user_playlists) >= 1) {
-            FlashMessage::set('error', 'Usuários não premium podem criar apenas uma playlist. Faça upgrade para criar mais!');
+            FlashMessage::set('error', 'Go premium to create unlimited playlists.');
             ?>
             <script>window.location="<?php echo esc_url(home_url('/playlists')); ?>";</script> 
             <?php

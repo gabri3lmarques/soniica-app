@@ -1,0 +1,44 @@
+@use '../utils/colors.scss';
+.playlist-single-header {
+    margin-bottom: 40px;
+    h1 {
+        font-size: 36px;
+    }
+    p {
+        margin-bottom: 30px;
+    }
+}
+.playlist-single-controles {
+    display: flex;
+    form {
+        button {
+            border-radius: 30px;
+            border: 1px solid rgb(240, 71, 71);
+            color:#ffffff;
+            background-color: rgb(240, 71, 71);
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 14px;
+            &:hover{
+                background-color: #ffffff;
+                color:rgb(240, 71, 71);
+            }
+        }
+    }
+}
+.playlist {
+    .remove-song-form {
+        .remove-song-btn {
+            border: none;
+            border-radius: 2px;
+            height: 30px;
+            width: 30px;
+            background-color: colors.$dark-borders;
+            background-image: url('../img/icons/remove.png');
+            background-size: 15px;
+            background-repeat: no-repeat;
+            background-position: center;
+            cursor: pointer;
+        }
+    }
+}

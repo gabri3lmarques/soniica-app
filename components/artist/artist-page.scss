@@ -1,0 +1,30 @@
+@use '../utils/colors.scss';
+.artist-header {
+    background-color: colors.$dark-sidebar;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 40px;
+    border-radius: 8px;
+    gap: 40px;
+    border:1px solid colors.$dark-borders;
+    .artist-image {
+        min-width: 150px;;
+        img {
+            width: 150px;
+            height: 150px;
+            border-radius: 75px;
+            border: 1px solid colors.$main-color;
+        }
+    }
+    .artist-info {
+        .artist-name {
+            font-size: 36px;;
+        }
+        .artist-description {
+            margin-top: 20px;
+            font-size: 16px;
+            color: rgba(#fff, 0.5);
+        }
+    }
+}

@@ -42,3 +42,4 @@ if ( is_category() ) {
     wp_reset_postdata();
 }
 ?>
+

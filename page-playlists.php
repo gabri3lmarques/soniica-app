@@ -1,4 +1,12 @@
 <?php
+if(!is_user_logged_in()){
+    ?>
+    <script>
+        window.location = "<?php echo esc_url(home_url('/login')); ?>";
+    </script>
+    <?php
+    exit;
+}
 use playlist\Playlist;
 use flash_message\FlashMessage;
 use user\Users;

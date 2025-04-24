@@ -4,6 +4,9 @@
     background-color: colors.$dark-sidebar;
     border-radius: 6px;
     padding: 40px;
+    h2 {
+        font-size: 24px;
+    }
     form {
         margin-top: 20px;
         input {

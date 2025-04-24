@@ -8,6 +8,12 @@
     border-radius: 8px;
     gap: 40px;
     border:1px solid colors.$dark-borders;
+    @media screen and (max-width: 768px) {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    }
     .artist-image {
         min-width: 150px;;
         img {
@@ -26,5 +32,52 @@
             font-size: 16px;
             color: rgba(#fff, 0.5);
         }
+    }
+}
+.albums-songs {
+    display: flex;
+    margin-top: 40px;
+    gap: 40px;
+    @media screen and (max-width: 768px) {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    }
+    .albums {
+        width: auto;
+        h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .albums-list {
+            width: 150px;
+            @media screen and (max-width: 768px) {
+                width: 100%;
+                display: flex;
+                gap: 10px;
+            }
+            .album-item {
+                display: flex;
+                flex-direction: column;
+                margin-top: 20px;
+                a {
+                    img {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+    .playlist {
+        margin-top: 0;
+        @media screen and (max-width: 768px) {
+            width: 100%;
+        }
+        h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        flex: 1;
     }
 }

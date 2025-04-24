@@ -1,0 +1,29 @@
+@use "../utils/colors.scss";
+.back-link {
+    margin-bottom: 40px;
+}
+.album-header {
+    display: flex;
+    background-color: colors.$dark-sidebar;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 40px;
+    border-radius: 8px;
+    gap: 40px;
+    border:1px solid colors.$dark-borders;
+    .album-image {
+        min-width: 150px;;
+        img {
+            width: 150px;
+            height: 150px;
+            border-radius: 4px;
+            border: 1px solid colors.$dark-borders;
+        }
+    }
+    .album-title {
+        h2 {
+            font-size: 36px;
+        }
+    }
+}

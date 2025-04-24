@@ -71,6 +71,7 @@
     }
     .playlist {
         margin-top: 0;
+        flex: 1;
         @media screen and (max-width: 768px) {
             width: 100%;
         }
@@ -78,6 +79,6 @@
             font-size: 24px;
             margin-bottom: 20px;
         }
-        flex: 1;
+
     }
 }

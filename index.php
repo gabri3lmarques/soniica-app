@@ -55,6 +55,7 @@ require_once get_template_directory() . '/components/search/Search.php';
                 $search = new SearchComponent();
                 echo $search->render();
             ?>
+            <?php include 'components/top-banner/Topbanner.php'; ?>
             <?php
                 if(!is_user_logged_in()){
                     ?>

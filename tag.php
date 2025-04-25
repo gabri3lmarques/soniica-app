@@ -13,7 +13,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_song_to_playlist'
     $playlist = new Playlist();
     $playlist_id = (int) $_POST['playlist_id'];
     $song_id = (int) $_POST['song_id'];
-
     $playlist_post = get_post($playlist_id);
     if ($playlist_post && (int) $playlist_post->post_author === get_current_user_id()) {
         $result = $playlist->add_song_to_playlist([
@@ -74,7 +73,7 @@ get_header();
             $tag = get_queried_object();
             $tag_name = $tag->name;
         ?>
-        <h2><?php echo($tag_name ); ?> Songs</h2>
+        <h2 class="tags-title"><?php echo($tag_name ); ?> Songs</h2>
         <div class="playlist">
              <?php if ( have_posts() ) : ?>
                 <ul class="song-list">
@@ -166,9 +165,11 @@ get_header();
                             ?>                       
                     <?php endwhile; ?>
                 </ul>
+                <div class="nav-links">
                 <?php
                     echo paginate_links();
                 ?>
+                </div>
                 <?php else : ?>
                 <p>Nenhuma música encontrada.</p>
             <?php endif; ?>

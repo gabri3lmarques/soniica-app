@@ -1,9 +1,6 @@
 <?php
-
 use svg\SvgIcons;
-
 class Accordion {
-
     public function render() {
         // Inicia o buffer de saída
         ob_start();
@@ -16,13 +13,12 @@ class Accordion {
                     </div>
                     <div class="accordion-content">
                         <ul>
-                            <li><a href="#">Favoritas</a></li>
+                            <li><a href="/tag/happy/">Happy</a></li>
                             <li><a href="#">Recentes</a></li>
                             <li><a href="#">Playlists</a></li>
                         </ul>
                     </div>
                 </div>
-
                 <div class="accordion-item">
                     <div class="accordion-header">
                         <h3>Trending</h3>
@@ -39,7 +35,6 @@ class Accordion {
                         </ul>
                     </div>
                 </div>
-
                 <div class="accordion-item">
                     <div class="accordion-header">
                         <h3>Settings</h3>
@@ -58,6 +53,5 @@ class Accordion {
         return ob_get_clean();
     }
 }
-
 $accordion = new Accordion();
 echo $accordion->render();

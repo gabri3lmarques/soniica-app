@@ -1,0 +1,30 @@
+@use '../utils/colors.scss';;
+.soniica-notification {
+    height: 35px;
+    width: 35px;
+    border-radius: 20px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: colors.$dark-borders;
+    position: relative;
+    svg {
+        width: 15px;
+        height: 15px;
+    }
+    .notification-number {
+        font-size: 13px;
+        font-weight: 600;
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        height: 20px;
+        width: 20px;
+        background-color: red;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

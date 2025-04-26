@@ -2,6 +2,7 @@
 
 use svg\SvgIcons;
 use user\Users;
+require_once get_template_directory() . '/components/notifications/Notifications.php';
 
 class TopMenu {
 
@@ -28,6 +29,10 @@ class TopMenu {
                 <form class="search hide-768" method="get" action="<?php echo home_url('/'); ?>">
                     <input type="text" name="s" placeholder="Enter music, genre, style..." autocomplete="off">
                 </form>
+                <?php
+                    $notifier = new NewSongsNotifier();
+                    $notifier->render();
+                ?>
                 <div class="user-menu">
                     <?php if(!is_user_logged_in()) { ?>
                         <a href="<?php echo home_url('/login'); ?>">

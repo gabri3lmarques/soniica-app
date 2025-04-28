@@ -1,0 +1,54 @@
+@use '../utils/colors.scss';
+.page-template {
+    height: calc(100dvh - 80px);
+    display: flex;
+    .page-template_left-side {
+        flex: 1;
+        background-image: url('../img/arts/gopremium/gopremium.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+    .page-template_right-side {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    //PREMIUM PAGE CSS
+    &.go-premium {
+        .page-template_right-side {
+            .page-template_right-side_content {
+                h2 {
+                    font-size: 36px;
+                    margin-bottom: 40px;
+                }
+                p {
+                    margin-top: 30px;
+                    color: rgba(#fff, 0.5);
+                }
+                ul {
+                    color: rgba(#fff, 0.5);
+                    margin-top: 30px;
+                    li {
+                        margin-top: 5px;
+                    }
+                }
+                a.premium-btn {
+                    background-color: colors.$main-color;
+                    color: rgba(#000, 0.7);
+                    font-weight: 600;
+                    padding: 20px;
+                    border-radius: 4px;
+                    width: 100%;
+                    display: block;
+                    text-align: center;
+                    margin-top: 30px;
+                    &:hover {
+                        background-color: rgba(colors.$main-color, 0.2);
+                        color: colors.$main-color;
+                    }
+                }
+            }
+        }
+    }
+}

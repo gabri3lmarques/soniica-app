@@ -64,6 +64,16 @@ class TopMenu {
                                     <li><a href="<?php echo home_url('/profile'); ?>">Account</a></li>
                                     <li><a href="<?php echo home_url('/playlists'); ?>">Playlists</a></li>
                                     <li><a href="<?php echo wp_logout_url(home_url()); ?>">Log out</a></li>
+                                    <?php if($is_premium) {
+                                        ?>
+                                        <li><a href="<?php echo home_url('/cancel-premium'); ?>">Cancel Premium</a></li>
+                                        <?php
+                                        } else {
+                                            ?>
+                                            <li><a href="<?php echo home_url('/get-premium'); ?>">Go premium</a></li>
+                                            <?php
+                                        }
+                                    ?>
                                 </ul>
                             </div>
                         </div>

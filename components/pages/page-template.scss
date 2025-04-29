@@ -4,18 +4,27 @@
     display: flex;
     .page-template_left-side {
         flex: 1;
-        background-image: url('../img/arts/gopremium/gopremium.jpg');
-        background-size: cover;
-        background-position: center;
+        padding: 20px;
+        overflow-y: auto;
     }
     .page-template_right-side {
         flex: 1;
         display: flex;
         align-items: center;
         justify-content: center;
+        padding: 20px;
+        overflow-y: auto;
     }
     //PREMIUM PAGE CSS
     &.go-premium {
+        .page-template_left-side {
+            background-image: url('../img/arts/gopremium/gopremium.jpg');
+            background-size: cover;
+            background-position: center;
+            @media (max-width: 992px) {
+                display: none;
+            }
+        }
         .page-template_right-side {
             .page-template_right-side_content {
                 h2 {
@@ -48,6 +57,55 @@
                         color: colors.$main-color;
                     }
                 }
+            }
+        }
+    }
+    //CANCEL PREMIUM PAGE CSS
+    &.cancel-premium {
+        .page-template_left-side {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            h2 {
+                font-size: 36px;
+                margin-bottom: 40px;
+            }
+            p {
+                margin-top: 30px;
+                color: rgba(#fff, 0.5);
+            }    
+            ul {
+                color: rgba(#fff, 0.5);
+                margin-top: 30px;
+                li {
+                    margin-top: 5px;
+                }
+            }
+            .cancel-premium-btn {
+                background-color: rgba(#f3444f, 1);
+                color: #fff;
+                font-weight: 600;
+                padding: 20px;
+                border-radius: 4px;
+                width: 100%;
+                display: block;
+                text-align: center;
+                margin-top: 30px;
+                border:0;
+                cursor: pointer;
+                &:hover {
+                    background-color: rgba(#f3444f, 0.5);
+                    color: #fff;
+                }
+            }
+        }
+        .page-template_right-side {
+            background-image: url('../img/arts/cancel-sub/cancel-sub.jpg');
+            background-size: cover;
+            background-position: center;
+            @media (max-width: 992px) {
+                display: none;
             }
         }
     }

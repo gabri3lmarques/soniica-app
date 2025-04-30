@@ -34,7 +34,7 @@ class StripeService
                     'quantity' => 1,
                 ]],
                 'success_url' => home_url('/premium-success') . '?session_id={CHECKOUT_SESSION_ID}',
-                'cancel_url' => home_url('/premium-cancel'),
+                'cancel_url' => home_url('/get-premium'),
                 'metadata' => [
                     'user_email' => $userEmail
                 ]

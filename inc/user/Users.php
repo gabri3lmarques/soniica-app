@@ -1,12 +1,9 @@
 <?php
-
 namespace user;
-
 class Users {
     public function __construct() {
         add_action('admin_menu', array($this, 'addPremiumUsersMenu'));
     }
-
     /**
      * Adiciona o menu "Usuários Premium" ao painel administrativo
      */
@@ -21,7 +18,6 @@ class Users {
             20                  // Posição do menu
         );
     }
-
     /**
      * Renderiza a página com a lista de usuários e seu status
      */
@@ -29,7 +25,6 @@ class Users {
         if (!current_user_can('manage_options')) {
             wp_die('Você não tem permissão para acessar essa página.');
         }
-
         $users = get_users();
         ?>
         <div class="wrap">
@@ -56,18 +51,14 @@ class Users {
         </div>
         <?php
     }
-
     public static function check_user_premium_status() {
-
         $user_id = get_current_user_id();
         // Verifica no meta do usuário se ele é premium
         $is_premium = get_user_meta($user_id, 'is_premium', true);
-    
         if ($is_premium) {
             // O usuário é premium, podemos verificar a Stripe para garantir que a assinatura está ativa
             return true;
         }
-    
         // Caso o usuário não seja premium, retorna false
         return false;
     }

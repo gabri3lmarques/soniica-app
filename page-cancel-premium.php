@@ -46,7 +46,8 @@ get_header();
                         </form>
                         <p>You can always come back whenever you want!</p>
                     <?php
-                } else { 
+                } else {
+                    echo '<h2>Você não possui uma assinatura premium ativa.</h2>';
                 }
             } else {
                 ?>

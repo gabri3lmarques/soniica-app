@@ -22,6 +22,7 @@ get_header();
             <li>🎸 Unlimited downloads — rock your library with no limits.</li>
             <li>🎶 Unlimited playlists — create, customize, and blast your sound your way.</li>
             <li>🚀 Instant access to the latest releases — no more waiting to jam to the newest hits.</li>
+            <li>🔕 Ad-free experience — enjoy your music without interruptions.</li>
         </ul>
         <p>All that for less than the price of a coffee.</p>
         <p>Don't hold back — take your music experience to the next level.</p>

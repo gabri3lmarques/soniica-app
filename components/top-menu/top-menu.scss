@@ -1,5 +1,4 @@
 @use '../utils/colors.scss';
-
 .top-menu {
     display: flex;
     height: 80px;
@@ -7,16 +6,12 @@
     align-items: center;
     justify-content: space-between;
     padding: 0 20px;
-
-
-
     .user-menu {
         display: flex;
         font-size: 14px;
         align-items: center;
         position: relative;
         gap: 5px;
-
         .login-button {
             display: flex;
             align-items: center;
@@ -30,21 +25,16 @@
             gap: 5px;
             font-size: 13px;
             transition: all 0.2s ease;
-            
-
             svg {
                 width: 20px;
                 
                 path {
                     transition: all 0.2s ease;
                 }
-                
             }
-
             &:hover {
                 color: colors.$main-color;
                 background-color: rgba(colors.$main-color, 0.05);
-
                 svg {
                     path {
                         fill: colors.$main-color;
@@ -52,7 +42,6 @@
                 }
             }
         }
-
         .user-avatar {
             width: 35px;
             height: 35px;
@@ -68,32 +57,27 @@
             cursor: pointer;
             user-select: none;
             transition: all 0.2s ease;
-
             &:hover {
                 color: colors.$main-color;
                 background-color: rgba(colors.$main-color, 0.05);
             }
         }
-
         .user-sub-menu {
             opacity: 0;
             pointer-events: none;
             position: absolute;
-            left: -214px;
-            bottom: -165px;
+            right: 0;
+            bottom: -180px;
             width: 250px;
-
             &.active {
                 opacity: 1;
                 pointer-events: all;
             }
-
             .user-sub-menu-content {
                 background-color: colors.$dark-sidebar;
                 border: 1px solid colors.$dark-borders;
                 padding: 10px;
                 border-radius: 6px;
-
                 .user-status {
                     font-size: 10px;
                     text-transform: uppercase;
@@ -102,36 +86,32 @@
                     border-radius: 4px;
                     display: inline-block;
                     margin-bottom: 10px;
-
                     &.premium {
                         color: colors.$main-color;
                     }
-                
                 }
-
-                .user-name {
-                    
-                }
-
+                .user-name { }
                 .email {
                     font-size: 13px;
                     color: colors.$text-darker;
                     margin-top: 5px;
+                    @media screen and (max-width: 762px) {
+                        font-size: 20px;
+                    }
                 }
-
                 .user-menu-list {
                     border-top: 1px solid colors.$dark-borders;
                     margin-top: 10px;
                     padding-top: 10px;
-
                     li {
                         padding-top: 5px;
                         font-size: 13px;
-
+                        @media screen and (max-width: 762px) {
+                            font-size: 20px;
+                        }
                         &:first-child {
                             padding-top: 0;
                         }
-
                         a {
                             color: colors.$text-darker;
 
@@ -140,15 +120,17 @@
                             }
                         }
                     }
-
                 }
+            }
+            @media screen and (max-width: 762px) {
+                width: 90dvw;
+                font-size: 20px;
+                top: 60px;
             }
         }
     }
 }
-
 .search {
-
     input {
         font-size: 14px;
         background-color: colors.$dark-borders;
@@ -159,14 +141,11 @@
         padding: 0 20px;
         color: colors.$text;
         border: 1px solid colors.$dark-borders;
-
         &:focus {
             border: 1px solid colors.$main-color;
         }
-
         &::placeholder {
             color: colors.$text-darker;
         }
     }
-
 }

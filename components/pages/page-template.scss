@@ -109,4 +109,15 @@
             }
         }
     }
+    //PREMIUM SUCCESS
+    &.premium-success {
+        .page-template_left-side {
+            background-image: url('../img/arts/premium-success/premium-sucess.jpg');
+            background-size: cover;
+            background-position: center;
+            @media (max-width: 992px) {
+                display: none;
+            }
+        }
+    }
 }

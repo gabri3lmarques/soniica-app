@@ -1,0 +1,63 @@
+@use '../utils/colors.scss';
+
+.top-banner {
+    width: 100%;
+    margin-bottom: 40px;
+    background-position: center;
+    background-size: cover;
+    border-radius: 8px;
+
+    &.not-logged-in {
+        background-image: url('../img/top-banner/topbanner-bg.jpg');
+    }
+
+    &.not-premium {
+        background-image: url('../img/top-banner/premium-sucess.jpg');
+    }
+
+    .top-banner-content {
+        height: 300px;
+        background: linear-gradient(to right, #121212, transparent);
+        width: 100%;
+        display: flex;
+        align-items: center;
+        background-repeat: no-repeat;
+        padding: 40px;
+        @media screen and (max-width: 768px) {
+            padding: 20px;
+        }
+        div {
+            h2 {
+                font-size: 36px;
+                @media screen and (max-width: 768px) {
+                    font-size: 24px;
+                }
+            }
+
+            p {
+                margin-top: 20px;
+            }
+
+            .cta {
+                background-color: colors.$main-color;
+                display: inline-block;
+                padding: 10px 20px;
+                color: rgba($color: #000000, $alpha: 0.7);
+                border-radius: 20px;
+                margin-top: 20px;
+                font-weight: 600;
+                border: 1px solid colors.$main-color;
+
+                &:hover {
+                    background-color: colors.$dark-sidebar;
+                    color: colors.$main-color;
+                }
+            }
+            span {
+                color: colors.$main-color;
+                font-weight: 600;
+                font-style: italic;
+            }
+        }
+    }
+}

@@ -3,7 +3,7 @@ namespace download;
 use user\Users;
 class DownloadController {
     //private const DOWNLOAD_COOLDOWN = 86400; // 24 horas em segundos
-    private const DOWNLOAD_COOLDOWN = 5; // 24 horas em segundos
+    private const DOWNLOAD_COOLDOWN = 1800; // 30 min em segundos
     public static function canDownload() {
         if (!is_user_logged_in()) {
             return [

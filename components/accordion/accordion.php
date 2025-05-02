@@ -1,5 +1,6 @@
 <?php
 use svg\SvgIcons;
+use user\Users;
 class Accordion {
     public function render() {
         // Inicia o buffer de saída
@@ -21,33 +22,46 @@ class Accordion {
                 </div>
                 <div class="accordion-item">
                     <div class="accordion-header">
-                        <h3>Trending</h3>
+                        <h3>About Soniica</h3>
                         <span class="icon">+</span>
                     </div>
                     <div class="accordion-content">
                         <ul>
-                            <li><a href="#">Rock</a></li>
-                            <li><a href="#">Jazz</a></li>
-                            <li><a href="#">Eletrônica</a></li>
-                            <li><a href="#">Rock</a></li>
-                            <li><a href="#">Jazz</a></li>
-                            <li><a href="#">Eletrônica</a></li>
+                            <li><a href="#">Pricing</a></li>
+                            <li><a href="#">FAQs</a></li>
+                            <li><a href="#">Contact us</a></li>
+                            <li><a href="#">Blog</a></li>
                         </ul>
                     </div>
                 </div>
-                <div class="accordion-item">
-                    <div class="accordion-header">
-                        <h3>Settings</h3>
-                        <span class="icon">+</span>
+                <?php
+                // Verifica se o usuário está logado
+                if (is_user_logged_in()) {
+                    ?>
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h3>My Account</h3>
+                            <span class="icon">+</span>
+                        </div>
+                        <div class="accordion-content">
+                            <ul>
+                                <li><a href="<?php echo home_url('/profile'); ?>">Profile</a></li>
+                                <li><a href="<?php echo home_url('/playlists'); ?>">Playlists</a></li>
+                                <?php 
+                                // Verifica se o usuário é premium
+                                $is_premium = Users::check_user_premium_status();
+                                if (!$is_premium) {
+                                    ?>
+                                    <li><a href="<?php echo home_url('/get-premium'); ?>">Go premium</a></li>
+                                    <?php
+                                } 
+                                ?>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="accordion-content">
-                        <ul>
-                            <li><a href="#">Perfil</a></li>
-                            <li><a href="#">Conta</a></li>
-                            <li><a href="#">Privacidade</a></li>
-                        </ul>
-                    </div>
-                </div>
+                    <?php
+                } 
+                ?>
             </div>
         <?php
         return ob_get_clean();

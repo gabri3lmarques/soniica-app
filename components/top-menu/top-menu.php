@@ -71,9 +71,9 @@ class TopMenu {
                                 <div class="user-name"><?php   echo esc_html($first_name); ?></div>
                                 <div class="email"><?php echo esc_html($email); ?></div>
                                 <ul class='user-menu-list'>
-                                    <li><a href="<?php echo home_url('/profile'); ?>">Account</a></li>
+                                    <li><a href="<?php echo home_url('/profile'); ?>">Profile</a></li>
                                     <li><a href="<?php echo home_url('/playlists'); ?>">Playlists</a></li>
-                                    <li><a href="<?php echo wp_logout_url(home_url()); ?>">Log out</a></li>
+        
                                     <?php if($is_premium) {
                                         ?>
                                         <li><a href="<?php echo home_url('/cancel-premium'); ?>">Cancel Premium</a></li>
@@ -84,6 +84,7 @@ class TopMenu {
                                             <?php
                                         }
                                     ?>
+                                    <li><a href="<?php echo wp_logout_url(home_url()); ?>">Log out</a></li>
                                 </ul>
                             </div>
                         </div>

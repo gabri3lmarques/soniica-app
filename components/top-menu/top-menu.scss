@@ -61,6 +61,9 @@
                 color: colors.$main-color;
                 background-color: rgba(colors.$main-color, 0.05);
             }
+            .profile-image {
+                border-radius: 25px;
+            }
         }
         .user-sub-menu {
             opacity: 0;

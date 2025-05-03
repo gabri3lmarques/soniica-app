@@ -45,9 +45,19 @@ class TopMenu {
                         <?php
                         $current_user = wp_get_current_user();
                         $first_letter = substr($current_user->display_name, 0, 1);
+                        $user_id = get_current_user_id();
+                        $profile_url = get_user_meta($user_id, 'profile_picture_url', true);
                         ?>
                         <div class="user-avatar">
-                            <?php echo $first_letter; ?>
+                            <?php
+                                if($profile_url) {
+                                    ?>
+                                    <img class="profile-image" src="<?php echo esc_url($profile_url); ?>">
+                                    <?php
+                                } else {
+                                    echo $first_letter;
+                                }
+                            ?>
                         </div>
                         <div class="user-sub-menu">
                             <div class="user-sub-menu-content">

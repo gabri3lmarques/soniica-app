@@ -72,8 +72,7 @@ class TopMenu {
                                 <div class="email"><?php echo esc_html($email); ?></div>
                                 <ul class='user-menu-list'>
                                     <li><a href="<?php echo home_url('/profile'); ?>">Profile</a></li>
-                                    <li><a href="<?php echo home_url('/playlists'); ?>">Playlists</a></li>
-        
+                                    <li><a href="<?php echo home_url('/playlists'); ?>">Playlists</a></li><!--  -->
                                     <?php if($is_premium) {
                                         ?>
                                         <li><a href="<?php echo home_url('/cancel-premium'); ?>">Cancel Premium</a></li>

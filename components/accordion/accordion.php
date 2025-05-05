@@ -22,11 +22,12 @@ class Accordion {
                 </div>
                 <div class="accordion-item">
                     <div class="accordion-header">
-                        <h3>About Soniica</h3>
+                        <h3>Soniica</h3>
                         <span class="icon">+</span>
                     </div>
                     <div class="accordion-content">
                         <ul>
+                            <li><a href="#">About us</a></li>
                             <li><a href="#">Pricing</a></li>
                             <li><a href="#">FAQs</a></li>
                             <li><a href="#">Contact us</a></li>

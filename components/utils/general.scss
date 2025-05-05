@@ -20,12 +20,18 @@ body {
     display: flex;
     height: calc(100dvh - 180px);
     overflow: hidden;
+    &.profile {
+        height: calc(100dvh);
+    }
 }
 .main {
     flex: 1;
     padding: 30px;
     overflow-y: scroll;
     height: calc(100dvh - 180px);
+    &.profile {
+        height: calc(100dvh);
+    }
 }
 .sidebar {
     width: 250px;

@@ -1,4 +1,4 @@
-@use '../utils/colors.scss';;
+@use '../utils/colors.scss';
 .soniica-notification {
     height: 35px;
     width: 35px;
@@ -22,8 +22,8 @@
         right: -5px;
         height: 20px;
         width: 20px;
-        background-color: colors.$main-color;
-        color: rgba(#000, 0.5);
+        background-color: red;
+        color: #fff;
         border-radius: 10px;
         display: flex;
         align-items: center;

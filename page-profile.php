@@ -55,7 +55,6 @@ $is_premium = Users::check_user_premium_status();
         <!-- section -->
          <div class="section">
             <h3>User Status</h3>
-
                 <?php
                     if($is_premium){
                         ?>
@@ -70,8 +69,14 @@ $is_premium = Users::check_user_premium_status();
                         <?php
                     }
                 ?>
-      
-    </div>
+        </div>
+        <!-- /section -->
+        <div class="section">
+            <h3>Help</h3>
+            <p>Do you need help? Just call us on <a href="#">help@soniica.com</a></p>
+        </div>
+        <!-- /section -->
+     </div>
     <!-- o corpo do site -->
 </div>
 <!-- /main content -->

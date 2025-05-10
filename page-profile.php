@@ -76,6 +76,10 @@ $is_premium = Users::check_user_premium_status();
             <p>Do you need help? Just call us on <a href="#">help@soniica.com</a></p>
         </div>
         <!-- /section -->
+        <div class="section">
+            <h3>Cancel Account</h3>
+        </div>
+        <!-- /section -->
      </div>
     <!-- o corpo do site -->
 </div>

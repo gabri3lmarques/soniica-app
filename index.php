@@ -44,7 +44,6 @@ require_once get_template_directory() . '/components/search/Search.php';
     <?php include 'components/top-menu/top-menu.php'; ?>
 </div>
     <div class="main-content">
-
         <!-- a coluna da esquerda -->
         <div class="sidebar hide-1200">
             <?php include 'components/accordion/accordion.php'; ?>

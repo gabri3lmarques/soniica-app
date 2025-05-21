@@ -9,6 +9,9 @@
         padding: 20px;
         border-radius: 6px;
         margin-bottom: 30px;
+        &:last-child {
+            margin-bottom: 100px;
+        }
     }
     h3 {
         font-size: 24px;

@@ -78,6 +78,7 @@ $is_premium = Users::check_user_premium_status();
         <!-- /section -->
         <div class="section">
             <h3>Cancel Account</h3>
+            <p>Before deleting your account is very important to cancel your payment subscription so we can stop charge you.</p>
         </div>
         <!-- /section -->
      </div>

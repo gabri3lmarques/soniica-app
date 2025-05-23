@@ -78,11 +78,42 @@ $is_premium = Users::check_user_premium_status();
         <!-- /section -->
         <div class="section">
             <h3>Cancel Account</h3>
-            <p>Before deleting your account is very important to cancel your payment subscription so we can stop charge you.</p>
+            <?php if($is_premium): ?>
+                <p>Before deleting your account is very important to cancel your payment subscription so we can stop charge you.</p>
+                <p><a href="/cancel-premium">Click here</a> to go to cancel premium page.</p>
+            <?php endif; ?>
+            <p class="delete-account-warning">Clicando no botão abaixo você vai <span>deletar sua conta de forma irreversível</span>.</p>
+            <button id="delete-account-btn">Deletar minha conta</button>
         </div>
         <!-- /section -->
      </div>
     <!-- o corpo do site -->
 </div>
 <!-- /main content -->
+<script>
+document.getElementById('delete-account-btn')?.addEventListener('click', function() {
+    if (confirm("Tem certeza que deseja deletar sua conta? Esta ação é irreversível.")) {
+        fetch('<?php echo admin_url('admin-ajax.php'); ?>', {
+            method: 'POST',
+            credentials: 'same-origin',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: new URLSearchParams({
+                action: 'delete_user_account',
+                _ajax_nonce: '<?php echo wp_create_nonce('delete_user_account_nonce'); ?>'
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Conta deletada com sucesso!');
+                window.location.href = '<?php echo home_url(); ?>';
+            } else {
+                alert('Erro ao deletar conta: ' + data.data);
+            }
+        });
+    }
+});
+</script>
 <?php get_footer(); ?>

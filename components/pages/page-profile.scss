@@ -24,7 +24,7 @@
             margin-top: 20px;
         }
     }
-    #remove-profile-picture {
+    #remove-profile-picture, #delete-account-btn {
         border-radius: 4px;
         padding: 10px 20px;
         margin-top: 10px;
@@ -93,6 +93,11 @@
         a {
             color: colors.$main-color;
             font-style: italic;
+        }
+    }
+    .delete-account-warning {
+        span {
+            color: #f04747; 
         }
     }
 }

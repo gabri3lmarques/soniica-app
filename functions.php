@@ -110,7 +110,24 @@ add_action('wp_ajax_remove_profile_picture', function () {
 
     wp_send_json_success(['message' => 'Imagem de perfil removida com sucesso.']);
 });
+//deleta usuário
+add_action('wp_ajax_delete_user_account', 'soniica_delete_user_account');
 
+function soniica_delete_user_account() {
+    check_ajax_referer('delete_user_account_nonce');
+
+    if (!is_user_logged_in()) {
+        wp_send_json_error('Usuário não está logado.');
+    }
+
+    $user_id = get_current_user_id();
+
+    // Deletar o usuário
+    require_once(ABSPATH.'wp-admin/includes/user.php');
+    wp_delete_user($user_id);
+
+    wp_send_json_success('Conta deletada com sucesso.');
+}
 
 
 

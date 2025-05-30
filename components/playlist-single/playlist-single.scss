@@ -13,15 +13,14 @@
     form {
         button {
             border-radius: 30px;
-            border: 1px solid rgb(240, 71, 71);
-            color:#ffffff;
-            background-color: rgb(240, 71, 71);
+            border: 0;
             padding: 10px 20px;
             cursor: pointer;
             font-size: 14px;
-            &:hover{
-                background-color: #ffffff;
-                color:rgb(240, 71, 71);
+            background-color: rgba(#f04747, 0.15);
+            color: #f04747;
+            &:hover {
+                background-color: rgba(#f04747, 0.30);
             }
         }
     }

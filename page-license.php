@@ -15,7 +15,7 @@ $is_premium = Users::check_user_premium_status();
         <?php include 'components/accordion/accordion.php'; ?>
     </div>
     <!-- o corpo do site -->
-    <div class="main">
+    <div class="main template">
         <?php 
             $search = new SearchComponent();
             echo $search->render();
@@ -36,6 +36,36 @@ $is_premium = Users::check_user_premium_status();
                 <li>✅ Create and manage playlists, stream music, and explore available features based on your plan (free or premium).</li>
                 <li>✅ Download and use the music made available on the platform in your commercial projects (such as videos, events, podcasts, games, etc.), under a royalty-free license — meaning you are not required to pay additional fees or royalties for usage.</li>
             </ul>
+        </div>
+        <!-- /section -->
+        <div class="section">
+            <h4>Usage Restrictions</h4>
+            <p>To maintain a fair and safe experience for all users, you may not:</p>
+            <ul>
+                <li>❌ Reproduce, redistribute, or resell the Soniica platform (its code, interface, or services) without prior written permission.</li>
+                <li>❌ Reverse engineer, decompile, or otherwise attempt to access protected components of the system.</li>
+                <li>❌ Share your premium account with others. Each account is for individual use only.</li>                
+            </ul>
+        </div>
+        <!-- /section -->
+        <div class="section">
+            <h4>Intellectual Property</h4>
+            <p>All code, design, and functionality of the Soniica platform is the intellectual property of its creators. Unless otherwise stated, music tracks provided through the platform are licensed for royalty-free commercial use, but original copyrights remain with the respective artists or content owners.            </p>
+        </div>
+        <!-- /section -->
+        <div class="section">
+            <h4>Third-Party Content</h4>
+            <p>Some music or media may be provided by third parties. All content available on Soniica is curated to be safe for royalty-free commercial use. If any attribution or specific terms are required for a track, this will be clearly indicated.</p>
+        </div>
+        <!-- /section -->
+        <div class="section">
+            <h4>Account Termination</h4>
+            <p>We reserve the right to suspend or terminate your account if you violate the terms of this license or our Terms of Use. You may cancel your subscription at any time through your account settings.            </p>
+        </div>
+        <!-- /section -->
+        <div class="section">
+            <h4>Changes to This License</h4>
+            <p>We may update this license agreement from time to time. You will be notified of any significant changes via email or directly through the Soniica platform.            </p>
         </div>
         <!-- /section -->
      </div>

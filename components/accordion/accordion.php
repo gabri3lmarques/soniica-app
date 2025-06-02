@@ -29,9 +29,8 @@ class Accordion {
                         <ul>
                             <li><a href="#">About us</a></li>
                             <li><a href="#">Pricing</a></li>
-                            <li><a href="#">FAQs</a></li>
                             <li><a href="#">Contact us</a></li>
-                            <li><a href="#">Blog</a></li>
+                            <li><a href="/license">License</a></li>
                         </ul>
                     </div>
                 </div>

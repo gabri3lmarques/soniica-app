@@ -1,0 +1,14 @@
+@use '../utils/colors.scss';
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 4px;
+    background-color: rgba(#fff, 0.4);
+    margin-top: 30px;
+    font-weight: 600;
+
+    &.go-premium {
+        background-color: rgba(colors.$main-color, 1);
+        color: rgba(#000, 0.7);
+    }
+}

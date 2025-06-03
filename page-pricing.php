@@ -21,10 +21,33 @@ $is_premium = Users::check_user_premium_status();
             echo $search->render();
         ?>
         <!-- License -->
-        <h2>Contact US</h2>
+        <h2>Pricing</h2>
         <div class="section">
-            <h4>📬 Got a question, idea, or just wanna say hi?</h4>                    
+            <h4>Free</h4>
+            <ul>
+                <li>🔔 Ads between songs</li>
+                <li>⏳ Wait 24 hours to download new releases</li>
+                <li>📥 1 download every 30 minutes</li>
+                <li>📁 1 playlist only </li>
+            </ul>
+            <?php if(!$is_premium): ?>
+                <a href="/get-premium" class="button go-premium">Go premium</a>
+            <?php endif; ?>                        
         </div>
+        <!-- /section -->
+        <div class="section">
+            <h4>Premium</h4>
+            <ul>
+                <li>🔕 Ad-free experience</li>
+                <li>🚀 Instant access to the latest releases</li>
+                <li>🎸 Unlimited downloads</li>
+                <li>🎶 Unlimited playlists </li>
+            </ul> 
+            <?php if(!$is_premium): ?>
+                <a href="/get-premium" class="button go-premium">Go premium</a>
+            <?php endif; ?>            
+        </div>
+        <!-- /section -->
      </div>
     <!-- o corpo do site -->
 </div>

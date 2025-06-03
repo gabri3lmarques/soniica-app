@@ -27,8 +27,8 @@ class Accordion {
                     </div>
                     <div class="accordion-content">
                         <ul>
-                            <li><a href="#">About us</a></li>
-                            <li><a href="#">Pricing</a></li>
+                            <li><a href="/about-us">About us</a></li>
+                            <li><a href="/pricing">Pricing</a></li>
                             <li><a href="/contact">Contact us</a></li>
                             <li><a href="/license">License</a></li>
                         </ul>

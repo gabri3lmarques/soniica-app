@@ -16,12 +16,17 @@
     }
     p {
         margin-bottom: 30px;
+        color: colors.$text-darker;
     }
     ul {
         li {
             margin-left: 20px;
             margin-top: 10px;
+            color: colors.$text-darker;
         }
+    }
+    span {
+        color: colors.$main-color;
     }
     .page-template_left-side {
         flex: 1;

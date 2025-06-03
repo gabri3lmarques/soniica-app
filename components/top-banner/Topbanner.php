@@ -6,8 +6,8 @@
             <div class="top-banner not-logged-in">
                 <div class="top-banner-content">
                     <div>
-                        <h2>Sign up for free</h2>
-                        <p>Create playlists, discover amazing <span>royalty free</span> music, and download it <span>for free</span>.</p>
+                        <h2>Music for every moment</h2>
+                        <p>The <span>perfect soundtrack</span> for your <span>project</span> or your <span>life</span> is right here.</p>
                         <p>Sign up with just an email — no sensitive data required. Fast and secure!</p>
                         <a class="cta" href="/sign-up">Sign up</a>
                     </div>

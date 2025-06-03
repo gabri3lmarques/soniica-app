@@ -23,11 +23,7 @@ $is_premium = Users::check_user_premium_status();
         <!-- License -->
         <h2>Contact US</h2>
         <div class="section">
-            <h4>📬 Got a question, idea, or just wanna say hi?</h4>
-            <p>
-                We’d love to hear from you. Whether you’re working on something big or just vibing with the music, drop us a line—we’re here for it.
-                📬 <span>hello@soniica.com</span> 
-            </p>                    
+            <h4>📬 Got a question, idea, or just wanna say hi?</h4>                    
         </div>
      </div>
     <!-- o corpo do site -->

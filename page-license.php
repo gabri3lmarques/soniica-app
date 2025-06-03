@@ -22,7 +22,7 @@ $is_premium = Users::check_user_premium_status();
         ?>
         <!-- License -->
         <h2>License</h2>
-        <h3>Soniica License Agreement</h3>
+        <h3>📝Soniica License Agreement</h3>
         <div class="section">
             <h4>What is Soniica?</h4>
             <p>Soniica is a web-based music platform designed to offer a modern, personalized experience for listening to music, organizing playlists, and downloading tracks.</p>

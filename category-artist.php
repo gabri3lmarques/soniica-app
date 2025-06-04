@@ -137,8 +137,6 @@ $user_playlists = get_posts([
                             }
                             echo '</ul>';
                             echo '</div>';
-                        } else {
-                            echo '<p>Nenhuma categoria filha encontrada.</p>';
                         }
                     }
                 }

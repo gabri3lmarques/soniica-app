@@ -4,35 +4,18 @@ use playlist\Playlist;
 use flash_message\FlashMessage;
 use user\Users;
 use download\DownloadController;
+$is_premium = Users::check_user_premium_status();
 ?>
 <?php 
 //pega a mensagem de sucesso, se existir
 $success_message = FlashMessage::get('success');
 if ($success_message) {
-    echo '
-        <div class="flash-message-overlay">
-            <div class="flash-message-content">
-                <div class="flash-message-header">
-                    <svg class="fm-close" version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400"><style>.a{fill:#f5f5ff}</style><path fill-rule="evenodd" class="a" d="m200 172.1l51.8-51.8c7.7-7.7 20.2-7.7 27.9 0 7.7 7.7 7.7 20.2 0 27.9l-51.8 51.8 51.8 51.8c7.7 7.7 7.7 20.2 0 27.9-7.7 7.7-20.2 7.7-27.9 0l-51.8-51.8-51.8 51.8c-7.7 7.7-20.2 7.7-27.9 0-7.7-7.7-7.7-20.2 0-27.9l51.8-51.8-51.8-51.8c-7.7-7.7-7.7-20.2 0-27.9 7.7-7.7 20.2-7.7 27.9 0zm103.9-168.6c26.9 3.7 48.1 11.2 64.8 27.8 16.6 16.7 24.2 37.9 27.8 64.8 3.5 26.2 3.5 59.9 3.5 102.8v2.2c0 42.9 0 76.6-3.5 102.8-3.6 26.9-11.2 48.1-27.8 64.8-16.7 16.6-37.9 24.2-64.8 27.8-26.2 3.5-59.9 3.5-102.8 3.5h-2.2c-42.9 0-76.6 0-102.8-3.5-26.9-3.6-48.1-11.2-64.8-27.8-16.6-16.7-24.1-37.9-27.8-64.8-3.5-26.2-3.5-59.9-3.5-102.8v-2.2c0-42.9 0-76.6 3.5-102.8 3.7-26.9 11.2-48.1 27.8-64.8 16.7-16.6 37.9-24.1 64.8-27.8 26.2-3.5 59.9-3.5 102.8-3.5h2.2c42.9 0 76.6 0 102.8 3.5zm-272.7 96.3c-3.3 24.2-3.3 56-3.3 100.2 0 44.3 0 76 3.3 100.2 3.2 23.8 9.3 38.1 19.9 48.7 10.6 10.6 24.9 16.7 48.7 19.9 24.2 3.3 56 3.3 100.2 3.3 44.3 0 76 0 100.2-3.3 23.8-3.2 38.1-9.3 48.7-19.9 10.6-10.6 16.7-24.9 19.9-48.7 3.3-24.2 3.3-55.9 3.3-100.2 0-44.2 0-76-3.3-100.2-3.2-23.8-9.3-38.1-19.9-48.7-10.6-10.6-24.9-16.7-48.7-19.9-24.2-3.3-55.9-3.3-100.2-3.3-44.2 0-76 0-100.2 3.3-23.8 3.2-38.1 9.3-48.7 19.9-10.6 10.6-16.7 24.9-19.9 48.7z"/></svg>
-                </div>
-                '.$success_message.'
-            </div>
-        </div>    
-    ';
+    FlashMessage::render($success_message);
 }
 // Pega a menagem de erro, se existir
 $error_message = FlashMessage::get('error');
 if ($error_message) {
-    echo '
-        <div class="flash-message-overlay">
-            <div class="flash-message-content">
-                <div class="flash-message-header">
-                    <svg class="fm-close" version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400"><style>.a{fill:#f5f5ff}</style><path fill-rule="evenodd" class="a" d="m200 172.1l51.8-51.8c7.7-7.7 20.2-7.7 27.9 0 7.7 7.7 7.7 20.2 0 27.9l-51.8 51.8 51.8 51.8c7.7 7.7 7.7 20.2 0 27.9-7.7 7.7-20.2 7.7-27.9 0l-51.8-51.8-51.8 51.8c-7.7 7.7-20.2 7.7-27.9 0-7.7-7.7-7.7-20.2 0-27.9l51.8-51.8-51.8-51.8c-7.7-7.7-7.7-20.2 0-27.9 7.7-7.7 20.2-7.7 27.9 0zm103.9-168.6c26.9 3.7 48.1 11.2 64.8 27.8 16.6 16.7 24.2 37.9 27.8 64.8 3.5 26.2 3.5 59.9 3.5 102.8v2.2c0 42.9 0 76.6-3.5 102.8-3.6 26.9-11.2 48.1-27.8 64.8-16.7 16.6-37.9 24.2-64.8 27.8-26.2 3.5-59.9 3.5-102.8 3.5h-2.2c-42.9 0-76.6 0-102.8-3.5-26.9-3.6-48.1-11.2-64.8-27.8-16.6-16.7-24.1-37.9-27.8-64.8-3.5-26.2-3.5-59.9-3.5-102.8v-2.2c0-42.9 0-76.6 3.5-102.8 3.7-26.9 11.2-48.1 27.8-64.8 16.7-16.6 37.9-24.1 64.8-27.8 26.2-3.5 59.9-3.5 102.8-3.5h2.2c42.9 0 76.6 0 102.8 3.5zm-272.7 96.3c-3.3 24.2-3.3 56-3.3 100.2 0 44.3 0 76 3.3 100.2 3.2 23.8 9.3 38.1 19.9 48.7 10.6 10.6 24.9 16.7 48.7 19.9 24.2 3.3 56 3.3 100.2 3.3 44.3 0 76 0 100.2-3.3 23.8-3.2 38.1-9.3 48.7-19.9 10.6-10.6 16.7-24.9 19.9-48.7 3.3-24.2 3.3-55.9 3.3-100.2 0-44.2 0-76-3.3-100.2-3.2-23.8-9.3-38.1-19.9-48.7-10.6-10.6-24.9-16.7-48.7-19.9-24.2-3.3-55.9-3.3-100.2-3.3-44.2 0-76 0-100.2 3.3-23.8 3.2-38.1 9.3-48.7 19.9-10.6 10.6-16.7 24.9-19.9 48.7z"/></svg>
-                </div>
-                '.$error_message.'
-            </div>
-        </div>    
-    ';
+    FlashMessage::render($error_message);
 }
 ?>
 <?php 
@@ -65,8 +48,8 @@ require_once get_template_directory() . '/components/search/Search.php';
                                 
                                 echo CardComponent::render(
                                     $image_url, 
-                                    'Título do Card', 
-                                    'Este é um exemplo de texto do card.', 
+                                    'Digital influencer', 
+                                    'Your audience deserves the best.', 
                                     'Sign up', 
                                     '/sign-up'
                                 );
@@ -75,8 +58,8 @@ require_once get_template_directory() . '/components/search/Search.php';
 
                                 echo CardComponent::render(
                                     $image_url2, 
-                                    'Título do Card', 
-                                    'Este é um exemplo de texto do card.', 
+                                    'Video editor', 
+                                    'Never run out of options.', 
                                     'Sign up', 
                                     '/sign-up'
                                 );
@@ -85,8 +68,8 @@ require_once get_template_directory() . '/components/search/Search.php';
 
                                 echo CardComponent::render(
                                     $image_url3, 
-                                    'Título do Card', 
-                                    'Este é um exemplo de texto do card.', 
+                                    'Professional producer', 
+                                    'The perfect soundtrack is here.', 
                                     'Sign up', 
                                     '/sign-up'
                                 );
@@ -95,8 +78,8 @@ require_once get_template_directory() . '/components/search/Search.php';
 
                                 echo CardComponent::render(
                                     $image_url4, 
-                                    'Título do Card', 
-                                    'Este é um exemplo de texto do card.', 
+                                    'Just chill', 
+                                    'Just enjoy your vibe.', 
                                     'Sign up', 
                                     '/sign-up'
                                 );
@@ -104,7 +87,6 @@ require_once get_template_directory() . '/components/search/Search.php';
                         </div>
                     <?php
                 } else {
-                    $is_premium = Users::check_user_premium_status();
                     if(!$is_premium){
                         ?>
                         <div class="cards">
@@ -306,46 +288,50 @@ require_once get_template_directory() . '/components/search/Search.php';
             echo PlayerComponent::render();
         ?>
     </div>
-    <?php get_footer(); ?>
+<?php get_footer(); ?>
+<?php 
+    if(!$is_premium):
+?>
 <script>
-const adAudioSrc = "https://cdn1.suno.ai/95017b6f-9324-44e3-b37d-08eccbf5a52e.mp3";
+    const adAudioSrc = "https://od.lk/s/Ml8yMzUyMTU1MDZf/soniica.mp3";
 
-window.songsPlayedCount = 0;
-const originalHandleSongEnd = globalPlayer.handleSongEnd.bind(globalPlayer);
-const nextSong = globalPlayer.next.bind(globalPlayer);
+    window.songsPlayedCount = 0;
+    const originalHandleSongEnd = globalPlayer.handleSongEnd.bind(globalPlayer);
+    const nextSong = globalPlayer.next.bind(globalPlayer);
 
-globalPlayer.handleSongEnd = function() {
-    window.songsPlayedCount++;
+    globalPlayer.handleSongEnd = function() {
+        window.songsPlayedCount++;
 
-    if (window.songsPlayedCount === 5) {
-        // Pausa e muta o player principal
-        globalPlayer.audio.pause();
-        globalPlayer.audio.muted = true;
+        if (window.songsPlayedCount === 1) {
+            // Pausa e muta o player principal
+            globalPlayer.audio.pause();
+            globalPlayer.audio.muted = true;
 
-        // Cria e toca o anúncio
-        const adAudio = new Audio(adAudioSrc);
-        adAudio.play();
-        globalPlayer.titleElement.textContent = "Sponsored Ad";
-        globalPlayer.artistElement.textContent = "Advertisement";
-        globalPlayer.thumbElement.src = "url_da_thumb_do_ad.png";
-        globalPlayer.timeElement.textContent = "00:00";
+            // Cria e toca o anúncio
+            const adAudio = new Audio(adAudioSrc);
+            adAudio.play();
+            globalPlayer.titleElement.textContent = "Sponsored Ad";
+            globalPlayer.artistElement.textContent = "Advertisement";
+            globalPlayer.thumbElement.src = "url_da_thumb_do_ad.png";
+            globalPlayer.timeElement.textContent = "00:00";
 
-        adAudio.addEventListener('ended', () => {
-            // Desmuta e volta a tocar o player principal
-            globalPlayer.audio.muted = false;
-            nextSong();
-   
+            adAudio.addEventListener('ended', () => {
+                // Desmuta e volta a tocar o player principal
+                globalPlayer.audio.muted = false;
+                nextSong();
+    
 
-            // Reseta o contador de músicas
-            window.songsPlayedCount = 0;
-        });
+                // Reseta o contador de músicas
+                window.songsPlayedCount = 0;
+            });
 
-        return; // Impede de avançar na playlist durante o anúncio
-    }
+            return; // Impede de avançar na playlist durante o anúncio
+        }
 
-    originalHandleSongEnd();
-};
-</script>    
+        originalHandleSongEnd();
+    };
+</script>
+<?php endif; ?> 
 
 
 

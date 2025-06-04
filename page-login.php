@@ -34,8 +34,8 @@ get_header();
 <div class="login-page">
     <div class="login-form">
         <div class="login-form-content">
-            <h3>Lorem Ipsum</h3>
-            <p>Lorem i psum dollor sit ammet.</p>
+            <h3>Log in</h3>
+            <p>Enter your email and password.</p>
             <form action="" method="post">
                     <label for="username">Email</label>
                     <input type="text" name="username" id="username" required>
@@ -51,7 +51,7 @@ get_header();
                         </div>
                     <?php endif; ?>
             </form>
-            <p>Don't have an account? <a href="/sign-up">Sign Up Now</a></p>
+            <p>👉 Don't have an account? <a href="/sign-up">Sign Up Now</a></p>
             <!--/form  -->
         </div>       
     </div>

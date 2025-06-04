@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['create_playlist'])) {
         'title' => sanitize_text_field($_POST['playlist_title'])
     ]);
     if ($result['success']) {
-        FlashMessage::set('success', 'Playlist criada com sucesso!');
+        FlashMessage::set('success', '➡️ Playlist created successfully!');
         ?>
         <script>window.location="<?php echo esc_url(home_url('/playlists')); ?>";</script> 
         <?php

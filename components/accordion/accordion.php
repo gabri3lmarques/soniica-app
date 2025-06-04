@@ -15,8 +15,11 @@ class Accordion {
                     <div class="accordion-content">
                         <ul>
                             <li><a href="/tag/happy/">Happy</a></li>
-                            <li><a href="#">Recentes</a></li>
-                            <li><a href="#">Playlists</a></li>
+                            <li><a href="/tag/acoustic">Acoustic</a></li>
+                            <li><a href="/tag/viral">Viral</a></li>
+                            <li><a href="/tag/tech">Tech</a></li>
+                            <li><a href="/tag/trending">Trending</a></li>
+                            <li><a href="/tag/trending">Rock</a></li>
                         </ul>
                     </div>
                 </div>
@@ -62,6 +65,7 @@ class Accordion {
                     <?php
                 } 
                 ?>
+                <?php if(is_user_logged_in()): ?>
                 <div class="accordion-item">
                     <div class="accordion-header">
                         <h3>Playlists</h3>
@@ -98,6 +102,7 @@ class Accordion {
                         </ul>
                     </div>
                 </div>
+                <?php endif; ?>
             </div>
         <?php
         return ob_get_clean();

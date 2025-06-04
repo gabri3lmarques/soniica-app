@@ -18,16 +18,16 @@ if ( isset( $_POST['submit'] ) ) {
 
     // Validações
     if ( empty( $username ) || empty( $email ) || empty( $password ) ) {
-        $errors[] = 'Preencha todos os campos.';
+        $errors[] = 'Please fill in all the fields.';
     }
     if ( ! is_email( $email ) ) {
-        $errors[] = 'Email inválido.';
+        $errors[] = 'Invalid email.';
     }
     if ( username_exists( $username ) ) {
-        $errors[] = 'O nome de usuário já está em uso.';
+        $errors[] = 'The username is already taken.';
     }
     if ( email_exists( $email ) ) {
-        $errors[] = 'O email já está em uso.';
+        $errors[] = 'The email is already taken.';
     }
 
     // Se não houver erros, cria o usuário
@@ -56,8 +56,8 @@ get_header();
     <div class="sign-up-side"></div>
     <div class="sign-up-container">
         <div class="sign-up-form">
-            <h3>Lorem Ipsum</h3>
-            <p>Lorem Ipsum dollor sit ammet</p>
+            <h3>Sign up</h3>
+            <p>Please fill in all the fields below.</p>
             <form action="" method="post">
                 <label for="username">Nome de Usuário</label>
                 <input type="text" name="username" id="username" required>
@@ -65,7 +65,7 @@ get_header();
                 <input type="email" name="email" id="email" required>
                 <label for="password">Senha</label>
                 <input type="password" name="password" id="password" required>
-                <input class="signup-button" type="submit" name="submit" value="Registrar">
+                <input class="signup-button" type="submit" name="submit" value="Register">
             </form>
             <?php if ( ! empty( $errors ) ) : ?>
                 <div class="registration-errors">
@@ -73,7 +73,8 @@ get_header();
                         <p class="error"><?php echo $error ?></p>
                     <?php endforeach; ?>
                 </div>
-            <?php endif; ?>            
+            <?php endif; ?>
+            <p>👉 Already have an account? <a href="/login">Log in</a></p>         
         </div>
     </div>
 </div>

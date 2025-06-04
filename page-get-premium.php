@@ -33,7 +33,7 @@ get_header();
                 // Verifica se o usuário já é premium
                 if($is_premium) {
                     ?>
-                    <script>window.location = "<?php echo home_url('/'); ?>";</script>
+                    <script>window.location = "<?php echo home_url('/premium-success'); ?>";</script>
                     <?php
                 } 
                 // Se não for premium, exibe o botão de assinatura

@@ -22,11 +22,11 @@ class PlayerComponent {
             </div>
             <div class="controls-progress-bar">
                 <div class="controls">
-                    <div class="button random">'.$random.'</div>
-                    <div class="button previous">'.$prev.'</div>
-                    <div class="button play-pause">'.$play.$pause.'</div>
-                    <div class="button next">'.$next.'</div>
-                    <div class="button loop">'.$loop.'</div>
+                    <div class="control-button random">'.$random.'</div>
+                    <div class="control-button previous">'.$prev.'</div>
+                    <div class="control-button play-pause">'.$play.$pause.'</div>
+                    <div class="control-button next">'.$next.'</div>
+                    <div class="control-button loop">'.$loop.'</div>
                     <a class="download-button" onclick="return handleDownload(event)">Download</a>
                 </div>
                 <div class="progress-bar-container">

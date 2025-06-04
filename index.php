@@ -306,6 +306,46 @@ require_once get_template_directory() . '/components/search/Search.php';
             echo PlayerComponent::render();
         ?>
     </div>
-<?php get_footer(); ?>
+    <?php get_footer(); ?>
+<script>
+const adAudioSrc = "https://cdn1.suno.ai/95017b6f-9324-44e3-b37d-08eccbf5a52e.mp3";
+
+window.songsPlayedCount = 0;
+const originalHandleSongEnd = globalPlayer.handleSongEnd.bind(globalPlayer);
+const nextSong = globalPlayer.next.bind(globalPlayer);
+
+globalPlayer.handleSongEnd = function() {
+    window.songsPlayedCount++;
+
+    if (window.songsPlayedCount === 5) {
+        // Pausa e muta o player principal
+        globalPlayer.audio.pause();
+        globalPlayer.audio.muted = true;
+
+        // Cria e toca o anúncio
+        const adAudio = new Audio(adAudioSrc);
+        adAudio.play();
+        globalPlayer.titleElement.textContent = "Sponsored Ad";
+        globalPlayer.artistElement.textContent = "Advertisement";
+        globalPlayer.thumbElement.src = "url_da_thumb_do_ad.png";
+        globalPlayer.timeElement.textContent = "00:00";
+
+        adAudio.addEventListener('ended', () => {
+            // Desmuta e volta a tocar o player principal
+            globalPlayer.audio.muted = false;
+            nextSong();
+   
+
+            // Reseta o contador de músicas
+            window.songsPlayedCount = 0;
+        });
+
+        return; // Impede de avançar na playlist durante o anúncio
+    }
+
+    originalHandleSongEnd();
+};
+</script>    
+
 
 

@@ -62,6 +62,42 @@ class Accordion {
                     <?php
                 } 
                 ?>
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>Playlists</h3>
+                        <span class="icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+   
+                            <?php
+                                $current_user_id = get_current_user_id();
+                                $playlists = get_posts([
+                                    'post_type' => 'playlist',
+                                    'author'    => $current_user_id,
+                                    'post_status' => 'publish',
+                                    'numberposts' => -1
+                                ]);
+                                if(!empty($playlists)){
+                                    echo '<ul>';
+                                    foreach ($playlists as $playlist) {
+                                        // Obtém o link direto da playlist
+                                        $playlist_link = get_permalink($playlist->ID);
+                                        // Exibe o link na lista
+                                        echo
+                                        '<li>
+                                            <a href="'.$playlist_link.'">
+                                            <span>'.$playlist->post_title.'<span>
+                                            </a>
+                                        </li>';
+                                    }
+                                    echo '</ul>';
+                                }
+                            ?>
+                        <ul>
+                            <li><a href="/playlists">Se all playlists</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         <?php
         return ob_get_clean();

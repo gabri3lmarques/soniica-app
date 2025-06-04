@@ -24,6 +24,7 @@ $is_premium = Users::check_user_premium_status();
         <h2>Pricing</h2>
         <div class="section">
             <h4>Free</h4>
+            <h3>$ 0.00/month</h3>
             <ul>
                 <li>🔔 Ads between songs</li>
                 <li>⏳ Wait 24 hours to download new releases</li>
@@ -37,6 +38,8 @@ $is_premium = Users::check_user_premium_status();
         <!-- /section -->
         <div class="section">
             <h4>Premium</h4>
+            <h3>$ 1.99/month</h3>
+            <p>(One dollar and ninety-nine cents per month)</p>
             <ul>
                 <li>🔕 Ad-free experience</li>
                 <li>🚀 Instant access to the latest releases</li>

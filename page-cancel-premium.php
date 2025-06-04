@@ -35,13 +35,13 @@ get_header();
                             <li>Music downloads for offline listening</li>
                             <li>An ad-free experience</li>
                         </ul>
-                        <p>Your account will remain active**, and you can upgrade back to Premium anytime if you change your mind!</p>
+                        <p>Your account will remain active, and you can upgrade back to Premium anytime if you change your mind!</p>
                         <p>If you need any help or have any questions, we’re here for you.</p>
                         <p>Are you sure you want to cancel your Premium subscription?</p>
                         <form method="POST">
                             <?php wp_nonce_field('cancel_subscription_nonce'); ?>
                             <button class="cancel-premium-btn" type="submit" name="cancel_subscription" class="btn btn-danger">
-                                Cancelar Assinatura
+                                Cancel premium
                             </button>
                         </form>
                         <p>You can always come back whenever you want!</p>

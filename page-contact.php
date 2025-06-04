@@ -29,6 +29,12 @@ $is_premium = Users::check_user_premium_status();
                 📬 <span>hello@soniica.com</span> 
             </p>                    
         </div>
+        <!-- /section -->
+         <div class="section">
+            <h4>💬 Need a hand? We’ve got you! </h4>
+            <p>If you’re having any trouble or just need some help, our team is ready to assist.</p>
+            <p>📧 Reach out at <span>help@soniica.com</span> — we’ll get back to you as soon as possible!</p>
+         </div>
      </div>
     <!-- o corpo do site -->
 </div>

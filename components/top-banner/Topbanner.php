@@ -22,9 +22,8 @@
             <div class="top-banner not-premium">
             <div class="top-banner-content">
                     <div>
-                        <h2>Sign up for free</h2>
-                        <p>Create playlists, discover amazing music, and download your favorites.</p>
-                        <p>Sign up with just an email — no sensitive data required. Fast and secure!</p>
+                        <h2>Unlock the full power of Soniica for only <span>$1.99</span> per month!</h2>
+                        <p>Ad-free experience, instant access to the latest releases, unlimited downloads and unlimited playlists.</p>
                         <a class="cta" href="/get-premium">Upgrade now</a>
                     </div>
                 </div>

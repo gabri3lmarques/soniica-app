@@ -11,12 +11,7 @@
          $user_id = get_current_user_id();
          // Atualize o meta do usuário para 'premium'
          update_user_meta($user_id, 'is_premium', true);  // Atualiza o status de premium para true
-         echo "Você agora é um usuário premium!";
-     } else {
-         echo "Houve um erro com a sua assinatura.";
-     }
- } else {
-     echo "Sessão de pagamento não encontrada.";
+     } 
  }
  use user\Users;
  get_header();
@@ -32,12 +27,21 @@
                  $is_premium = Users::check_user_premium_status();
                  if($is_premium){
                      ?>
-                         <h2>Congratulations! You are now a Premium member!</h2>                
+                         <h2>Congratulations!🦸‍♂️ You just unlocked your Premium superpowers!</h2>
+                         <p>No more limits. No more ads. Just pure sound freedom.</p>
+                         <p>
+                             🎶 Unlimited playlists <br>
+                            🚀 Early access to new releases <br>
+                            📥 Unlimited downloads <br>
+                            🔕 100% ad-free experience
+                         </p>
+                        <p>Thanks for supporting Soniica — now go and flex those powers. The stage is yours. 🔊✨   </p>                             
                      <?php
                  } else {
                      ?>
                          <h2>Oops! Something went wrong.</h2>
-                         <p>It seems like you are not a Premium member yet. Please try again.</p>
+                         <p>It seems like you are not a Premium member yet.</p>
+                         <a href="get-premium" class="button go-premium">Go premium</a>
                      <?php
                  }                 
              ?>

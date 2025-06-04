@@ -22,7 +22,7 @@ if(profilePictureForm) {
 let removeProfilePicture = document.getElementById("remove-profile-picture");
 if(removeProfilePicture) {
   removeProfilePicture.addEventListener("click", function () {
-    if (!confirm("Tem certeza que deseja remover sua imagem de perfil?")) return;
+    if (!confirm("Are you sure you want to remove your profile picture?")) return;
   
     const formData = new FormData();
     formData.append("action", "remove_profile_picture");

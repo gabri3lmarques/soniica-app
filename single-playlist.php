@@ -173,11 +173,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_playlist'])) {
                         </div>
                         <!-- /song -->
                 <?php endforeach;
-            } else {
-                echo "<li>Esta playlist não possui músicas válidas.</li>";
             }
         } else {
-            echo "<p>Esta playlist ainda não possui músicas.</p>";
+            echo "<p style='margin-top:30px'>This playlist doesn't have any songs yet.</p>";
         }
         ?>    
     </div>

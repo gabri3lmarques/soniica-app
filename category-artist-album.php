@@ -205,10 +205,7 @@ if ( is_category() ) {
                                 <?php
                             }
                             echo '</ul>';
-                        } else {
-                            echo '<p>Nenhum post do tipo "song" encontrado nesta categoria.</p>';
-                        }
-
+                        } 
                         // Restaura os dados originais do post
                         wp_reset_postdata();
                 ?>                             

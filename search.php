@@ -170,8 +170,8 @@ $user_playlists = get_posts([
         <?php endwhile; ?>
         <?php the_posts_pagination(array(
             'mid_size' => 2,
-            'prev_text' => __('Previous'),
-            'next_text' => __('Next'),
+            'prev_text' => 'Previous',
+            'next_text' => 'Next',
         )); ?>
         </div>
         <?php else : ?>

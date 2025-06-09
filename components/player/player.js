@@ -36,6 +36,9 @@ class Player {
         this.initializeFirstSong();
         this.audio.volume = this.volumeSlider.value;
     }
+    isPlayerDisabled() {
+        return document.querySelector('#player-main')?.classList.contains('disabled');
+    }
     adjustVolume(event) {
         // Ajustar o volume do elemento de áudio com base no slider
         const newVolume = event.target.value;
@@ -66,6 +69,9 @@ class Player {
         }
     }
     toggleRandom() {
+        if(this.isPlayerDisabled()){
+            return
+        }
         this.isRandom = !this.isRandom;
         // Adicionar ou remover a classe 'active' no botão random
         if (this.isRandom) {
@@ -75,7 +81,9 @@ class Player {
         }
     }
     getRandomSong() {
-        const songs = [...this.currentPlaylist.querySelectorAll('.song')];
+                if(this.isPlayerDisabled()){
+            return
+        }
         let randomSong;
         do {
             randomSong = songs[Math.floor(Math.random() * songs.length)];
@@ -96,6 +104,9 @@ class Player {
         return songs[currentIndex - 1] || (this.isLooping ? songs[songs.length - 1] : null);
     }
     play(songElement, playlistElement) {
+        if(this.isPlayerDisabled()){
+            return
+        }
         try {
             const encodedUrl = songElement.dataset.src;
             const decodedUrl = atob(encodedUrl);
@@ -116,6 +127,7 @@ class Player {
             this.currentPlaylist = playlistElement;
             this.updatePlayerInfo(songElement);
             this.syncButtons(songElement);
+
         } catch (e) {
             console.error('Error playing song:', e);
         }
@@ -131,6 +143,9 @@ class Player {
         this.playPauseButton.classList.remove('active');
     }
     togglePlayPause() {
+                if(this.isPlayerDisabled()){
+            return
+        }
         if (this.isPlaying) {
             this.pause(this.currentSong);
         } else {
@@ -142,6 +157,9 @@ class Player {
         }
     }
     toggleLoop() {
+        if(this.isPlayerDisabled()){
+            return
+        }
         this.isLooping = !this.isLooping;
         if (this.isLooping) {
             this.loopButton.classList.add('active');

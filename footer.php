@@ -51,11 +51,9 @@ $is_premium = Users::check_user_premium_status();
     if(!$is_premium):
 ?>
 <script>
-   
 const mainPlayer = document.querySelector('#player-main');
-const songs = document.querySelectorAll('.playlist .song');
-console.log(songs);
 if(mainPlayer){
+    const songs = document.querySelectorAll('.playlist .song');
     const adAudioSrc = "https://od.lk/s/Ml8yMzUyMTU1MDZf/soniica.mp3";
     window.songsPlayedCount = 0;
     const originalHandleSongEnd = globalPlayer.handleSongEnd.bind(globalPlayer);

@@ -155,4 +155,43 @@
             }
         }
     }
+    &.not-found {
+        .page-template_left-side {
+            background-image: url('../img/arts/not-found/not-found.jpg');
+            background-size: cover;
+            background-position: center;
+            @media (max-width: 992px) {
+                display: none;
+            }
+        }
+        .page-template_right-side{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .page-template_right-side_content {
+                display: flex;
+                flex-direction: column;
+                //align-items: center;
+                justify-content: center;
+                h2 {
+                    font-size: 36px;
+                    margin-bottom: 20px;
+                    color: colors.$text-darker;
+                }
+                p {
+                    margin-top: 10px;
+                    color: colors.$text-darker;
+                }
+                a {
+                    color: colors.$main-color;
+                    text-decoration: none;
+                    font-weight: 600;
+                    margin-top: 20px;
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
 }

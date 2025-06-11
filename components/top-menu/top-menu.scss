@@ -77,7 +77,8 @@
                 pointer-events: all;
             }
             .user-sub-menu-content {
-                background-color: colors.$dark-sidebar;
+                background-color: rgba(colors.$dark-sidebar, 0.7);
+                backdrop-filter: blur(10px);
                 border: 1px solid colors.$dark-borders;
                 padding: 10px;
                 border-radius: 6px;

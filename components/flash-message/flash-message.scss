@@ -9,6 +9,7 @@
     z-index: 98;
     justify-content: center;
     background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
     display: flex;
         .flash-message-content {
             background-color: colors.$dark-sidebar;

@@ -11,6 +11,7 @@
     z-index: 100;
     opacity: 0;
     pointer-events: none;
+    backdrop-filter: blur(10px);
 
     &.active {
         opacity: 1;
@@ -19,58 +20,79 @@
         height: 100%;
     }
 
+    .playlist-modal-close {
+        svg {
+            path {
+                &:hover {
+                    fill: colors.$main-color;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
     .playlist-modal {
         background-color: colors.$dark-sidebar;
-        padding: 40px;
+        padding: 20px;
         border-radius: 10px;
         border: 1px solid colors.$dark-borders;
 
-        select {
-            background-color: #272727;
-            border: 1px solid #272727;
-            color: #e3e3e3;
-            padding: 4px 4px;
-            height: 30px;
-            border-radius: 2px;
-            font-size: 13px;
-            cursor: pointer;
-            transition: all .2sease;
-            outline: 0;
-            margin: 0;
-            &:hover {
-                color: colors.$main-color;
-                background-color: rgba(colors.$main-color, 0.05);
-            }
-            option {
-                background-color: colors.$dark-sidebar;
-                color: rgba(#fff, 0.5);
-    
+        .playlist-modal-head {
+            padding: 30px;
+            padding-bottom: 10px;
+        }
+
+        .playlist-modal-body {
+            padding: 30px;
+            padding-top: 0;
+
+            select {
+                background-color: #272727;
+                border: 1px solid #272727;
+                color: #e3e3e3;
+                padding: 4px 4px;
+                height: 30px;
+                border-radius: 2px;
+                font-size: 13px;
+                cursor: pointer;
+                transition: all .2sease;
+                outline: 0;
+                margin: 0;
                 &:hover {
                     color: colors.$main-color;
                     background-color: rgba(colors.$main-color, 0.05);
                 }
+                option {
+                    background-color: colors.$dark-sidebar;
+                    color: rgba(#fff, 0.5);
+        
+                    &:hover {
+                        color: colors.$main-color;
+                        background-color: rgba(colors.$main-color, 0.05);
+                    }
+                }
             }
-        }
 
-        .add-to-playlist {
-            background-color: #272727;
-            border: 1px solid #272727;
-            color: #e3e3e3;
-            padding: 4px 6px;
-            border-radius: 2px;
-            height: 30px;
-            width: 30px;
-            font-size: 15px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all .2sease;
-            outline: 0;
-            margin: 0;
-            background-repeat: no-repeat;
-            background-position: center;
-            &:hover {
-                color: colors.$main-color;
-                background-color: rgba(colors.$main-color, 0.05);
+            .add-to-playlist {
+                background-color: #272727;
+                border: 1px solid #272727;
+                color: #e3e3e3;
+                padding: 4px 6px;
+                border-radius: 2px;
+                height: 30px;
+                width: 30px;
+                font-size: 15px;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all .2sease;
+                outline: 0;
+                margin: 0;
+                background-repeat: no-repeat;
+                background-position: center;
+                &:hover {
+                    color: colors.$main-color;
+                    background-color: rgba(colors.$main-color, 0.05);
+                }
             }
         }
     }

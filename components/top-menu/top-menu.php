@@ -59,6 +59,7 @@ class TopMenu {
                                 }
                             ?>
                         </div>
+                        <!-- user sub menu -->
                         <div class="user-sub-menu">
                             <div class="user-sub-menu-content">
                                 <?php 
@@ -75,18 +76,23 @@ class TopMenu {
                                     <li><a href="<?php echo home_url('/playlists'); ?>">Playlists</a></li><!--  -->
                                     <?php if($is_premium) {
                                         ?>
-                                        <li><a href="<?php echo home_url('/cancel-premium'); ?>">Cancel Premium</a></li>
+                                        <li class="bordered"><a href="<?php echo home_url('/cancel-premium'); ?>">Cancel Premium</a></li>
                                         <?php
                                         } else {
                                             ?>
-                                            <li><a href="<?php echo home_url('/get-premium'); ?>">Go premium</a></li>
+                                            <li class="bordered"><a href="<?php echo home_url('/get-premium'); ?>">Go premium</a></li>
                                             <?php
                                         }
                                     ?>
+                                    <li><a href="<?php home_url('/about-us'); ?>">About us</a></li>
+                                    <li><a href="<?php home_url('/pricing'); ?>">Pricing</a></li>
+                                    <li><a href="<?php home_url('/contact-us'); ?>">Contact us</a></li>
+                                    <li class="bordered"><a href="<?php echo home_url('/license'); ?>">License</a></li>
                                     <li><a href="<?php echo wp_logout_url(home_url()); ?>">Log out</a></li>
                                 </ul>
                             </div>
                         </div>
+                        <!-- /user sub menu -->
                     <?php } ?>
                 </div>
             </div>

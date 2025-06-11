@@ -138,33 +138,6 @@
     }
     form {
         display: none;
-        select {
-            background-color: #272727;
-            border: 1px solid #272727;
-            color: #e3e3e3;
-            padding: 4px 4px;
-            height: 30px;
-            border-radius: 2px;
-            font-size: 13px;
-            cursor: pointer;
-            transition: all .2sease;
-            outline: 0;
-            margin: 0;
-            transform: translateY(-4px);
-            &:hover {
-                color: colors.$main-color;
-                background-color: rgba(colors.$main-color, 0.05);
-            }
-            option {
-                background-color: colors.$dark-sidebar;
-                color: rgba(#fff, 0.5);
-    
-                &:hover {
-                    color: colors.$main-color;
-                    background-color: rgba(colors.$main-color, 0.05);
-                }
-            }
-        }
     }
     .add-to-playlist-button {
         background-color: #272727;

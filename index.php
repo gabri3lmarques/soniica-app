@@ -291,7 +291,9 @@ require_once get_template_directory() . '/components/search/Search.php';
     </div>
     <div class="playlist-modal-background">
         <div class="playlist-modal">
-            <div class="playlist-modal-head"></div>
+            <div class="playlist-modal-head">
+                <h3>Selecione uma playlist</h3>
+            </div>
             <div class="playlist-modal-body"></div>
         </div>
     </div>

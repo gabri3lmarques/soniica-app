@@ -84,9 +84,9 @@ class TopMenu {
                                             <?php
                                         }
                                     ?>
-                                    <li><a href="<?php home_url('/about-us'); ?>">About us</a></li>
-                                    <li><a href="<?php home_url('/pricing'); ?>">Pricing</a></li>
-                                    <li><a href="<?php home_url('/contact-us'); ?>">Contact us</a></li>
+                                    <li><a href="<?php echo home_url('/about-us'); ?>">About us</a></li>
+                                    <li><a href="<?php echo home_url('/pricing'); ?>">Pricing</a></li>
+                                    <li><a href="<?php echo home_url('/contact-us'); ?>">Contact us</a></li>
                                     <li class="bordered"><a href="<?php echo home_url('/license'); ?>">License</a></li>
                                     <li><a href="<?php echo wp_logout_url(home_url()); ?>">Log out</a></li>
                                 </ul>

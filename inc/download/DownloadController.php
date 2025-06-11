@@ -3,7 +3,7 @@ namespace download;
 use user\Users;
 class DownloadController {
     //private const DOWNLOAD_COOLDOWN = 86400; // 24 horas em segundos
-    private const DOWNLOAD_COOLDOWN = 1800; // 30 min em segundos
+    private const DOWNLOAD_COOLDOWN = 1800; // 1800 30 min em segundos
     public static function canDownload() {
         if (!is_user_logged_in()) {
             return [
@@ -23,6 +23,9 @@ class DownloadController {
         $user_id = get_current_user_id();
         $last_download = get_user_meta($user_id, 'last_download_timestamp', true);
         $credits = get_user_meta($user_id, 'credits', true);
+        if ($credits === '' || $credits === false) {
+            $credits = 0;
+        }
         if (empty($last_download) || $credits > 0) {
             return [
                 'allowed' => true,
@@ -37,16 +40,19 @@ class DownloadController {
                 'message' => 'Download permitido'
             ];
         }
-        $hours_remaining = ceil((self::DOWNLOAD_COOLDOWN - $time_passed) / 3600);
+        $hours_remaining = ceil((self::DOWNLOAD_COOLDOWN - $time_passed) / 60);
         return [
             'allowed' => false,
-            'message' => "Aguarde mais {$hours_remaining} horas para fazer outro download. Considere se tornar premium para downloads ilimitados!"
+            'message' => "⏰ Aguarde mais {$hours_remaining} minutos para fazer outro download."
         ];
     }
     public static function registerDownload() {
         $user_id = get_current_user_id();
         update_user_meta($user_id, 'last_download_timestamp', time());
         $credits = get_user_meta($user_id, 'credits', true);
+        if ($credits === '' || $credits === false) {
+            $credits = 0;
+        }
         update_user_meta($user_id, 'credits', $credits - 1);
     }
     public static function getDownloadLink($secure_download_url) {

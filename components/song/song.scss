@@ -137,6 +137,7 @@
         }
     }
     form {
+        display: none;
         select {
             background-color: #272727;
             border: 1px solid #272727;
@@ -165,7 +166,7 @@
             }
         }
     }
-    .add-to-playlist {
+    .add-to-playlist-button {
         background-color: #272727;
         border: 1px solid #272727;
         color: #e3e3e3;
@@ -179,7 +180,9 @@
         transition: all .2sease;
         outline: 0;
         margin: 0;
-        transform: translateY(-4px);
+        background-image: url('../img/icons/add-play.svg');
+        background-repeat: no-repeat;
+        background-position: center;
         &:hover {
             color: colors.$main-color;
             background-color: rgba(colors.$main-color, 0.05);

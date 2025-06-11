@@ -61,6 +61,9 @@
             }
         }
         .page-template_right-side {
+            @media screen and (max-width: 576px) {
+                padding-top: 200px;
+            }
             .page-template_right-side_content {
                 h2 {
                     font-size: 36px;
@@ -98,6 +101,9 @@
     //CANCEL PREMIUM PAGE CSS
     &.cancel-premium {
         .page-template_left-side {
+            @media screen and (max-width: 576px) {
+                padding-top: 200px;
+            }
             display: flex;
             justify-content: center;
             align-items: center;

@@ -248,10 +248,11 @@ require_once get_template_directory() . '/components/search/Search.php';
                                 <?php
                             }
                         ?>
+                        <button class="add-to-playlist-button"></button>
                         <?php 
                             if(is_user_logged_in()){
                                 ?>
-                                    <form class="hide-576" method="POST" style="margin-top: 10px;">
+                                    <form class="playlist-form" method="POST" style="margin-top: 10px;">
                                         <input type="hidden" name="song_id" value="<?php echo $song->ID; ?>">
                                         <label for="playlist_id_<?php echo $song->ID; ?>"></label>
                                             <select name="playlist_id" id="playlist_id_<?php echo $song->ID; ?>" required>
@@ -262,7 +263,7 @@ require_once get_template_directory() . '/components/search/Search.php';
                                                     </option>
                                                 <?php endforeach; ?>
                                             </select>
-                                        <button class="add-to-playlist type="submit" name="add_song_to_playlist">+</button>
+                                        <button class="add-to-playlist" type="submit" name="add_song_to_playlist">+</button>
                                     </form>
                                 <?php
                             }
@@ -287,6 +288,12 @@ require_once get_template_directory() . '/components/search/Search.php';
         <?php 
             echo PlayerComponent::render();
         ?>
+    </div>
+    <div class="playlist-modal-background">
+        <div class="playlist-modal">
+            <div class="playlist-modal-head"></div>
+            <div class="playlist-modal-body"></div>
+        </div>
     </div>
 <?php get_footer(); ?>
 

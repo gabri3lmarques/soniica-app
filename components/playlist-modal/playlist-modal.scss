@@ -21,6 +21,9 @@
     }
 
     .playlist-modal-close {
+        display: flex;
+        justify-content: flex-end;
+
         svg {
             path {
                 &:hover {

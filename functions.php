@@ -129,8 +129,14 @@ function soniica_delete_user_account() {
     wp_send_json_success('👉 Account deleted successfully.');
 }
 
-
-
+// controle do logout
+add_action('template_redirect', function () {
+    if (is_page('logout')) {
+        wp_logout();
+        wp_redirect(home_url());
+        exit;
+    }
+});
 
 
 

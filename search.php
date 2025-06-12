@@ -192,5 +192,18 @@ $user_playlists = get_posts([
         echo PlayerComponent::render();
     ?>
 </div>
-
+<div class="playlist-modal-background">
+    <div class="playlist-modal">
+        <div class="playlist-modal-close">
+            <svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+                <style>.a{fill:#fff}</style>
+                <path fill-rule="evenodd" class="a" d="m0.4 0.4c0.6-0.5 1.5-0.5 2.1 0l7.5 7.6 7.5-7.6c0.6-0.5 1.5-0.5 2.1 0 0.5 0.6 0.5 1.5 0 2.1l-7.6 7.5 7.6 7.5c0.5 0.6 0.5 1.5 0 2.1-0.6 0.5-1.5 0.5-2.1 0l-7.5-7.6-7.5 7.6c-0.6 0.5-1.5 0.5-2.1 0-0.5-0.6-0.5-1.5 0-2.1l7.6-7.5-7.6-7.5c-0.5-0.6-0.5-1.5 0-2.1z"></path>
+            </svg>                  
+        </div>
+        <div class="playlist-modal-head">
+            <h3>Selecione uma playlist</h3>
+        </div>
+        <div class="playlist-modal-body"></div>
+    </div>
+</div>
 <?php get_footer(); ?>

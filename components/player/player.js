@@ -143,7 +143,7 @@ class Player {
         this.playPauseButton.classList.remove('active');
     }
     togglePlayPause() {
-                if(this.isPlayerDisabled()){
+        if(this.isPlayerDisabled()){
             return
         }
         if (this.isPlaying) {
@@ -168,12 +168,18 @@ class Player {
         }
     }
     next() {
+        if(this.isPlayerDisabled()){
+            return
+        }
         const nextSong = this.getNextSong();
         if (nextSong) {
             this.play(nextSong, this.currentPlaylist);
         }
     }
     previous() {
+        if(this.isPlayerDisabled()){
+            return
+        }
         if (this.audio.currentTime > 2) {
             this.audio.currentTime = 0;
         } else {

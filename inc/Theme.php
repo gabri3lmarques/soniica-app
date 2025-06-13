@@ -25,5 +25,6 @@ class Theme {
         new life_cycle\LifeCycleManager();
         new flash_message\FlashMessage();
         new playlist\Playlist();
+        new password\PasswordRecovery();
     }
 }

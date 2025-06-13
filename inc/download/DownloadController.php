@@ -19,6 +19,7 @@ class DownloadController {
         }
         return self::checkLastDownload();
     }
+
     private static function checkLastDownload() {
         $user_id = get_current_user_id();
         $last_download = get_user_meta($user_id, 'last_download_timestamp', true);
@@ -46,6 +47,7 @@ class DownloadController {
             'message' => "⏰ Aguarde mais {$hours_remaining} minutos para fazer outro download."
         ];
     }
+
     public static function registerDownload() {
         $user_id = get_current_user_id();
         update_user_meta($user_id, 'last_download_timestamp', time());
@@ -55,6 +57,7 @@ class DownloadController {
         }
         update_user_meta($user_id, 'credits', $credits - 1);
     }
+    
     public static function getDownloadLink($secure_download_url) {
         $download_check = self::canDownload();
         if (!$download_check['allowed']) {

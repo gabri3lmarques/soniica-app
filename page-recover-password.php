@@ -1,14 +1,27 @@
 <?php
 use password\PasswordRecovery;
+get_header();
 ?>
-
-<form id="recover-form">
-  <label>Email:</label>
-  <input type="email" name="email" required>
-  <button type="submit">Recuperar senha</button>
-</form>
-
-<p id="feedback"></p>
+<div class="top-bar">
+    <?php include 'components/top-menu/top-menu.php'; ?>
+</div>
+<div class="page-template not-found">
+    <div class="page-template_left-side">
+    </div>
+    <div class="page-template_right-side">
+        <div class="page-template_right-side_content">
+            <h2>Recuperar senha</h2>
+            <p>Digite o seu email no campo abaixo.</p>
+            <p></p>
+            <form id="recover-form">
+            <label>Email:</label>
+            <input type="email" name="email" required>
+            <button type="submit">Recuperar senha</button>
+            </form>
+            <p id="feedback"></p>
+        </div>
+    </div>
+</div>
 <script type="text/javascript"
         src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
 </script>
@@ -40,5 +53,6 @@ use password\PasswordRecovery;
     document.getElementById('feedback').textContent = data.message;
   });
 </script>
+<?php get_footer(); ?>
 
 

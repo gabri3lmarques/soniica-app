@@ -56,7 +56,8 @@ get_header();
                         </div>
                     <?php endif; ?>
             </form>
-            <p>👉 Don't have an account? <a href="/sign-up">Sign Up Now</a></p>
+            <p>👉 Don't have an account? <a href="/sign-up">Sign Up Now</a>.</p>
+            <p>👉 Esqueceu sua senha? <a href="/recover-password">Recuperar senha</a>.</p>
             <!--/form  -->
         </div>       
     </div>

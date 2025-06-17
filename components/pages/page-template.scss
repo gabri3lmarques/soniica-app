@@ -101,13 +101,15 @@
     //CANCEL PREMIUM PAGE CSS
     &.cancel-premium {
         .page-template_left-side {
-            @media screen and (max-width: 576px) {
-                padding-top: 200px;
-            }
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 20px;
+
+            @media screen and (max-width: 576px) {
+                padding-top: 200px;
+            }
+
             h2 {
                 font-size: 36px;
                 margin-bottom: 40px;
@@ -195,6 +197,49 @@
                     margin-top: 20px;
                     &:hover {
                         text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+    &.recover-password {
+        .page-template_left-side {
+            background-image: url('../img/arts/recover-password/recover-password.jpg');
+            background-size: cover;
+            background-position: center;
+            @media (max-width: 992px) {
+                display: none;
+            }
+        }
+        .page-template_right-side {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .page-template_right-side_content {
+                display: flex;
+                flex-direction: column;
+                form {
+                    display: flex;
+                    flex-direction: column;
+                    input {
+                        margin-bottom: 20px;
+                        padding: 10px;
+                        border-radius: 4px;
+                        border: 1px solid colors.$text-darker;
+                        font-size: 16px;
+                    }
+                    button {
+                        background-color: colors.$main-color;
+                        color: rgba(#000, 0.7);
+                        font-weight: 600;
+                        padding: 10px;
+                        border-radius: 4px;
+                        border: none;
+                        cursor: pointer;
+                        &:hover {
+                            background-color: rgba(colors.$main-color, 0.2);
+                            color: colors.$main-color;
+                        }
                     }
                 }
             }

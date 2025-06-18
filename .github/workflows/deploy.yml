@@ -3,12 +3,11 @@ name: Deploy via SFTP
 on:
   push:
     branches:
-      - master  # ou "master", se for o seu caso
-
+      - master  
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
+    environment: soniica  
     steps:
       - name: Checkout do código
         uses: actions/checkout@v3

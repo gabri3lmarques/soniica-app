@@ -27,4 +27,4 @@ wp-content/upgrade/
 .DS_Store
 
 # Arquivos de deploy do GitHub Actions
-.github/
+

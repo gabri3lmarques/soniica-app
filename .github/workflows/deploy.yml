@@ -1,0 +1,24 @@
+name: Deploy via SFTP
+
+on:
+  push:
+    branches:
+      - master  # ou "master", se for o seu caso
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v3
+
+      - name: Deploy via SFTP
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          host: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASS }}
+          port: ${{ secrets.FTP_PORT }}
+          source: "*"
+          target: "/public_html/wp-content/themes/soniica/"

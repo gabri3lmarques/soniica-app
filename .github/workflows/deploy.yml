@@ -22,4 +22,4 @@ jobs:
           key: ${{ secrets.FTP_KEY }}
           port: ${{ secrets.FTP_PORT }}
           source: "*"
-          target: "/public_html/wp-content/themes/soniica"
+          target: "/home/u336019966/domains/soniica.com/public_html/wp-content/themes/soniica"

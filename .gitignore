@@ -26,5 +26,4 @@ wp-content/upgrade/
 .env.*.local
 .DS_Store
 
-# Arquivos de deploy do GitHub Actions
 

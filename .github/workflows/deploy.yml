@@ -3,12 +3,13 @@ name: Deploy via SFTP
 on:
   push:
     branches:
-      - master  
+      - master
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: soniica 
-    
+    environment: soniica
+
     steps:
       - name: Checkout do código
         uses: actions/checkout@v3
@@ -18,8 +19,7 @@ jobs:
         with:
           host: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USER }}
-          password: ${{ secrets.FTP_PASS }}
-          key: ${{ secrets.FTP_KEY }}
+          key: ${{ secrets.FTP_KEY }}   
           port: ${{ secrets.FTP_PORT }}
           source: "*"
           target: "/public_html/wp-content/themes/soniica/"

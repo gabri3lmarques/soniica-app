@@ -131,7 +131,7 @@
             border-radius: 10px;
             .progress-bar {
                 height: 5px;
-                background: linear-gradient(to right, #708303, colors.$main-color, );
+                background: linear-gradient(to right, colors.$main-variation, colors.$main-color, );
                 width: 0;
                 position: relative;
                 border-radius: 10px;
@@ -167,7 +167,7 @@
             appearance: none;  /* Remove o estilo padrão */
             width: 100%;  /* Tamanho do slider */
             height: 5px;  /* Altura da barra */
-            background: linear-gradient(to right, #708303, colors.$main-color, );
+            background: linear-gradient(to right, colors.$main-variation, colors.$main-color, );
             border-radius: 5px;  /* Cantos arredondados */
             outline: none;  /* Remove o contorno ao focar */
             transition: background 0.3s ease;  /* Transição suave */

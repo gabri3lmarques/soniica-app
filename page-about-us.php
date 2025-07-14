@@ -27,14 +27,16 @@ $is_premium = Users::check_user_premium_status();
         </p> 
         <h2>About Us</h2>
         <div class="section">
-            <h4>&#127925; Soniica is unlike anything you’ve seen before</h4> 
-            <p>This isn’t just another music platform. <span>It’s Soniica</span>.</p>
-            <p>A place where <spn>every track is crafted</spn> not just <span>for your ears</span> but <span>for your story</span>.</p>
-            <p>Soniica is built different.</p>
-            <p>Whether you're creating the <span>next big thing</span> or just <span>living your moment</span>, we’ve got the <span>perfect soundtrack</span> for it—custom-made using cutting-edge <span>AI technology</span>.</p>
-            <p>From background scores for your projects to <span>mood-perfect songs for your life</span>, Soniica delivers music that feels like it was <span>made just for you</span>.</p>
-            <p>Welcome to the future of sound.</p>
-            <p>Welcome to Soniica.                               </p>
+            <h4>&#127925; Soniica é diferente de tudo que você já viu e ouviu</h4> 
+            <p>O Soniica não é só mais uma plataforma de música. É diferente — é um mix de tecnologia de ponta com o feeling musical que a sua história merece.</p>
+            <p>Um lugar onde cada faixa é criada não só para os seus ouvidos, mas também para o seu coração.</p>
+            <p>O Soniica foi criado de um jeito único. É a mistura da genialidade da Inteligência Artificial com a sensibilidade humana — uma fusão perfeita entre dois mundos.</p>
+            <p>Não importa se vocẽ está em busca do próximo Oscar, ou quer apenas curtir o momento. A sua trilha sonora perfeita está aqui. </p>
+            <p>Com artistas e trilhas sonoras originais, o Soniica reúne tudo o que você precisa em um só lugar.</p>
+            <p>Quer aquele som viral pra bombar no TikTok? Que tal uma pegada sci-fi? Precisa embalar um evento profissional — ou o churrasco da galera? Talvez você só queira curtir um som enquanto está no metrô, indo pro trabalho ou pra facul.</p>
+            <p>E o melhor: novos artistas e músicas são adicionados todos os dias.</p>
+            <p>Bem-vindo a evolução do audio visual.</p>
+            <p>Bem-vindo ao Soniica.</p>
         </div>
         <!-- /section -->
      </div>

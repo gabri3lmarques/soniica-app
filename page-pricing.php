@@ -26,33 +26,33 @@ $is_premium = Users::check_user_premium_status();
             </a>
         </p>          
         <!-- License -->
-        <h2>Pricing</h2>
+        <h2>Planos</h2>
         <div class="section">
             <h4>Free</h4>
-            <h3>$ 0.00/month</h3>
+            <h3>R$ 0.00/mês</h3>
             <ul>
-                <li>🔔 Ads between songs</li>
-                <li>⏳ Wait 24 hours to download new releases</li>
-                <li>📥 1 download every 30 minutes</li>
-                <li>📁 1 playlist only </li>
+                <li>🔔 Anúncios entre as músicas</li>
+                <li>⏳ Espere 24 horas para baixar novos lançamentos</li>
+                <li>📥 1 download a cada 30 minutos</li>
+                <li>📁 Apenas 1 playlist</li>
             </ul>
             <?php if(!$is_premium): ?>
-                <a href="/get-premium" class="button go-premium">Go premium</a>
+                <a href="/get-premium" class="button go-premium">Ser premium</a>
             <?php endif; ?>                        
         </div>
         <!-- /section -->
         <div class="section">
             <h4>Premium</h4>
-            <h3>$ 1.99/month</h3>
-            <p>(One dollar and ninety-nine cents per month)</p>
+            <h3>R$ 9.99/mês</h3>
+            <p>(Nove reais e noventa e nove centavos por mês)</p>
             <ul>
-                <li>🔕 Ad-free experience</li>
-                <li>🚀 Instant access to the latest releases</li>
-                <li>🎸 Unlimited downloads</li>
-                <li>🎶 Unlimited playlists </li>
+                <li>🔕 Experiência sem anúncios</li>
+                <li>🚀 Acesso instantâneo aos lançamentos</li>
+                <li>🎸 Downloads ilimitados</li>
+                <li>🎶 Playlists ilimitadas </li>
             </ul> 
             <?php if(!$is_premium): ?>
-                <a href="/get-premium" class="button go-premium">Go premium</a>
+                <a href="/get-premium" class="button go-premium">Ser premium</a>
             <?php endif; ?>            
         </div>
         <!-- /section -->

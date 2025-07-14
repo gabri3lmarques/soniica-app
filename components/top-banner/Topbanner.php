@@ -6,10 +6,10 @@
             <div class="top-banner not-logged-in">
                 <div class="top-banner-content">
                     <div>
-                        <h2>Music for every moment</h2>
-                        <p>The <span>perfect soundtrack</span> for your <span>project</span> or your <span>life</span> is right here.</p>
-                        <p>Sign up with just an email — no sensitive data required. Fast and secure!</p>
-                        <a class="cta" href="/sign-up">Sign up</a>
+                        <h2>Infinitas possibilidades com Inteligência Artificial</h2>
+                        <p>Soniica tem a trilha sonora perfeita para o seu projeto, seu negócio — ou para a sua vida.</p>
+                        <p>Cadastre-se com apenas um e-mail. Sem cartão de crédito. Rápido, seguro e grátis.</p>
+                        <a class="cta" href="/sign-up">Cadastrar</a>
                     </div>
                 </div>
             </div>

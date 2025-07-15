@@ -1,5 +1,9 @@
 <?php
+
+
 namespace user;
+use stripe\StripeService;
+
 class Users {
     public function __construct() {
         add_action('admin_menu', array($this, 'addPremiumUsersMenu'));
@@ -59,7 +63,9 @@ class Users {
             // O usuário é premium, podemos verificar a Stripe para garantir que a assinatura está ativa
             return true;
         }
-        // Caso o usuário não seja premium, retorna false
-        return false;
+        
+        // Caso contrário, consulta diretamente na Stripe
+        $stripe = new StripeService();
+        return $stripe->isUserPremium($user_id);
     }
 }

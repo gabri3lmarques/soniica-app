@@ -2,26 +2,32 @@
 /*
 Template Name: Login Personalizado
 */
+
+use user\Users;
+
 // Verifica se o usuário já está logado
 if ( is_user_logged_in() ) {
     wp_redirect( home_url() );
     exit;
 }
-use flash_message\FlashMessage;
+
 $login_error = '';
+
 if ( isset( $_POST['submit'] ) ) {
-    // Obtém as credenciais do usuário
     $creds = array();
     $creds['user_login']    = sanitize_user( $_POST['username'] );
     $creds['user_password'] = $_POST['password'];
     $creds['remember']      = isset( $_POST['remember'] );
-    // Realiza o login
+
     $user = wp_signon( $creds, false );
-    // Se houver erro no login
+
     if ( is_wp_error( $user ) ) {
         $login_error = $user->get_error_message();
     } else {
-        // Redireciona para a página inicial
+        // Força verificação de status premium imediatamente após login
+        Users::check_user_premium_status();
+
+        // Redireciona para a home
         wp_redirect( home_url() );
         exit;
     }

@@ -17,8 +17,18 @@ $error_message = FlashMessage::get('error');
 if ($error_message) {
     FlashMessage::render($error_message);
 }
+
 $playlist_id = get_the_ID();
-$post_author_id = get_post_field('post_author', $playlist_id); // Obtém o ID do autor do post
+$post_author_id = get_post_field('post_author', $playlist_id);
+$current_user_id = get_current_user_id();
+
+if ( !is_user_logged_in() || $current_user_id !== (int) $post_author_id ) {
+    ?>
+    <script>
+        window.location = "<?php echo esc_url(home_url('/login')); ?>";
+    </script>
+    <?php
+}
 
 // Obtém as músicas da playlist (IDs armazenados no meta campo 'songs')
 $song_ids = get_post_meta($playlist_id, 'songs', true);

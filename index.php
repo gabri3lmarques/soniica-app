@@ -42,44 +42,9 @@ require_once get_template_directory() . '/components/search/Search.php';
             <!-- renderiza o top banner  -->
             <?php include 'components/top-banner/Topbanner.php'; ?>
 
-            <!-- Cards -->
-            <div class="cards">
-            </div>
-            <!-- /Cards -->
-
             <div class="playlist">
                 <h3>📻🔊 Tá bombando!</h3>
             <?php
-                // Processamento do formulário
-                if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_song_to_playlist'])) {
-                    $playlist = new Playlist();
-                    $playlist_id = (int) $_POST['playlist_id'];
-                    $song_id = (int) $_POST['song_id'];
-                    // Verifica se a playlist pertence ao usuário logado
-                    $playlist_post = get_post($playlist_id);
-                    if ($playlist_post && (int) $playlist_post->post_author === get_current_user_id()) {
-                        $result = $playlist->add_song_to_playlist([
-                            'id' => $playlist_id,
-                            'song_id' => $song_id
-                        ]);
-                        if ($result['success']) {
-                            FlashMessage::set('success', $result['message']);
-                            ?>
-                            <script>window.location="<?php echo esc_url(home_url()); ?>";</script>
-                            <?php
-                        } else {
-                            FlashMessage::set('error', $result['message']);
-                            ?>
-                            <script>window.location="<?php echo esc_url(home_url()); ?>";</script>
-                            <?php
-                        }
-                    } else {
-                        FlashMessage::set('error', 'Você não tem permissão para adicionar musica a esta playlist.');
-                        ?>
-                        <script>window.location="<?php echo esc_url(home_url()); ?>";</script>
-                        <?php
-                    }
-                }
                 // Obtém as músicas (posts do tipo 'song')
                 $songs = get_posts([
                     'post_type' => 'song',
@@ -159,7 +124,11 @@ require_once get_template_directory() . '/components/search/Search.php';
                                 <?php
                             }
                         ?>
+                        <?php 
+                        if(is_user_logged_in()):
+                        ?>
                         <button class="add-to-playlist-button"></button>
+                        <?php endif; ?>
                         <?php 
                             if(is_user_logged_in()){
                                 ?>
@@ -191,6 +160,63 @@ require_once get_template_directory() . '/components/search/Search.php';
             <?php endforeach; ?>
             </div>
 
+            <!-- Cards -->
+            <div class="cards">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/cards/about.jpg" alt="Um senhor de cabelos e barba branca, vestindo uma tunica branca e um brilho em suas maos  colocando fones de ouvido em um jovem hipster, com um fundo colorido.">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Sobre o Soundibly</h3>
+                        <p class="card-text"></p>
+                        <a href="#" class="card-button">
+                            conferir
+                        </a>
+                    </div>
+                </div> 
+                <!--/card  -->
+                <div class="card">
+                    <div class="card-image">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/cards/precos.jpg" alt="Um casal sentado em ua mesa de lanchonete dos anos 50 confeindo a conta, ela tomando milshake.">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Planos e preços</h3>
+                        <p class="card-text"></p>
+                        <a href="#" class="card-button">
+                            conferir
+                        </a>
+                    </div>
+                </div> 
+                <!--/card  -->
+                <div class="card">
+                    <div class="card-image">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/cards/contact.jpg" alt="Um jovem de aparencia nerd e tatuado está numa chamada web usando um headset.">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Entre em contato</h3>
+                        <p class="card-text"></p>
+                        <a href="#" class="card-button">
+                            conferir
+                        </a>
+                    </div>
+                </div> 
+                <!--/card  -->
+                <div class="card">
+                    <div class="card-image">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/cards/licenca.jpg" alt="">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Sobre a licença</h3>
+                        <p class="card-text"></p>
+                        <a href="#" class="card-button">
+                            conferir
+                        </a>
+                    </div>
+                </div> 
+                <!--/card  -->
+            </div>
+            <!-- /Cards -->
+
             <!-- /playlist -->
              <div class="playlist">
                 <h3>🥚🐣 Sons novinhos</h3>
@@ -201,15 +227,6 @@ require_once get_template_directory() . '/components/search/Search.php';
                         'post_status' => 'publish',
                         'post__in'    => [50, 51,52],
                         'orderby'     => 'post__in',
-                        'numberposts' => -1
-                    ]);
-
-                    // As playlists do usuário logado (pode reaproveitar $user_playlists se já estiver definido acima)
-                    $current_user_id = get_current_user_id();
-                    $user_playlists  = get_posts([
-                        'post_type'   => 'playlist',
-                        'author'      => $current_user_id,
-                        'post_status' => 'publish',
                         'numberposts' => -1
                     ]);
                 ?>
@@ -281,7 +298,11 @@ require_once get_template_directory() . '/components/search/Search.php';
                             <?php
                         }
                     ?>
+                    <?php 
+                        if(is_user_logged_in()):
+                    ?>
                     <button class="add-to-playlist-button"></button>
+                    <?php endif; ?>
                     <?php if (is_user_logged_in()) : ?>
                         <form class="playlist-form" method="POST" style="margin-top: 10px;">
                             <input type="hidden" name="song_id" value="<?php echo $song->ID; ?>">
@@ -332,6 +353,38 @@ require_once get_template_directory() . '/components/search/Search.php';
             <div class="playlist-modal-body"></div>
         </div>
     </div>
+<?php
+// Processamento do formulário de envio de musica para a playlist
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_song_to_playlist'])) {
+    $playlist = new Playlist();
+    $playlist_id = (int) $_POST['playlist_id'];
+    $song_id = (int) $_POST['song_id'];
+    // Verifica se a playlist pertence ao usuário logado
+    $playlist_post = get_post($playlist_id);
+    if ($playlist_post && (int) $playlist_post->post_author === get_current_user_id()) {
+        $result = $playlist->add_song_to_playlist([
+            'id' => $playlist_id,
+            'song_id' => $song_id
+        ]);
+        if ($result['success']) {
+            FlashMessage::set('success', $result['message']);
+            ?>
+            <script>window.location="<?php echo esc_url(home_url()); ?>";</script>
+            <?php
+        } else {
+            FlashMessage::set('error', $result['message']);
+            ?>
+            <script>window.location="<?php echo esc_url(home_url()); ?>";</script>
+            <?php
+        }
+    } else {
+        FlashMessage::set('error', 'Você não tem permissão para adicionar musica a esta playlist.');
+        ?>
+        <script>window.location="<?php echo esc_url(home_url()); ?>";</script>
+        <?php
+    }
+}
+?>    
 <?php get_footer(); ?>
 
 

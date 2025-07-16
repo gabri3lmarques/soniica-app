@@ -7,9 +7,9 @@
                 <div class="top-banner-content">
                     <div>
                         <h2>Infinitas possibilidades com Inteligência Artificial</h2>
-                        <p>Soniica tem a trilha sonora perfeita para o seu projeto, seu negócio — ou para a sua vida.</p>
-                        <p>Cadastre-se com apenas um e-mail. Sem cartão de crédito. Rápido, seguro e grátis.</p>
-                        <a class="cta" href="/sign-up">Cadastrar</a>
+                        <p><span>Soundibly</span> tem a trilha sonora perfeita para o seu <span>projeto</span>, seu <span>negócio</span> — ou para a <span>sua vida</span>.</p>
+                        <p><a href="/sign-up"><span>Cadastre-se</span></a> com apenas um e-mail. <span>Sem cartão</span> de crédito. Rápido, seguro e grátis.</p>
+                        <a class="cta" href="/sign-up">Cadastrar grátis</a>
                     </div>
                 </div>
             </div>

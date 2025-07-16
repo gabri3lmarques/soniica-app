@@ -34,111 +34,21 @@ require_once get_template_directory() . '/components/search/Search.php';
         </div>
         <!-- o corpo do site -->
         <div class="main">
+            <!-- renderiza a busca para a versão mobile -->
             <?php 
                 $search = new SearchComponent();
                 echo $search->render();
             ?>
+            <!-- renderiza o top banner  -->
             <?php include 'components/top-banner/Topbanner.php'; ?>
-            <?php
-                if(!is_user_logged_in()){
-                    ?>
-                        <div class="cards">
-                            <?php 
 
-                                $image_url = get_template_directory_uri() . '/assets/img/cards/1.jpg';
-                                
-                                echo CardComponent::render(
-                                    $image_url, 
-                                    'Digital influencer', 
-                                    'Your audience deserves the best.', 
-                                    'Sign up', 
-                                    '/sign-up'
-                                );
-                    
-                                $image_url2 = get_template_directory_uri() . '/assets/img/cards/2.jpg';
+            <!-- Cards -->
+            <div class="cards">
+            </div>
+            <!-- /Cards -->
 
-                                echo CardComponent::render(
-                                    $image_url2, 
-                                    'Video editor', 
-                                    'Never run out of options.', 
-                                    'Sign up', 
-                                    '/sign-up'
-                                );
-                  
-                                $image_url3 = get_template_directory_uri() . '/assets/img/cards/3.jpg';
-
-                                echo CardComponent::render(
-                                    $image_url3, 
-                                    'Professional producer', 
-                                    'The perfect soundtrack is here.', 
-                                    'Sign up', 
-                                    '/sign-up'
-                                );
-
-                                $image_url4 = get_template_directory_uri() . '/assets/img/cards/4.jpg';
-
-                                echo CardComponent::render(
-                                    $image_url4, 
-                                    'Just chill', 
-                                    'Just enjoy your vibe.', 
-                                    'Sign up', 
-                                    '/sign-up'
-                                );
-                            ?>  
-                        </div>
-                    <?php
-                } else {
-                    if(!$is_premium){
-                        ?>
-                        <div class="cards">
-                            <?php 
-
-                                $image_url = get_template_directory_uri() . '/assets/img/cards/1.jpg';
-                                
-                                echo CardComponent::render(
-                                    $image_url, 
-                                    'Digital influencer', 
-                                    'Your audience deserves the best.', 
-                                    'Go premium', 
-                                    '/get-premium'
-                                );
-                    
-                                $image_url2 = get_template_directory_uri() . '/assets/img/cards/2.jpg';
-
-                                echo CardComponent::render(
-                                    $image_url2, 
-                                    'Video editor', 
-                                    'Never run out of options.', 
-                                    'Go premium', 
-                                    '/get-premium'
-                                );
-                  
-                                $image_url3 = get_template_directory_uri() . '/assets/img/cards/3.jpg';
-
-                                echo CardComponent::render(
-                                    $image_url3, 
-                                    'Professional producer', 
-                                    'The perfect soundtrack is here.', 
-                                    'Go premium', 
-                                    '/get-premium'
-                                );
-
-                                $image_url4 = get_template_directory_uri() . '/assets/img/cards/4.jpg';
-
-                                echo CardComponent::render(
-                                    $image_url4, 
-                                    'Just chill', 
-                                    'Just enjoy your vibe.', 
-                                    'Go premium', 
-                                    '/get-premium'
-                                );
-                            ?>  
-                        </div>
-                        <?php
-                    }
-                }
-            ?>
             <div class="playlist">
+                <h3>📻🔊 Tá bombando!</h3>
             <?php
                 // Processamento do formulário
                 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_song_to_playlist'])) {
@@ -279,6 +189,124 @@ require_once get_template_directory() . '/components/search/Search.php';
                     </div>
                     <!-- /song -->
             <?php endforeach; ?>
+            </div>
+
+            <!-- /playlist -->
+             <div class="playlist">
+                <h3>🥚🐣 Sons novinhos</h3>
+                <?php
+                    // IDs das músicas que você deseja exibir
+                    $selected_songs = get_posts([
+                        'post_type'   => 'song',
+                        'post_status' => 'publish',
+                        'post__in'    => [50, 51,52],
+                        'orderby'     => 'post__in',
+                        'numberposts' => -1
+                    ]);
+
+                    // As playlists do usuário logado (pode reaproveitar $user_playlists se já estiver definido acima)
+                    $current_user_id = get_current_user_id();
+                    $user_playlists  = get_posts([
+                        'post_type'   => 'playlist',
+                        'author'      => $current_user_id,
+                        'post_status' => 'publish',
+                        'numberposts' => -1
+                    ]);
+                ?>
+
+                <?php foreach ($selected_songs as $song) :
+                    $song_id        = $song->ID;
+                    $song_title     = $song->post_title;
+                    $download_link  = get_field('song_download_link', $song->ID);
+                    $song_duration  = get_field('song_duration', $song->ID);
+                    $song_img       = get_field('song_image', $song->ID);
+                    $song_life_cycle= get_field('song_life_cycle', $song->ID);
+                    $song_source    = get_field('song_source', $song->ID);
+                    $song_link      = get_permalink($song->ID); 
+
+                    $safe_url           = base64_encode($song_source);
+                    $safe_download_link = base64_encode($download_link);
+
+                    // Pegando o artista
+                    $categories = get_the_category($song->ID);
+                    $artist = null;
+                    $artist_link = null;
+                    if (!empty($categories)) {
+                        foreach ($categories as $category) {
+                            $parent_cat = get_category($category->parent);
+                            if ($parent_cat && $parent_cat->parent == 0) {
+                                $artist = $category;
+                                $artist_link = get_category_link($category->term_id);
+                                break;
+                            }
+                        }
+                    }
+
+                    $tags = get_the_terms($song->ID, 'post_tag');
+                ?>
+                <!-- song -->
+                <div class="song" data-song-id="<?php echo $song_id; ?>" data-src="<?php echo $safe_url; ?>">
+                    <div class="song-cover">
+                        <img class="thumb" src="<?php echo esc_url($song_img); ?>" alt="Capa da música">
+                        <div class="sound-wave">
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                        </div>
+                    </div>
+                    <div class="title-artist">
+                        <a href="<?php echo($song_link); ?>"><span class="title"><?php echo esc_html($song_title); ?></span></a>
+                        <a class="artist" href="<?php echo $artist_link; ?>"><?php echo esc_html($artist->name ?? 'Desconhecido'); ?></a>
+                    </div>
+                    <button class="play-button"></button>
+                    <span class="time"><?php echo esc_html($song_duration); ?></span>
+                    <div class="new-tag-spot"><?php if ($song_life_cycle === "new") { echo '<span class="is-new">new</span>'; } ?></div>
+                    <?php
+                        if (is_user_logged_in()) {
+                            if ($song_life_cycle === "new" && !Users::check_user_premium_status()) {
+                                ?>
+                                <a class="download-link" href="<?php echo esc_url(home_url('/get-premium')); ?>">
+                                    <img style="width:15px" src="<?php echo get_template_directory_uri(); ?>/assets/img/icons/download.png">
+                                </a>
+                                <?php
+                            } else {
+                                echo DownloadController::getDownloadLink($safe_download_link);
+                            }
+                        } else {
+                            ?>
+                            <a class="download-link" href="/login">
+                                <img style="width:15px" src="<?php echo get_template_directory_uri(); ?>/assets/img/icons/download.png">
+                            </a>
+                            <?php
+                        }
+                    ?>
+                    <button class="add-to-playlist-button"></button>
+                    <?php if (is_user_logged_in()) : ?>
+                        <form class="playlist-form" method="POST" style="margin-top: 10px;">
+                            <input type="hidden" name="song_id" value="<?php echo $song->ID; ?>">
+                            <label for="playlist_id_<?php echo $song->ID; ?>"></label>
+                            <select name="playlist_id" id="playlist_id_<?php echo $song->ID; ?>" required>
+                                <option value="">select playlist</option>
+                                <?php foreach ($user_playlists as $playlist) : ?>
+                                    <option value="<?php echo $playlist->ID; ?>">
+                                        <?php echo esc_html($playlist->post_title); ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+                            <button class="add-to-playlist" type="submit" name="add_song_to_playlist">+</button>
+                        </form>
+                    <?php endif; ?>
+                    <ul class="genders">
+                        <?php if (!empty($tags) && !is_wp_error($tags)) : ?>
+                            <?php foreach ($tags as $tag) : ?>
+                                <li><?php echo esc_html($tag->name); ?></li>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                    </ul>
+                </div>
+                <!-- /song -->
+                <?php endforeach; ?>
             </div>
             <!-- /playlist -->
         </div>

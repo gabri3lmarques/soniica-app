@@ -11,7 +11,7 @@ class SearchComponent {
      * @param string $placeholder The placeholder text for the search input
      * @return string The HTML for the search component
      */
-    public function render($placeholder = "Enter music, genre, style...") {
+    public function render($placeholder = "Estilo, gênero, vibe...") {
         ob_start();
         ?>
         <div class="serach-component">

@@ -6,7 +6,7 @@
             <div class="top-banner not-logged-in">
                 <div class="top-banner-content">
                     <div>
-                        <h2>Infinitas possibilidades com Soundibly e IA</h2>
+                        <h2>Infinitas possibilidades com Soundibly</h2>
                         <p><span>Soundibly</span> tem a trilha sonora perfeita para o seu <span>projeto</span>, seu <span>negócio</span> — ou para a <span>sua vida</span>.</p>
                         <p><a href="/sign-up"><span>Cadastre-se</span></a> com apenas um e-mail. <span>Sem cartão</span> de crédito. Rápido, seguro e grátis.</p>
                         <a class="cta" href="/sign-up">Cadastrar grátis</a>

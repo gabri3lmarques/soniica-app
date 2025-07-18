@@ -138,6 +138,13 @@ add_action('template_redirect', function () {
     }
 });
 
+//redireciona não admins pra home do site
+add_action('admin_init', function () {
+    if (!current_user_can('administrator') && !wp_doing_ajax()) {
+        wp_redirect(home_url());
+        exit;
+    }
+});
 
 
 

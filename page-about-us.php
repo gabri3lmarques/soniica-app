@@ -28,8 +28,8 @@ $is_premium = Users::check_user_premium_status();
         <h2>Sobre</h2>
         <div class="section">
             <h4>&#127925; Soundibly é diferente de tudo que você já viu e ouviu</h4> 
-            <p>O Soundibly não é só mais uma plataforma de música. É diferente — é um mix de tecnologia de ponta com o feeling musical que a sua história merece.</p>
-            <p>Um lugar onde cada faixa é criada não só para os seus ouvidos, mas também para o seu coração.</p>
+            <p>O Soundibly não é só mais uma plataforma de música. É diferente . É um mix de tecnologia de ponta com o feeling musical que a sua história merece.</p>
+            <p>Um lugar onde cada faixa é criada não só para os ouvidos, mas também para o coração.</p>
             <p>O Soundibly foi criado de um jeito único. É a mistura da genialidade da Inteligência Artificial com a sensibilidade humana — uma fusão perfeita entre dois mundos.</p>
             <p>Não importa se vocẽ está em busca do próximo Oscar, ou quer apenas curtir o momento. A sua trilha sonora perfeita está aqui. </p>
             <p>Com artistas e trilhas sonoras originais, o Soundibly reúne tudo o que você precisa em um só lugar.</p>

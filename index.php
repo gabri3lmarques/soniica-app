@@ -332,7 +332,7 @@ require_once get_template_directory() . '/components/search/Search.php';
             </div>
             <!-- /playlist -->
 
-            <h3>🕶️ Artistas recomndados</h3>
+            <h3>🕶️ Artistas da semana</h3>
             <!-- Cards -->
             <div class="cards">
                 <div class="card">

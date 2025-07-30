@@ -25,51 +25,51 @@ $is_premium = Users::check_user_premium_status();
                 <svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 17" width="20" height="17"><style>.a{fill:#fff}</style><path class="a" d="m8.6 0q-0.1 0-0.2 0 0 0.1-0.1 0.1c-0.1 0-0.3 0.3-4.1 4-3.2 3-4 3.9-4.1 4 0 0 0 0.1-0.1 0.1 0 0.1 0 0.2 0 0.3q0 0.1 0 0.2c0 0 0.1 0.1 0.1 0.2 0 0.1 0.2 0.3 4 4 2.4 2.3 4.1 3.9 4.1 3.9q0.1 0.1 0.1 0.1 0.1 0 0.2 0.1 0.1 0 0.2 0 0.1 0 0.2 0 0.1-0.1 0.1-0.1 0.1 0 0.2-0.1c0 0 0.1 0 0.1-0.1 0.1 0 0.1-0.1 0.2-0.2 0 0 0-0.1 0-0.1q0-0.1 0.1-0.3-0.1-0.1-0.1-0.2c0 0 0-0.1 0-0.1-0.1-0.1-0.3-0.3-3.3-3.3-1.8-1.7-3.2-3.1-3.2-3.1 0-0.1 3.6-0.1 8.1-0.1h8.1q0.3 0 0.3-0.1c0.1 0 0.2 0 0.2-0.1 0.1 0 0.1-0.1 0.2-0.2 0 0 0-0.1 0-0.1 0.1-0.1 0.1-0.1 0.1-0.2 0-0.1 0-0.1 0-0.2 0 0 0-0.1-0.1-0.2 0 0 0-0.1-0.1-0.2 0 0-0.1-0.1-0.1-0.1-0.1-0.1-0.1-0.1-0.2-0.2 0 0-0.1 0-0.2 0-0.1 0-0.3 0-8.2 0-4.5 0-8.1 0-8.1-0.1 0 0 1.4-1.4 3.2-3.1 3-3 3.2-3.2 3.3-3.3 0 0 0-0.1 0-0.1q0-0.1 0.1-0.3-0.1-0.1-0.1-0.2c0 0 0-0.1 0-0.1q-0.1-0.1-0.2-0.2c-0.1-0.1-0.1-0.2-0.2-0.2-0.1 0-0.2-0.1-0.2-0.1q-0.1 0-0.2 0 0 0-0.1 0z"/></svg>            
             </a>
         </p> 
-        <h2>License</h2>
-        <h3>📝Soniica License Agreement</h3>
+        <h2>Licença</h2>
+        <h3>📝 Acordo de Licença do Soundibly</h3>
         <div class="section">
-            <h4>What is Soniica?</h4>
-            <p>Soniica is a web-based music platform designed to offer a modern, personalized experience for listening to music, organizing playlists, and downloading tracks.</p>
+            <h4>O que é o Soundibly</h4>
+            <p>O Soundibly é uma plataforma de música online criada para oferecer uma experiência moderna e personalizada para ouvir músicas, organizar playlists e baixar faixas.</p>
         </div>
         <!-- /section -->
         <div class="section">
-            <h4>User Rights</h4>
-            <p> As a Soniica user, you are granted the following rights:</p>
+            <h4>Direitos do Usuário</h4>
+            <p>Como usuário do Soundibly, você tem os seguintes direitos:</p>
             <ul>
-                <li>✅ Use the Soniica platform for both personal and commercial purposes.</li>
-                <li>✅ Create and manage playlists, stream music, and explore available features based on your plan (free or premium).</li>
-                <li>✅ Download and use the music made available on the platform in your commercial projects (such as videos, events, podcasts, games, etc.), under a royalty-free license — meaning you are not required to pay additional fees or royalties for usage.</li>
+                <li>✅ Usar a plataforma Soundibly tanto para fins pessoais quanto comerciais.</li>
+                <li>✅ Criar e gerenciar playlists, ouvir músicas e explorar os recursos disponíveis conforme seu plano (gratuito ou premium).</li>
+                <li>✅ Baixar e usar as músicas disponibilizadas na plataforma em seus projetos comerciais (como vídeos, eventos, podcasts, jogos, etc.), sob uma licença royalty-free — ou seja, você não precisa pagar taxas ou royalties adicionais pelo uso.</li>
             </ul>
         </div>
         <!-- /section -->
         <div class="section">
-            <h4>Usage Restrictions</h4>
-            <p>To maintain a fair and safe experience for all users, you may not:</p>
+            <h4>Restrições de Uso</h4>
+            <p>Para garantir uma experiência justa e segura para todos, você não pode:</p>
             <ul>
-                <li>❌ Reproduce, redistribute, or resell the Soniica platform (its code, interface, or services) without prior written permission.</li>
-                <li>❌ Reverse engineer, decompile, or otherwise attempt to access protected components of the system.</li>
-                <li>❌ Share your premium account with others. Each account is for individual use only.</li>                
+                <li>❌ Reproduzir, redistribuir ou revender a plataforma Soniica (seu código, interface ou serviços) sem autorização prévia por escrito.</li>
+                <li>❌ Realizar engenharia reversa, descompilar ou tentar acessar componentes protegidos do sistema.</li>
+                <li>❌ Compartilhar sua conta premium com outras pessoas. Cada conta é de uso individual.</li>                
             </ul>
         </div>
         <!-- /section -->
         <div class="section">
-            <h4>Intellectual Property</h4>
-            <p>All code, design, and functionality of the Soniica platform is the intellectual property of its creators. Unless otherwise stated, music tracks provided through the platform are licensed for royalty-free commercial use, but original copyrights remain with the respective artists or content owners.            </p>
+            <h4>Propriedade Intelectual</h4>
+            <p>Todo o código, design e funcionalidades da plataforma Soniica são propriedade intelectual de seus criadores. Salvo indicação contrária, as faixas de música disponibilizadas pela plataforma são licenciadas para uso comercial sem royalties, mas os direitos autorais originais permanecem com os respectivos artistas ou detentores do conteúdo.</p>
         </div>
         <!-- /section -->
         <div class="section">
-            <h4>Third-Party Content</h4>
-            <p>Some music or media may be provided by third parties. All content available on Soniica is curated to be safe for royalty-free commercial use. If any attribution or specific terms are required for a track, this will be clearly indicated.</p>
+            <h4>Conteúdo de Terceiros</h4>
+            <p>Algumas músicas ou mídias podem ser fornecidas por terceiros. Todo o conteúdo disponível no Soniica é cuidadosamente selecionado para ser seguro para uso comercial sem royalties. Caso alguma faixa exija atribuição ou termos específicos, isso será claramente indicado.</p>
         </div>
         <!-- /section -->
         <div class="section">
-            <h4>Account Termination</h4>
-            <p>We reserve the right to suspend or terminate your account if you violate the terms of this license or our Terms of Use. You may cancel your subscription at any time through your account settings.            </p>
+            <h4>Encerramento da Conta</h4>
+            <p>Reservamo-nos o direito de suspender ou encerrar sua conta caso você viole os termos desta licença ou de nossos Termos de Uso. Você pode cancelar sua assinatura a qualquer momento pelas configurações da sua conta. </p>
         </div>
         <!-- /section -->
         <div class="section">
-            <h4>Changes to This License</h4>
-            <p>We may update this license agreement from time to time. You will be notified of any significant changes via email or directly through the Soniica platform.            </p>
+            <h4>Alterações nesta Licença</h4>
+            <p>Podemos atualizar este acordo de licença periodicamente. Você será notificado sobre quaisquer alterações significativas por e-mail ou diretamente pela plataforma Soniica.</p>
         </div>
         <!-- /section -->
      </div>

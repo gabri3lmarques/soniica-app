@@ -45,7 +45,7 @@ class Player {
         const rightVolume = newVolume * 100;
         const leftVolume = 100 - rightVolume;
         this.audio.volume = newVolume;
-        this.volumeSlider.style.background = `linear-gradient(to right, #6a680b, #e9ff70 ${rightVolume}%, #272727 ${leftVolume}%)`;
+        this.volumeSlider.style.background = `linear-gradient(to right, #e95265, #207dff ${rightVolume}%, #272727 ${leftVolume}%)`;
     }
     initializeFirstSong() {
         const firstPlaylist = document.querySelector('.playlist');

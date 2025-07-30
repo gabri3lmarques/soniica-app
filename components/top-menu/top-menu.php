@@ -24,7 +24,10 @@ class TopMenu {
         ?>
             <div class="top-menu">
                 <div class="nav-logo">
-                    <a href="/"><?php SvgIcons::render('logo'); ?>  </a>            
+                    <a href="/">
+                        <?php //SvgIcons::render('logo'); ?>
+                        <img style="width:100px;" src="<?php echo get_template_directory_uri(); ?>/assets/img/logo/logo.png" alt="">
+                    </a>            
                 </div>
                 <form class="search hide-768" method="get" action="<?php echo home_url('/'); ?>">
                     <input type="text" name="s" placeholder="Estilo, gênero, vibe..." autocomplete="off">

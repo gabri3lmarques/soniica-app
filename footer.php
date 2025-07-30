@@ -11,7 +11,7 @@ $is_premium = Users::check_user_premium_status();
     position: fixed;
     width: 100%;
     height: 100%;
-    background: #708303;
+     background: linear-gradient(to right, #e95265, #207dff);
     z-index: 99;
     top: 0;
     left: 0;
@@ -23,7 +23,7 @@ $is_premium = Users::check_user_premium_status();
     width: 50px;
     height: 50px;
     border: 6px solid #ffffff;
-    border-top: 6px solid #708303;
+    border-top: 6px solid transparent;
     border-radius: 50%;
     animation: spin 1s linear infinite;
 }

@@ -11,14 +11,15 @@
     border-radius: 6px;
     align-items: center;
     gap: 10px;
+    transition: 300ms;
     // se o som estiver ativo
     &.active {
-        background-color: rgba(colors.$main-color, 0.05);
+        background: linear-gradient(to right, #e95265, #207dff);
         &:hover {
-            background-color: rgba(colors.$main-color, 0.05);
+         background: linear-gradient(to right, #e95265, #207dff);
         }
         &:nth-child(odd) {
-            background-color: rgba(colors.$main-color, 0.05);
+         background: linear-gradient(to right, #e95265, #207dff);
         }
         .play-button {
             background-image: url('../img/icons/pause.svg');
@@ -37,7 +38,11 @@
         background-color: colors.$dark-sidebar;
     }
     &:hover {
-        background-color: rgba(colors.$main-color, 0.05);
+        background: linear-gradient(
+            to right,
+            rgba(233, 82, 101, 0.3),  /* #e95265 com 80% de opacidade */
+            rgba(32, 125, 255, 0.3)   /* #207dff com 80% de opacidade */
+        );
     }
     .is-new {
         font-size: 10px;
@@ -87,10 +92,6 @@
         .artist {
             font-size: 14px;
             color: rgba(#fff, 0.5);
-
-            &:hover {
-                color: colors.$main-color;
-            }
         }
     }
     .play-button {
@@ -104,6 +105,9 @@
         background-position: center;
         cursor: pointer;
         background-size: 10px;
+        &:hover {
+            background-color: rgba(#fff, 0.1);
+        }
     }
     .time {
         color: rgba(#fff, 0.5);
@@ -141,7 +145,7 @@
     }
     .add-to-playlist-button {
         background-color: #272727;
-        border: 1px solid #272727;
+        border: 0;
         color: #e3e3e3;
         padding: 4px 6px;
         border-radius: 2px;
@@ -169,9 +173,9 @@
         }
         li {
             font-size: 12px;
-            color: rgba(colors.$main-color, 0.7);
+            color: #fff;
             border-radius: 4px;
-            background-color: rgba(#fff, 0.1);
+            background: rgba(#fff, 0.1);
             padding: 2px 4px;
             font-style: italic;
         }

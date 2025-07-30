@@ -91,7 +91,7 @@
                     display: inline-block;
                     margin-bottom: 10px;
                     &.premium {
-                        color: colors.$main-color;
+                        color: #e95265;
                     }
                 }
                 .email {
@@ -149,7 +149,7 @@
         color: colors.$text;
         border: 1px solid colors.$dark-borders;
         &:focus {
-            border: 1px solid colors.$main-color;
+            border: 1px solid #e95265;
         }
         &::placeholder {
             color: colors.$text-darker;

@@ -1,8 +1,6 @@
 # Dependências do Node.js
 node_modules/
 
-# Dependências do Composer
-vendor/
 
 # Arquivos de cache do Composer
 composer.lock

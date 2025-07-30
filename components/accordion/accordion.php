@@ -31,7 +31,7 @@ class Accordion {
                     <div class="accordion-content">
                         <ul>
                             <li><a href="/about-us">Sobre</a></li>
-                            <li><a href="/pricing">Preços/a></li>
+                            <li><a href="/pricing">Preços</a></li>
                             <li><a href="/contact">Contato</a></li>
                             <li><a href="/license">Licença</a></li>
                         </ul>

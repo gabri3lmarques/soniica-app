@@ -13,7 +13,7 @@ class StripeService
     private $priceId;
     private const CACHE_DURATION = HOUR_IN_SECONDS * 12; // 12 horas
 
-    public function __construct($priceId = 'price_1QOkGA2KcSHWYSnH1v45BzKQ')
+    public function __construct($priceId = 'price_1RY95U2KcSHWYSnHWE0Cr6pD')
     {
         Stripe::setApiKey(STRIPE_SECRET_KEY);
         $this->priceId = $priceId;

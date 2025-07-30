@@ -27,16 +27,16 @@ $is_premium = Users::check_user_premium_status();
         </p> 
         <h2>Sobre</h2>
         <div class="section">
-            <h4>&#127925; Soundibly é diferente de tudo que você já viu e ouviu</h4> 
-            <p>O Soundibly não é só mais uma plataforma de música. É diferente . É um mix de tecnologia de ponta com o feeling musical que a sua história merece.</p>
+            <h4>&#127925; Soniica é diferente de tudo que você já viu e ouviu</h4> 
+            <p>O Soniica não é só mais uma plataforma de música. É diferente . É um mix de tecnologia de ponta com o feeling musical que a sua história merece.</p>
             <p>Um lugar onde cada faixa é criada não só para os ouvidos, mas também para o coração.</p>
-            <p>O Soundibly foi criado de um jeito único. É a mistura da genialidade da Inteligência Artificial com a sensibilidade humana — uma fusão perfeita entre dois mundos.</p>
+            <p>O Soniica foi criado de um jeito único. É a mistura da genialidade da Inteligência Artificial com a sensibilidade humana — uma fusão perfeita entre dois mundos.</p>
             <p>Não importa se vocẽ está em busca do próximo Oscar, ou quer apenas curtir o momento. A sua trilha sonora perfeita está aqui. </p>
-            <p>Com artistas e trilhas sonoras originais, o Soundibly reúne tudo o que você precisa em um só lugar.</p>
+            <p>Com artistas e trilhas sonoras originais, o Soniica reúne tudo o que você precisa em um só lugar.</p>
             <p>Quer aquele som viral pra bombar no TikTok? Que tal uma pegada sci-fi? Precisa embalar um evento profissional — ou o churrasco da galera? Talvez você só queira curtir um som enquanto pega o busão de volta pra casa.</p>
             <p>E o melhor: novos artistas e músicas são adicionados todos os dias.</p>
             <p>Bem-vindo a evolução do audio visual.</p>
-            <p>Bem-vindo ao Soundibly.</p>
+            <p>Bem-vindo ao Soniica.</p>
         </div>
         <!-- /section -->
      </div>

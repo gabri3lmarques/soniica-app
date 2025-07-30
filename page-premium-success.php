@@ -40,7 +40,7 @@
                             📥 Downloads ilimitados <br>
                             🔕 100% livre de propaganda
                          </p>
-                        <p>Obrigado  por apoiar o Soundibly! Agora é sua hora de brilhar 🔊✨   </p>                             
+                        <p>Obrigado  por apoiar o Soniica! Agora é sua hora de brilhar 🔊✨   </p>                             
                      <?php
                  } else {
                      ?>

@@ -29,16 +29,16 @@ $is_premium = Users::check_user_premium_status();
         <div class="section">
             <h4>📬 Tem alguma dúvida ou feedback?</h4>
             <p>
-                Quer compartilhar alguma coisa sobre o Soundibly com a gente?
+                Quer compartilhar alguma coisa sobre o Soniica com a gente?
                 Manda aí! Estamos aqui pra te ouvir.
-                📬 <span>hello@soundibly.com</span> 
+                📬 <span>hello@soniica.com</span> 
             </p>                    
         </div>
         <!-- /section -->
          <div class="section">
             <h4>💬 Precisando de ajuda?</h4>
             <p>Encontrou um bug? Esqueceu sua senha? Está com alguma dificuldade?</p>
-            <p>📧 É só mandar um e-mail pra <span>help@soundibly.com</span> — vamos responder o mais rápido possível! 🚀</p>
+            <p>📧 É só mandar um e-mail pra <span>help@soniica.com</span> — vamos responder o mais rápido possível! 🚀</p>
          </div>
      </div>
     <!-- o corpo do site -->

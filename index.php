@@ -168,7 +168,7 @@ require_once get_template_directory() . '/components/search/Search.php';
                         <img src="<?php echo get_template_directory_uri(); ?>/assets/img/cards/about.jpg" alt="Um senhor de cabelos e barba branca, vestindo uma tunica branca e um brilho em suas maos  colocando fones de ouvido em um jovem hipster, com um fundo colorido.">
                     </div>
                     <div class="card-content">
-                        <h3 class="card-title">Sobre o Soundibly</h3>
+                        <h3 class="card-title">Sobre o Soniica</h3>
                         <p class="card-text"></p>
                         <a href="/about-us" class="card-button">
                             conferir

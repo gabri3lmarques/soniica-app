@@ -26,17 +26,17 @@ $is_premium = Users::check_user_premium_status();
             </a>
         </p> 
         <h2>Licença</h2>
-        <h3>📝 Acordo de Licença do Soundibly</h3>
+        <h3>📝 Acordo de Licença do Soniica</h3>
         <div class="section">
-            <h4>O que é o Soundibly</h4>
-            <p>O Soundibly é uma plataforma de música online criada para oferecer uma experiência moderna e personalizada para ouvir músicas, organizar playlists e baixar faixas.</p>
+            <h4>O que é o Soniica</h4>
+            <p>O Soniica é uma plataforma de música online criada para oferecer uma experiência moderna e personalizada para ouvir músicas, organizar playlists e baixar faixas.</p>
         </div>
         <!-- /section -->
         <div class="section">
             <h4>Direitos do Usuário</h4>
-            <p>Como usuário do Soundibly, você tem os seguintes direitos:</p>
+            <p>Como usuário do Soniica, você tem os seguintes direitos:</p>
             <ul>
-                <li>✅ Usar a plataforma Soundibly tanto para fins pessoais quanto comerciais.</li>
+                <li>✅ Usar a plataforma Soniica tanto para fins pessoais quanto comerciais.</li>
                 <li>✅ Criar e gerenciar playlists, ouvir músicas e explorar os recursos disponíveis conforme seu plano (gratuito ou premium).</li>
                 <li>✅ Baixar e usar as músicas disponibilizadas na plataforma em seus projetos comerciais (como vídeos, eventos, podcasts, jogos, etc.), sob uma licença royalty-free — ou seja, você não precisa pagar taxas ou royalties adicionais pelo uso.</li>
             </ul>

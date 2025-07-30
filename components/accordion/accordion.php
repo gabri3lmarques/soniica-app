@@ -25,7 +25,7 @@ class Accordion {
                 </div>
                 <div class="accordion-item">
                     <div class="accordion-header">
-                        <h3>Soundibly</h3>
+                        <h3>Soniica</h3>
                         <span class="icon">+</span>
                     </div>
                     <div class="accordion-content">

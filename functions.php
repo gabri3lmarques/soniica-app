@@ -41,25 +41,25 @@ add_action( 'pre_get_posts', 'filtrar_songs_em_tags' );
 // handler para o upload da imagem de perfil
 add_action('wp_ajax_upload_profile_picture', function () {
     if (!is_user_logged_in()) {
-        wp_send_json_error(['message' => '👉 You need to be logged in.']);
+        wp_send_json_error(['message' => '👉 Você precisa estar logado.']);
     }
 
     $user_id = get_current_user_id();
 
     if (!isset($_FILES['profile_picture'])) {
-        wp_send_json_error(['message' => '👉 No image uploaded.']);
+        wp_send_json_error(['message' => '👉 Nenhuma imagem foi selecionada.']);
     }
 
     $file = $_FILES['profile_picture'];
 
     // 1MB = 1048576 bytes
     if ($file['size'] > 1048576) {
-        wp_send_json_error(['message' => '👉 The image must be no larger than 1MB.']);
+        wp_send_json_error(['message' => '👉 A imagem precisa ter menos de 1MB.']);
     }
 
     $allowed_types = ['image/jpeg', 'image/png', 'image/gif'];
     if (!in_array($file['type'], $allowed_types)) {
-        wp_send_json_error(['message' => '👉 Unsupported image format. Please use jpg, jpeg, png, or gif.']);
+        wp_send_json_error(['message' => '👉 Formato não suportado. Por favor, use jpg, jpeg, png, or gif.']);
     }
 
     require_once ABSPATH . 'wp-admin/includes/file.php';
@@ -76,7 +76,7 @@ add_action('wp_ajax_upload_profile_picture', function () {
     $editor = wp_get_image_editor($image_path);
 
     if (is_wp_error($editor)) {
-        wp_send_json_error(['message' => '👉 Error processing image.']);
+        wp_send_json_error(['message' => '👉 Erro ao processar imagem.']);
     }
 
     $editor->resize(300, 300, false); // true = crop
@@ -85,13 +85,13 @@ add_action('wp_ajax_upload_profile_picture', function () {
     $url = esc_url_raw($uploaded['url']);
     update_user_meta($user_id, 'profile_picture_url', $url);
 
-    wp_send_json_success(['message' => '👉 Profile picture updated successfully!', 'url' => $url]);
+    wp_send_json_success(['message' => '👉 Imagem de perfil atualizada!', 'url' => $url]);
 });
 
 // handler para remover a imagem de perfil
 add_action('wp_ajax_remove_profile_picture', function () {
     if (!is_user_logged_in()) {
-        wp_send_json_error(['message' => '👉 You need to be logged in.']);
+        wp_send_json_error(['message' => '👉 É preciso estar logado.']);
     }
 
     $user_id = get_current_user_id();
@@ -108,7 +108,7 @@ add_action('wp_ajax_remove_profile_picture', function () {
 
     delete_user_meta($user_id, 'profile_picture_url');
 
-    wp_send_json_success(['message' => '👉 Profile picture removed successfully.']);
+    wp_send_json_success(['message' => '👉 Imagem removida com sucesso.']);
 });
 //deleta usuário
 add_action('wp_ajax_delete_user_account', 'soniica_delete_user_account');
@@ -117,7 +117,7 @@ function soniica_delete_user_account() {
     check_ajax_referer('delete_user_account_nonce');
 
     if (!is_user_logged_in()) {
-        wp_send_json_error('👉 User is not logged in.');
+        wp_send_json_error('👉 É necessário estar logado.');
     }
 
     $user_id = get_current_user_id();
@@ -126,7 +126,7 @@ function soniica_delete_user_account() {
     require_once(ABSPATH.'wp-admin/includes/user.php');
     wp_delete_user($user_id);
 
-    wp_send_json_success('👉 Account deleted successfully.');
+    wp_send_json_success('👉 Conta deletado com sucesso.');
 }
 
 // controle do logout

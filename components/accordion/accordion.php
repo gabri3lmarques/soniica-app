@@ -9,7 +9,7 @@ class Accordion {
             <div class="accordion-menu">
                 <div class="accordion-item">
                     <div class="accordion-header">
-                        <h3>Music</h3>
+                        <h3>Músicas</h3>
                         <span class="icon">+</span>
                     </div>
                     <div class="accordion-content">
@@ -25,15 +25,15 @@ class Accordion {
                 </div>
                 <div class="accordion-item">
                     <div class="accordion-header">
-                        <h3>Soniica</h3>
+                        <h3>Soundibly</h3>
                         <span class="icon">+</span>
                     </div>
                     <div class="accordion-content">
                         <ul>
-                            <li><a href="/about-us">About us</a></li>
-                            <li><a href="/pricing">Pricing</a></li>
-                            <li><a href="/contact">Contact us</a></li>
-                            <li><a href="/license">License</a></li>
+                            <li><a href="/about-us">Sobre</a></li>
+                            <li><a href="/pricing">Preços/a></li>
+                            <li><a href="/contact">Contato</a></li>
+                            <li><a href="/license">Licença</a></li>
                         </ul>
                     </div>
                 </div>
@@ -43,19 +43,19 @@ class Accordion {
                     ?>
                     <div class="accordion-item">
                         <div class="accordion-header">
-                            <h3>My Account</h3>
+                            <h3>Minha conta</h3>
                             <span class="icon">+</span>
                         </div>
                         <div class="accordion-content">
                             <ul>
-                                <li><a href="<?php echo home_url('/profile'); ?>">Profile</a></li>
+                                <li><a href="<?php echo home_url('/profile'); ?>">Perfil</a></li>
                                 <li><a href="<?php echo home_url('/playlists'); ?>">Playlists</a></li>
                                 <?php 
                                 // Verifica se o usuário é premium
                                 $is_premium = Users::check_user_premium_status();
                                 if (!$is_premium) {
                                     ?>
-                                    <li><a href="<?php echo home_url('/get-premium'); ?>">Go premium</a></li>
+                                    <li><a href="<?php echo home_url('/get-premium'); ?>">Assinar</a></li>
                                     <?php
                                 } 
                                 ?>
@@ -98,7 +98,7 @@ class Accordion {
                                 }
                             ?>
                         <ul>
-                            <li><a href="/playlists">Se all playlists</a></li>
+                            <li><a href="/playlists">Suas playlists</a></li>
                         </ul>
                     </div>
                 </div>

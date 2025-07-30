@@ -20,18 +20,18 @@ get_header();
                 <svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 17" width="20" height="17"><style>.a{fill:#fff}</style><path class="a" d="m8.6 0q-0.1 0-0.2 0 0 0.1-0.1 0.1c-0.1 0-0.3 0.3-4.1 4-3.2 3-4 3.9-4.1 4 0 0 0 0.1-0.1 0.1 0 0.1 0 0.2 0 0.3q0 0.1 0 0.2c0 0 0.1 0.1 0.1 0.2 0 0.1 0.2 0.3 4 4 2.4 2.3 4.1 3.9 4.1 3.9q0.1 0.1 0.1 0.1 0.1 0 0.2 0.1 0.1 0 0.2 0 0.1 0 0.2 0 0.1-0.1 0.1-0.1 0.1 0 0.2-0.1c0 0 0.1 0 0.1-0.1 0.1 0 0.1-0.1 0.2-0.2 0 0 0-0.1 0-0.1q0-0.1 0.1-0.3-0.1-0.1-0.1-0.2c0 0 0-0.1 0-0.1-0.1-0.1-0.3-0.3-3.3-3.3-1.8-1.7-3.2-3.1-3.2-3.1 0-0.1 3.6-0.1 8.1-0.1h8.1q0.3 0 0.3-0.1c0.1 0 0.2 0 0.2-0.1 0.1 0 0.1-0.1 0.2-0.2 0 0 0-0.1 0-0.1 0.1-0.1 0.1-0.1 0.1-0.2 0-0.1 0-0.1 0-0.2 0 0 0-0.1-0.1-0.2 0 0 0-0.1-0.1-0.2 0 0-0.1-0.1-0.1-0.1-0.1-0.1-0.1-0.1-0.2-0.2 0 0-0.1 0-0.2 0-0.1 0-0.3 0-8.2 0-4.5 0-8.1 0-8.1-0.1 0 0 1.4-1.4 3.2-3.1 3-3 3.2-3.2 3.3-3.3 0 0 0-0.1 0-0.1q0-0.1 0.1-0.3-0.1-0.1-0.1-0.2c0 0 0-0.1 0-0.1q-0.1-0.1-0.2-0.2c-0.1-0.1-0.1-0.2-0.2-0.2-0.1 0-0.2-0.1-0.2-0.1q-0.1 0-0.2 0 0 0-0.1 0z"/></svg>            
             </a>
         </p> 
-       <h2>Go Premium for Just $1.99/Month!</h2>
-        <p>Unlock the full power of Soniica for only $1.99 per month!</p>
-        <p>As a Premium member, you'll get:</p>
+       <h2>Seja Premium por só R$9,99/mês!</h2>
+        <p>Desbloqueie todo o poder do Soniica por apenas R$9,99 por mês!</p>
+        <p>Como membro Premium, você vai ter:</p>
         <ul>
-            <li>🎸 Unlimited downloads — rock your library with no limits.</li>
-            <li>🎶 Unlimited playlists — create, customize, and blast your sound your way.</li>
-            <li>🚀 Instant access to the latest releases — no more waiting to jam to the newest hits.</li>
-            <li>🔕 Ad-free experience — enjoy your music without interruptions.</li>
+            <li>🎸 Downloads ilimitados — monte sua biblioteca sem limites.</li>
+            <li>🎶 Playlists ilimitadas — crie, personalize e curta do seu jeito.</li>
+            <li>🚀 Acesso instantâneo aos lançamentos — nada de esperar pra ouvir os hits mais novos.</li>
+            <li>🔕 Experiência sem anúncios — curte seu som sem interrupções.</li>
         </ul>
-        <p>All that for less than the price of a coffee.</p>
-        <p>Don't hold back — take your music experience to the next level.</p>
-        <p>Go Premium and let the music never stop! </p>   
+        <p>Tudo isso por menos do que o preço de um café!</p>
+        <p>Não se prenda — leve sua experiência musical pro próximo nível.</p>
+        <p>Vire Premium e deixe a música rolar sem parar!</p>   
         <?php 
             // Verifica se o usuário está logado
             if(is_user_logged_in()) {
@@ -44,9 +44,9 @@ get_header();
                 // Se não for premium, exibe o botão de assinatura
                 else {
                     if ($checkoutUrl): ?>
-                        <a class="premium-btn" href="<?php echo esc_url($checkoutUrl); ?>" class="btn btn-primary">Upgrade now $1.99/Month</a>
+                        <a class="premium-btn" href="<?php echo esc_url($checkoutUrl); ?>" class="btn btn-primary">Ative agora por R$9,99/mês</a>
                     <?php else: ?>
-                        <p>Erro ao gerar o checkout.</p>
+                        <p>Erro no checkout</p>
                     <?php endif;
                 }
             } else {
@@ -55,7 +55,7 @@ get_header();
                 <?php
             }
         ?>
-        <p>Cancel anytime, keep the vibe going 🎸</p>        
+        <p>Cancele quando quiser, mas mantenha a vibe 🎸</p>        
        </div>
     </div>
 </div>

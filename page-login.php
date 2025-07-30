@@ -46,23 +46,20 @@ get_header();
                 </a>
             </p> 
             <h3>Log in</h3>
-            <p>Enter your email and password.</p>
+            <p>Entre com email e senha</p>
             <form action="" method="post">
                     <label for="username">Email</label>
                     <input type="text" name="username" id="username" required>
-                    <label for="password">Password</label>
+                    <label for="password">Senha</label>
                     <input type="password" name="password" id="password" required>
-                    <div class="checkbox">
-                        <input type="checkbox" name="remember"> <span>Remember-me</span>
-                    </div>
-                    <input class="login-button" type="submit" name="submit" value="Sign in">
+                    <input class="login-button" type="submit" name="submit" value="Entrar">
                     <?php if ( $login_error ) : ?>
                         <div class="login-error">
-                            <?php echo "<p class='error'>Invalid password or username.</p>"; ?>
+                            <?php echo "<p class='error'>Senha ou usuário inválido.</p>"; ?>
                         </div>
                     <?php endif; ?>
             </form>
-            <p>👉 Don't have an account? <a href="/sign-up">Sign Up Now</a>.</p>
+            <p>👉 Não tem uma conta? <a href="/sign-up">Registrar</a>.</p>
             <p>👉 Esqueceu sua senha? <a href="/recover-password">Recuperar senha</a>.</p>
             <!--/form  -->
         </div>       

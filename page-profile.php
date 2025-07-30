@@ -30,9 +30,9 @@ $is_premium = Users::check_user_premium_status();
                 <svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 17" width="20" height="17"><style>.a{fill:#fff}</style><path class="a" d="m8.6 0q-0.1 0-0.2 0 0 0.1-0.1 0.1c-0.1 0-0.3 0.3-4.1 4-3.2 3-4 3.9-4.1 4 0 0 0 0.1-0.1 0.1 0 0.1 0 0.2 0 0.3q0 0.1 0 0.2c0 0 0.1 0.1 0.1 0.2 0 0.1 0.2 0.3 4 4 2.4 2.3 4.1 3.9 4.1 3.9q0.1 0.1 0.1 0.1 0.1 0 0.2 0.1 0.1 0 0.2 0 0.1 0 0.2 0 0.1-0.1 0.1-0.1 0.1 0 0.2-0.1c0 0 0.1 0 0.1-0.1 0.1 0 0.1-0.1 0.2-0.2 0 0 0-0.1 0-0.1q0-0.1 0.1-0.3-0.1-0.1-0.1-0.2c0 0 0-0.1 0-0.1-0.1-0.1-0.3-0.3-3.3-3.3-1.8-1.7-3.2-3.1-3.2-3.1 0-0.1 3.6-0.1 8.1-0.1h8.1q0.3 0 0.3-0.1c0.1 0 0.2 0 0.2-0.1 0.1 0 0.1-0.1 0.2-0.2 0 0 0-0.1 0-0.1 0.1-0.1 0.1-0.1 0.1-0.2 0-0.1 0-0.1 0-0.2 0 0 0-0.1-0.1-0.2 0 0 0-0.1-0.1-0.2 0 0-0.1-0.1-0.1-0.1-0.1-0.1-0.1-0.1-0.2-0.2 0 0-0.1 0-0.2 0-0.1 0-0.3 0-8.2 0-4.5 0-8.1 0-8.1-0.1 0 0 1.4-1.4 3.2-3.1 3-3 3.2-3.2 3.3-3.3 0 0 0-0.1 0-0.1q0-0.1 0.1-0.3-0.1-0.1-0.1-0.2c0 0 0-0.1 0-0.1q-0.1-0.1-0.2-0.2c-0.1-0.1-0.1-0.2-0.2-0.2-0.1 0-0.2-0.1-0.2-0.1q-0.1 0-0.2 0 0 0-0.1 0z"/></svg>            
             </a>
         </p>         
-        <h2>Account</h2>
+        <h2>Sua conta</h2>
         <div class="section">
-            <h3>Profile Image</h3>
+            <h3>Imagem de perfil</h3>
             <div class="profile-img">
                 <?php
                     if($profile_url) {
@@ -48,9 +48,9 @@ $is_premium = Users::check_user_premium_status();
                 <div class="file-picker-div">
                     <input class="file-picker" id="profile_picture" type="file" name="profile_picture" accept="image/*" />
                 </div>
-                <button class="send-image" type="submit">Send image</button>
+                <button class="send-image" type="submit">Enviar imagem</button>
             </form>
-            <button id="remove-profile-picture">Delete image</button>
+            <button id="remove-profile-picture">Deletar imagem</button>
             <div id="upload-status"></div>
         </div>
         <!-- section -->
@@ -59,32 +59,32 @@ $is_premium = Users::check_user_premium_status();
                 <?php
                     if($is_premium){
                         ?>
-                        <div class="user-status premium">Premium plan</div>
-                        <p>You already have our best plan.</p> 
-                        <p>Do you need some custom solution for your business? Say hello and tell us what you need in <a href="#">hello@soniica.com</a></p>
+                        <div class="user-status premium">Plano premium</div>
+                        <p>Você já tem nosso melhor plano.</p> 
+                        <p>Precisa de uma solução customizada para o seu negócio? Dá um oi e nos diga o que você preicsa<a href="#">hello@soniica.com</a></p>
                         <?php
                     } else {
                         ?>
-                        <div class="user-status free">Free plan</div>
-                        <p>Want to unlock all the power that only premium give to you? <a href="/get-premium">Go premium</a> </p>
+                        <div class="user-status free">Plano Free</div>
+                        <p>Quer ter acesso a todo o poder que só uma contra premium te dá? <a href="/get-premium">Seja premium</a> </p>
                         <?php
                     }
                 ?>
         </div>
         <!-- /section -->
         <div class="section">
-            <h3>Help</h3>
-            <p>Do you need help? Just call us on <a href="#">help@soniica.com</a></p>
+            <h3>Ajuda</h3>
+            <p>Precisa de ajuda? É só chamar aqui <a href="#">help@soniica.com</a></p>
         </div>
         <!-- /section -->
         <div class="section">
-            <h3>Cancel Account</h3>
+            <h3>Cancelar conta</h3>
             <?php if($is_premium): ?>
-                <p>Before deleting your account is very important to cancel your payment subscription so we can stop charge you.</p>
-                <p><a href="/cancel-premium">Click here</a> to go to cancel premium page.</p>
+                <p>Antes de excluir sua conta, certifique-se de cancelar sua assinatura para que a gente pare de cobrar você.</p>
+                <p><a href="/cancel-premium">Clique aqui</a> para acessar a página de cancelamento de assinatura.</p>
             <?php endif; ?>
-            <p class="delete-account-warning">By clicking the button below, <span>you will permanently delete your account</span>.</p>
-            <button id="delete-account-btn">☠️ Delete my account!</button>
+            <p class="delete-account-warning">Clicando no botão abaixo, <span>Você deletará permanentemente sua conta</span>.</p>
+            <button id="delete-account-btn">☠️ Delete minha conta!</button>
         </div>
         <!-- /section -->
      </div>
@@ -93,7 +93,7 @@ $is_premium = Users::check_user_premium_status();
 <!-- /main content -->
 <script>
 document.getElementById('delete-account-btn')?.addEventListener('click', function() {
-    if (confirm("Are you sure you want to delete your account? This action is irreversible.")) {
+    if (confirm("Tem certeza que deseja deletar sua conta? Essa ação é irreversível.")) {
         fetch('<?php echo admin_url('admin-ajax.php'); ?>', {
             method: 'POST',
             credentials: 'same-origin',
@@ -108,7 +108,7 @@ document.getElementById('delete-account-btn')?.addEventListener('click', functio
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                alert('Account successfully deleted!');
+                alert('Conta deletada com sucesso!');
                 window.location.href = '<?php echo home_url(); ?>';
             } else {
                 alert('Error deleting account.: ' + data.data);

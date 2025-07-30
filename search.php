@@ -175,13 +175,13 @@ $user_playlists = get_posts([
         <?php endwhile; ?>
         <?php the_posts_pagination(array(
             'mid_size' => 2,
-            'prev_text' => 'Previous',
-            'next_text' => 'Next',
+            'prev_text' => 'Anterior',
+            'next_text' => 'Próximo',
         )); ?>
         </div>
         <?php else : ?>
             <div class="no-results">
-                <p><?php esc_html_e('Sorry, but nothing matched your search terms. Please try again with different keywords.'); ?></p>
+                <p><?php esc_html_e('Poxa, não encontramos nada.'); ?></p>
             </div>
         <?php endif; ?>                
         </div>

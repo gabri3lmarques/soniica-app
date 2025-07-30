@@ -41,12 +41,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_playlist'])) {
     if ($playlist_post && (int) $playlist_post->post_author === get_current_user_id()) {
         $result = $playlist->delete_playlist($playlist_id);
         if ($result['success']) {
-            FlashMessage::set('success', '👉 Playlist successfully deleted.');
+            FlashMessage::set('success', '👉 Playlist deletada.');
         } else {
-            FlashMessage::set('error', '👉 Error deleting the playlist.');
+            FlashMessage::set('error', '👉 Erro ao deletar.');
         }
     } else {
-        FlashMessage::set('error', "👉 You don't have permission to delete this playlist.");
+        FlashMessage::set('error', "👉 Você não tem essa permissão.");
     }
     // Redireciona para a home
     ?>
@@ -85,7 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_playlist'])) {
                     ?>
                     <form method="POST">
                         <input type="hidden" name="playlist_id" value="<?php echo get_the_ID(); ?>">
-                        <button type="submit" name="delete_playlist">Delete playlist</button>
+                        <button type="submit" name="delete_playlist">Deletar playlist</button>
                     </form>
                     <?php
                 }
@@ -185,7 +185,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_playlist'])) {
                 <?php endforeach;
             }
         } else {
-            echo "<p style='margin-top:30px'>This playlist doesn't have any songs yet.</p>";
+            echo "<p style='margin-top:30px'>Nenhuma música na playlist ainda..</p>";
         }
         ?>    
     </div>
@@ -210,11 +210,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['remove_song_from_play
         'song_id' => $song_id
     ]);
     if ($result['success']) {
-        FlashMessage::set('success', '👉 Song removed successfully!');
+        FlashMessage::set('success', '👉 Música removida!');
         // Atualiza a página para refletir a mudança
         echo "<meta http-equiv='refresh' content='0'>";
     } else {
-        FlashMessage::set('error', '👉 An error occurred while removing the song.');
+        FlashMessage::set('error', '👉 Ocorreu um erro.');
         // Atualiza a página para refletir a mudança
         echo "<meta http-equiv='refresh' content='0'>";
     }

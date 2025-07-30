@@ -75,15 +75,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['create_playlist'])) {
             </a>
         </p>         
         <div class="new-playlist-container">
-            <h2>Create new playlist</h2>
+            <h2>Criar nova playlist</h2>
             <form method="POST">
                 <input type="text" name="playlist_title" placeholder="Playlist name" required>
-                <button class="create_playlist" type="submit" name="create_playlist">Create playlist</button>
+                <button class="create_playlist" type="submit" name="create_playlist">Criar playlist</button>
             </form>
         </div>
         <!-- /new-playlist-container -->
         <div class="my-playlists">
-            <h2>My Playlists</h2>
+            <h2>Minhas Playlists</h2>
             <div class="playlists-list">
                 <?php
                     $current_user_id = get_current_user_id();

@@ -75,23 +75,23 @@ class TopMenu {
                                 <div class="user-name"><?php   echo esc_html($first_name); ?></div>
                                 <div class="email"><?php echo esc_html($email); ?></div>
                                 <ul class='user-menu-list'>
-                                    <li><a href="<?php echo home_url('/profile'); ?>">Profile</a></li>
+                                    <li><a href="<?php echo home_url('/profile'); ?>">Perfil</a></li>
                                     <li><a href="<?php echo home_url('/playlists'); ?>">Playlists</a></li><!--  -->
                                     <?php if($is_premium) {
                                         ?>
-                                        <li class="bordered"><a href="<?php echo home_url('/cancel-premium'); ?>">Cancel Premium</a></li>
+                                        <li class="bordered"><a href="<?php echo home_url('/cancel-premium'); ?>">Cancelar</a></li>
                                         <?php
                                         } else {
                                             ?>
-                                            <li class="bordered"><a href="<?php echo home_url('/get-premium'); ?>">Go premium</a></li>
+                                            <li class="bordered"><a href="<?php echo home_url('/get-premium'); ?>">Assinar</a></li>
                                             <?php
                                         }
                                     ?>
-                                    <li><a href="<?php echo home_url('/about-us'); ?>">About us</a></li>
-                                    <li><a href="<?php echo home_url('/pricing'); ?>">Pricing</a></li>
-                                    <li><a href="<?php echo home_url('/contact-us'); ?>">Contact us</a></li>
-                                    <li class="bordered"><a href="<?php echo home_url('/license'); ?>">License</a></li>
-                                    <li><a href="<?php echo esc_url(home_url('/logout')); ?>">Log out</a></li>
+                                    <li><a href="<?php echo home_url('/about-us'); ?>">Sobre</a></li>
+                                    <li><a href="<?php echo home_url('/pricing'); ?>">Preços</a></li>
+                                    <li><a href="<?php echo home_url('/contact-us'); ?>">Contato</a></li>
+                                    <li class="bordered"><a href="<?php echo home_url('/license'); ?>">Licença</a></li>
+                                    <li><a href="<?php echo esc_url(home_url('/logout')); ?>">Sair</a></li>
                                 </ul>
                             </div>
                         </div>

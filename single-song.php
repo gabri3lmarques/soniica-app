@@ -114,7 +114,7 @@ require_once get_template_directory() . '/components/search/Search.php';
                         <?php endif; ?>
                     </ul>
                 </div>
-                <?
+                <?php
             } // end while
         } // end if
         ?>            

@@ -51,6 +51,18 @@ require_once get_template_directory() . '/components/search/Search.php';
                         'post_status' => 'publish',
                         'numberposts' => 10
                     ]);
+
+                    //para pegar sons poir id
+                    //$song_ids = [123, 456, 789, 321, 654, 987, 111, 222, 333, 444];
+
+                    // $songs = get_posts([
+                    //     'post_type'      => 'song',
+                    //     'post_status'    => 'publish',
+                    //     'post__in'       => $song_ids,
+                    //     'numberposts'    => -1,
+                    //     'orderby'        => 'post__in'
+                    // ]);
+
                     // Obtém as playlists do usuário logado
                     $current_user_id = get_current_user_id();
 

@@ -56,6 +56,7 @@ $user_playlists = get_posts([
         <?php
             $song_id = get_the_ID();
             $song_title = get_the_title();
+            $song_link = get_permalink();
             $download_link = get_field('song_download_link', $song_id);
             $song_duration = get_field('song_duration', $song_id);
             $song_img = get_field('song_image', $song_id);

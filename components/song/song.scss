@@ -92,6 +92,10 @@
         .artist {
             font-size: 14px;
             color: rgba(#fff, 0.5);
+            margin-top: 5px;
+            &:hover {
+                color: colors.$accent-color;
+            }
         }
     }
     .play-button {

@@ -65,6 +65,7 @@ require_once get_template_directory() . '/components/search/Search.php';
                         <?php
                             $song_id = $song->ID;
                             $song_title = $song->post_title;
+                            $song_link = get_permalink($song->ID);
                             $download_link = get_field('song_download_link', $song->ID);
                             $song_duration = get_field('song_duration', $song->ID);
                             $song_img = get_field('song_image', $song->ID);
@@ -104,7 +105,7 @@ require_once get_template_directory() . '/components/search/Search.php';
                                 </div> 
                             </div>
                             <div class="title-artist">
-                                <span class="title"><?php echo esc_html($song_title); ?></span>
+                                <span class="title"><a href="<?php echo($song_link); ?>"><?php echo esc_html($song_title); ?></a></span>
                                 <a class="artist" href="<?php echo($artist_link); ?>"><?php echo esc_html($artist->name ?? 'Desconhecido'); ?></a>
                             </div>
                             <button class="play-button"></button>

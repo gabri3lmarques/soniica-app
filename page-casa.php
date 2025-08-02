@@ -51,6 +51,18 @@ require_once get_template_directory() . '/components/search/Search.php';
                         'post_status' => 'publish',
                         'numberposts' => 10
                     ]);
+
+                    //para pegar sons poir id
+                    //$song_ids = [123, 456, 789, 321, 654, 987, 111, 222, 333, 444];
+
+                    // $songs = get_posts([
+                    //     'post_type'      => 'song',
+                    //     'post_status'    => 'publish',
+                    //     'post__in'       => $song_ids,
+                    //     'numberposts'    => -1,
+                    //     'orderby'        => 'post__in'
+                    // ]);
+
                     // Obtém as playlists do usuário logado
                     $current_user_id = get_current_user_id();
 
@@ -65,6 +77,7 @@ require_once get_template_directory() . '/components/search/Search.php';
                         <?php
                             $song_id = $song->ID;
                             $song_title = $song->post_title;
+                            $song_link = get_permalink($song->ID);
                             $download_link = get_field('song_download_link', $song->ID);
                             $song_duration = get_field('song_duration', $song->ID);
                             $song_img = get_field('song_image', $song->ID);
@@ -104,7 +117,7 @@ require_once get_template_directory() . '/components/search/Search.php';
                                 </div> 
                             </div>
                             <div class="title-artist">
-                                <span class="title"><?php echo esc_html($song_title); ?></span>
+                                <span class="title"><a href="<?php echo($song_link); ?>"><?php echo esc_html($song_title); ?></a></span>
                                 <a class="artist" href="<?php echo($artist_link); ?>"><?php echo esc_html($artist->name ?? 'Desconhecido'); ?></a>
                             </div>
                             <button class="play-button"></button>

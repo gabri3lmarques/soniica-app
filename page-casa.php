@@ -6,11 +6,10 @@ Template Name: Login Personalizado
 get_header();
 ?>
 <div class="top-bar">
-    <?php include 'components/top-menu/top-menu.php'; ?>
 </div>
 <div class="login-page">
     <div class="login-form">
-        <div class="login-form-content"> a
+        <div class="login-form-content">
             <h3>Em breve</h3>
             <p>👉 As melhores músicas e trilhas sonoras estarão aqui.</p>
             <!--/form  -->

@@ -80,16 +80,18 @@ class Player {
             this.randomButton.classList.remove('active');
         }
     }
-    getRandomSong() {
-                if(this.isPlayerDisabled()){
-            return
-        }
-        let randomSong;
-        do {
-            randomSong = songs[Math.floor(Math.random() * songs.length)];
-        } while (randomSong === this.currentSong && songs.length > 1);
-        return randomSong;
-    }
+getRandomSong() {
+    if (!this.currentPlaylist) return null;
+
+    const playlistSongs = Array.from(this.currentPlaylist.querySelectorAll('.song'));
+
+    if (playlistSongs.length <= 1) return playlistSongs[0] || null;
+
+    const otherSongs = playlistSongs.filter(song => song !== this.currentSong);
+    const randomIndex = Math.floor(Math.random() * otherSongs.length);
+
+    return otherSongs[randomIndex];
+}
     getNextSong() {
         if (this.isRandom) {
             return this.getRandomSong();

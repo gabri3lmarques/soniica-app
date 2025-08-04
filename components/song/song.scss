@@ -34,16 +34,38 @@
         }
 
     }
+
     &:nth-child(odd) {
         background-color: colors.$dark-sidebar;
     }
+
     &:hover {
         background: linear-gradient(
             to right,
             rgba(233, 82, 101, 0.3),  /* #e95265 com 80% de opacidade */
             rgba(32, 125, 255, 0.3)   /* #207dff com 80% de opacidade */
         );
+
+        .title-artist {
+        .title {
+            font-size: 14px;
+            color: rgba(#fff, 0.5);
+            &:hover {
+                color: #fff;
+            }
+            
+        }
+        .artist {
+            font-size: 14px;
+            color: rgba(#fff, 0.5);
+            margin-top: 5px;
+            &:hover {
+                color: #fff;
+            }
+        }
     }
+    }
+
     .is-new {
         font-size: 10px;
         text-transform: uppercase;
@@ -94,7 +116,7 @@
             color: rgba(#fff, 0.5);
             margin-top: 5px;
             &:hover {
-                color: colors.$accent-color;
+                color: #fff;
             }
         }
     }

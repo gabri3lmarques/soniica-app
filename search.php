@@ -49,9 +49,10 @@ $user_playlists = get_posts([
             $search = new SearchComponent();
             echo $search->render();
         ?>
-        <div class="playlist">
+        
         <?php if (have_posts()) : ?>
-        <div class="search-results">
+        <!-- FIXED: Move the playlist class to wrap all songs directly -->
+        <div class="playlist search-results">
         <?php while (have_posts()) : the_post(); ?>
         <?php
             $song_id = get_the_ID();
@@ -161,7 +162,6 @@ $user_playlists = get_posts([
                 <p><?php esc_html_e('Poxa, não encontramos nada.'); ?></p>
             </div>
         <?php endif; ?>                
-        </div>
     </div>
 </div>
 <div class="bottom-bar">

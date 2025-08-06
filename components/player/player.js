@@ -1,41 +1,61 @@
 class Player {
-    constructor() {
-        this.audio = new Audio();
-        this.currentSong = null;
-        this.currentPlaylist = null;
-        this.isPlaying = false;
-        this.isLooping = false; // Estado do loop
-        this.isRandom = false; // Estado do random
-        // Elementos do player principal
-        this.titleElement = document.querySelector('.current-title');
-        this.artistElement = document.querySelector('.current-artist');
-        this.timeElement = document.querySelector('.current-time');
-        this.gendersElement = document.querySelector('.current-genders');
-        this.thumbElement = document.querySelector('.current-thumb');
-        this.playPauseButton = document.querySelector('.play-pause');
-        this.nextButton = document.querySelector('.next-song');
-        this.previousButton = document.querySelector('.previous-song');
-        this.loopButton = document.querySelector('.loop');
-        this.randomButton = document.querySelector('.random'); // Botão de random
-        this.progressBarContainer = document.querySelector('.progress-bar-container');
-        this.progressBar = document.querySelector('.progress-bar');
-        this.volumeSlider = document.querySelector('#volume-slider'); // Slider de volume
-        // Event listeners
+ constructor() {
+    this.audio = new Audio();
+    this.currentSong = null;
+    this.currentPlaylist = null;
+    this.isPlaying = false;
+    this.isLooping = false;
+    this.isRandom = false;
+
+    // Elementos do player principal
+    this.titleElement = document.querySelector('.current-title');
+    this.artistElement = document.querySelector('.current-artist');
+    this.timeElement = document.querySelector('.current-time');
+    this.gendersElement = document.querySelector('.current-genders');
+    this.thumbElement = document.querySelector('.current-thumb');
+    this.playPauseButton = document.querySelector('.play-pause');
+    this.nextButton = document.querySelector('.next-song');
+    this.previousButton = document.querySelector('.previous-song');
+    this.loopButton = document.querySelector('.loop');
+    this.randomButton = document.querySelector('.random');
+    this.progressBarContainer = document.querySelector('.progress-bar-container');
+    this.progressBar = document.querySelector('.progress-bar');
+    this.volumeSlider = document.querySelector('#volume-slider');
+
+    // Event listeners (somente se os elementos existem)
+    if (this.playPauseButton)
         this.playPauseButton.addEventListener('click', () => this.togglePlayPause());
+
+    if (this.nextButton)
         this.nextButton.addEventListener('click', () => this.next());
+
+    if (this.previousButton)
         this.previousButton.addEventListener('click', () => this.previous());
+
+    if (this.loopButton)
         this.loopButton.addEventListener('click', () => this.toggleLoop());
+
+    if (this.randomButton)
         this.randomButton.addEventListener('click', () => this.toggleRandom());
-        this.audio.addEventListener('timeupdate', () => this.updateProgressBar());
-        this.audio.addEventListener('ended', () => this.handleSongEnd());
+
+    if (this.volumeSlider) {
         this.volumeSlider.addEventListener('input', (e) => this.adjustVolume(e));
-        // Eventos para a barra de progresso
-        this.progressBarContainer.addEventListener('click', (e) => this.seek(e));
-        this.progressBarContainer.addEventListener('mousedown', (e) => this.startDrag(e));
-        // Inicializar a primeira música automaticamente
-        this.initializeFirstSong();
         this.audio.volume = this.volumeSlider.value;
     }
+
+    if (this.progressBarContainer) {
+        this.progressBarContainer.addEventListener('click', (e) => this.seek(e));
+        this.progressBarContainer.addEventListener('mousedown', (e) => this.startDrag(e));
+    }
+
+    this.audio.addEventListener('timeupdate', () => this.updateProgressBar());
+    this.audio.addEventListener('ended', () => this.handleSongEnd());
+
+    // Inicializa a primeira música automaticamente
+    this.initializeFirstSong();
+}
+
+
     isPlayerDisabled() {
         return document.querySelector('#player-main')?.classList.contains('disabled');
     }

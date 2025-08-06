@@ -13,8 +13,8 @@ class Player {
         this.gendersElement = document.querySelector('.current-genders');
         this.thumbElement = document.querySelector('.current-thumb');
         this.playPauseButton = document.querySelector('.play-pause');
-        this.nextButton = document.querySelector('.next');
-        this.previousButton = document.querySelector('.previous');
+        this.nextButton = document.querySelector('.next-song');
+        this.previousButton = document.querySelector('.previous-song');
         this.loopButton = document.querySelector('.loop');
         this.randomButton = document.querySelector('.random'); // Botão de random
         this.progressBarContainer = document.querySelector('.progress-bar-container');

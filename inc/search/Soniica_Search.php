@@ -70,7 +70,7 @@ class Soniica_Search {
             $query->set('post_type', 'song');
     
             // Se quiser manter o limite de resultados por página
-            $query->set('posts_per_page', 20);
+            $query->set('posts_per_page', 5);
         }
     }
 }

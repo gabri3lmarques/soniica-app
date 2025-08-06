@@ -52,56 +52,7 @@ $is_premium = Users::check_user_premium_status();
 ?>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-    
-const mainPlayer = document.querySelector('#player-main');
-if(mainPlayer){
-    const songs = document.querySelectorAll('.playlist .song');
-    const adAudioSrc = "https://od.lk/s/Ml8yMzcxOTQ5MTVf/vinheta_portugues.mp3";
-    window.songsPlayedCount = 0;
-    const originalHandleSongEnd = globalPlayer.handleSongEnd.bind(globalPlayer);
-    const stopPlay = globalPlayer.pause.bind(globalPlayer);
-    const nextSong = globalPlayer.next.bind(globalPlayer);
-    const initializeFirstSong = globalPlayer.initializeFirstSong.bind(globalPlayer);
-    globalPlayer.handleSongEnd = function() {
-        window.songsPlayedCount++;
-        if (window.songsPlayedCount === 1) {
-            // Pausa e muta o player principal
-            stopPlay();
-            songs.forEach(song => {
-                song.classList.remove('active');
-            });
-            globalPlayer.audio.muted = true;
-            mainPlayer.classList.add('disabled');
-            // Cria e toca o anúncio
-            const adAudio = new Audio(adAudioSrc);
-            adAudio.play();
-            if (globalPlayer.titleElement) globalPlayer.titleElement.textContent = "Sponsored Ad";
-            if (globalPlayer.artistElement)  globalPlayer.artistElement.textContent = "Advertisement";
-            if (globalPlayer.thumbElement) globalPlayer.thumbElement.src = "<?php echo get_template_directory_uri() . '/assets/img/logo/soniica.png'; ?>";
-            if (globalPlayer.timeElement)  globalPlayer.timeElement.textContent = "00:00";
-            const currentSong = globalPlayer.currentSong;
-            const playlistSongs = [...songs];
-            const isLastSong = playlistSongs.indexOf(currentSong) === playlistSongs.length - 1;
-            console.log(currentSong);
-            adAudio.addEventListener('ended', () => {
-                // Desmuta o player principal
-                globalPlayer.audio.muted = false;
-                mainPlayer.classList.remove('disabled');
-                // Checa se é a última música
-                if (!isLastSong) {
-                    nextSong();
-                } else {
-                    initializeFirstSong();
-                }
-                // Reseta o contador de músicas
-                window.songsPlayedCount = 0;
-                
-            });
-            return; // Impede de avançar na playlist durante o anúncio
-        }
-        originalHandleSongEnd();
-    };
-}
+    console.log("carregou o  body")
 });
 
 </script>

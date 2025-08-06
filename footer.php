@@ -73,10 +73,10 @@ if(mainPlayer){
             // Cria e toca o anúncio
             const adAudio = new Audio(adAudioSrc);
             adAudio.play();
-            globalPlayer.titleElement.textContent = "Sponsored Ad";
-            globalPlayer.artistElement.textContent = "Advertisement";
-            globalPlayer.thumbElement.src = "<?php echo get_template_directory_uri() . '/assets/img/logo/soniica.png'; ?>";
-            globalPlayer.timeElement.textContent = "00:00";
+            if (globalPlayer.titleElement) globalPlayer.titleElement.textContent = "Sponsored Ad";
+            if (globalPlayer.artistElement)  globalPlayer.artistElement.textContent = "Advertisement";
+            if (globalPlayer.thumbElement) globalPlayer.thumbElement.src = "<?php echo get_template_directory_uri() . '/assets/img/logo/soniica.png'; ?>";
+            if (globalPlayer.timeElement)  globalPlayer.timeElement.textContent = "00:00";
             const currentSong = globalPlayer.currentSong;
             const playlistSongs = [...songs];
             const isLastSong = playlistSongs.indexOf(currentSong) === playlistSongs.length - 1;

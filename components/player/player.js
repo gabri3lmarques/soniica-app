@@ -7,15 +7,6 @@ class Player {
         this.isLooping = false;
         this.isRandom = false;
 
-        // Aguardar DOM estar pronto
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', () => this.initialize());
-        } else {
-            this.initialize();
-        }
-    }
-
-    initialize() {
         // Elementos do player principal
         this.titleElement = document.querySelector('.current-title');
         this.artistElement = document.querySelector('.current-artist');
@@ -31,29 +22,26 @@ class Player {
         this.progressBar = document.querySelector('.progress-bar');
         this.volumeSlider = document.querySelector('#volume-slider');
 
-        this.setupEventListeners();
-        this.setupAudioEventListeners();
-        
-        // Delay na inicialização da primeira música
-        setTimeout(() => this.initializeFirstSong(), 100);
-    }
-
-    setupEventListeners() {
-        // Event listeners (somente se os elementos existem)
-        if (this.playPauseButton)
+        // Event listeners (APENAS se os elementos existem)
+        if (this.playPauseButton) {
             this.playPauseButton.addEventListener('click', () => this.togglePlayPause());
+        }
 
-        if (this.nextButton)
+        if (this.nextButton) {
             this.nextButton.addEventListener('click', () => this.next());
+        }
 
-        if (this.previousButton)
+        if (this.previousButton) {
             this.previousButton.addEventListener('click', () => this.previous());
+        }
 
-        if (this.loopButton)
+        if (this.loopButton) {
             this.loopButton.addEventListener('click', () => this.toggleLoop());
+        }
 
-        if (this.randomButton)
+        if (this.randomButton) {
             this.randomButton.addEventListener('click', () => this.toggleRandom());
+        }
 
         if (this.volumeSlider) {
             this.volumeSlider.addEventListener('input', (e) => this.adjustVolume(e));
@@ -64,27 +52,13 @@ class Player {
             this.progressBarContainer.addEventListener('click', (e) => this.seek(e));
             this.progressBarContainer.addEventListener('mousedown', (e) => this.startDrag(e));
         }
-    }
 
-    setupAudioEventListeners() {
+        // Event listeners do áudio (sempre existem)
         this.audio.addEventListener('timeupdate', () => this.updateProgressBar());
         this.audio.addEventListener('ended', () => this.handleSongEnd());
-        
-        // Adicionar tratamento de erros
-        this.audio.addEventListener('error', (e) => {
-            console.error('Audio error:', e);
-            console.error('Audio error code:', this.audio.error?.code);
-            console.error('Audio error message:', this.audio.error?.message);
-            console.error('Audio src:', this.audio.src);
-        });
 
-        this.audio.addEventListener('loadstart', () => {
-            console.log('Loading started for:', this.audio.src);
-        });
-
-        this.audio.addEventListener('canplaythrough', () => {
-            console.log('Can play through:', this.audio.src);
-        });
+        // Inicializa a primeira música automaticamente
+        this.initializeFirstSong();
     }
 
     isPlayerDisabled() {
@@ -96,105 +70,41 @@ class Player {
         const rightVolume = newVolume * 100;
         const leftVolume = 100 - rightVolume;
         this.audio.volume = newVolume;
-        this.volumeSlider.style.background = `linear-gradient(to right, #e95265, #207dff ${rightVolume}%, #272727 ${leftVolume}%)`;
-    }
-
-    // Método melhorado com mais validações
-    async initializeFirstSong() {
-        try {
-            const firstPlaylist = document.querySelector('.playlist');
-            if (!firstPlaylist) {
-                console.warn('No playlist found');
-                return;
-            }
-            
-            const firstSong = firstPlaylist.querySelector('.song');
-            if (!firstSong) {
-                console.warn('No songs found in playlist');
-                return;
-            }
-
-            this.currentPlaylist = firstPlaylist;
-            this.currentSong = firstSong;
-            
-            await this.loadAudioSrc(firstSong);
-            this.updatePlayerInfo(firstSong);
-        } catch (error) {
-            console.error('Error initializing first song:', error);
+        if (this.volumeSlider) {
+            this.volumeSlider.style.background = `linear-gradient(to right, #e95265, #207dff ${rightVolume}%, #272727 ${leftVolume}%)`;
         }
     }
 
-    // Método separado para carregar áudio com melhor tratamento de erro
-    async loadAudioSrc(songElement) {
-        const encodedUrl = songElement?.dataset?.src;
+    initializeFirstSong() {
+        const firstPlaylist = document.querySelector('.playlist');
+        if (!firstPlaylist) return;
         
-        if (!encodedUrl) {
-            throw new Error('No encoded URL found in song element');
-        }
-
+        const firstSong = firstPlaylist.querySelector('.song');
+        if (!firstSong) return;
+        
+        this.currentPlaylist = firstPlaylist;
+        this.currentSong = firstSong;
+        
+        const encodedUrl = firstSong.dataset.src;
+        if (!encodedUrl) return;
+        
         try {
             const decodedUrl = atob(encodedUrl);
-            
-            // Validações mais rigorosas
-            if (!decodedUrl || typeof decodedUrl !== 'string') {
-                throw new Error('Invalid decoded URL');
-            }
-
-            // Verificar protocolo
             if (!decodedUrl.startsWith('http://') && !decodedUrl.startsWith('https://')) {
-                throw new Error(`Invalid protocol in URL: ${decodedUrl}`);
+                console.error('Invalid decoded URL:', decodedUrl);
+                return;
             }
-
-            // Se estamos em HTTPS, forçar URLs para HTTPS também
-            let finalUrl = decodedUrl;
-            if (window.location.protocol === 'https:' && decodedUrl.startsWith('http://')) {
-                finalUrl = decodedUrl.replace('http://', 'https://');
-                console.warn('Converting HTTP URL to HTTPS for security:', finalUrl);
-            }
-
-            console.log('Loading audio from:', finalUrl);
-            
-            // Teste de conectividade antes de definir como src
-            await this.testAudioUrl(finalUrl);
-            
-            this.audio.src = finalUrl;
-            
+            this.audio.src = decodedUrl;
+            this.updatePlayerInfo(firstSong);
         } catch (e) {
-            console.error('Error decoding/loading URL:', e);
-            console.error('Original encoded URL:', encodedUrl);
-            throw e;
+            console.error('Error decoding URL:', e);
         }
-    }
-
-    // Método para testar se a URL é válida antes de usar
-    async testAudioUrl(url) {
-        return new Promise((resolve, reject) => {
-            const testAudio = new Audio();
-            
-            const timeout = setTimeout(() => {
-                testAudio.src = '';
-                reject(new Error('Audio URL test timeout'));
-            }, 5000);
-
-            testAudio.addEventListener('canplay', () => {
-                clearTimeout(timeout);
-                testAudio.src = '';
-                resolve();
-            });
-
-            testAudio.addEventListener('error', (e) => {
-                clearTimeout(timeout);
-                testAudio.src = '';
-                reject(new Error(`Audio URL test failed: ${e.message}`));
-            });
-
-            testAudio.src = url;
-        });
     }
 
     toggleRandom() {
-        if(this.isPlayerDisabled()) return;
-        
+        if (this.isPlayerDisabled()) {
+            return;
+        }
         this.isRandom = !this.isRandom;
         
         if (this.randomButton) {
@@ -238,37 +148,43 @@ class Player {
         return songs[currentIndex - 1] || (this.isLooping ? songs[songs.length - 1] : null);
     }
 
-    async play(songElement, playlistElement) {
-        if(this.isPlayerDisabled()) return;
-        
+    play(songElement, playlistElement) {
+        if (this.isPlayerDisabled()) {
+            return;
+        }
         try {
-            // Pausar música atual se houver
-            if (this.currentSong && this.currentSong !== songElement) {
-                this.pause(this.currentSong);
+            const encodedUrl = songElement.dataset.src;
+            if (!encodedUrl) {
+                console.error('No encoded URL found');
+                return;
+            }
+            
+            const decodedUrl = atob(encodedUrl);
+            if (!decodedUrl.startsWith('http://') && !decodedUrl.startsWith('https://')) {
+                console.error('Invalid decoded URL:', decodedUrl);
+                return;
             }
 
-            await this.loadAudioSrc(songElement);
-            
-            await this.audio.play();
-            
+            if (this.currentSong && this.currentSong !== songElement) {
+                const playButton = this.currentSong.querySelector('.play-button');
+                if (playButton) playButton.classList.remove('active');
+                this.currentSong.classList.remove('active');
+            }
+
+            if (this.audio.src !== decodedUrl) {
+                this.audio.src = decodedUrl;
+            }
+
+            this.audio.play();
             this.isPlaying = true;
             this.currentSong = songElement;
             this.currentPlaylist = playlistElement;
-            
             this.updatePlayerInfo(songElement);
             this.syncButtons(songElement);
 
         } catch (e) {
             console.error('Error playing song:', e);
-            // Tentar fallback ou mostrar mensagem de erro para o usuário
-            this.handlePlayError(e);
         }
-    }
-
-    handlePlayError(error) {
-        console.error('Play error details:', error);
-        // Aqui você pode implementar uma UI de feedback para o usuário
-        // Por exemplo, mostrar uma mensagem ou tentar uma URL alternativa
     }
 
     pause(songElement = null) {
@@ -286,35 +202,32 @@ class Player {
         }
     }
 
-    async togglePlayPause() {
-        if(this.isPlayerDisabled()) return;
-        
-        try {
-            if (this.isPlaying) {
-                this.pause(this.currentSong);
-            } else {
-                await this.audio.play();
-                this.isPlaying = true;
-                
-                if (this.currentSong) {
-                    const playButton = this.currentSong.querySelector('.play-button');
-                    if (playButton) playButton.classList.add('active');
-                    this.currentSong.classList.add('active');
-                }
-                
-                if (this.playPauseButton) {
-                    this.playPauseButton.classList.add('active');
-                }
+    togglePlayPause() {
+        if (this.isPlayerDisabled()) {
+            return;
+        }
+        if (this.isPlaying) {
+            this.pause(this.currentSong);
+        } else {
+            this.audio.play();
+            this.isPlaying = true;
+            
+            if (this.currentSong) {
+                const playButton = this.currentSong.querySelector('.play-button');
+                if (playButton) playButton.classList.add('active');
+                this.currentSong.classList.add('active');
             }
-        } catch (error) {
-            console.error('Error in togglePlayPause:', error);
-            this.handlePlayError(error);
+            
+            if (this.playPauseButton) {
+                this.playPauseButton.classList.add('active');
+            }
         }
     }
 
     toggleLoop() {
-        if(this.isPlayerDisabled()) return;
-        
+        if (this.isPlayerDisabled()) {
+            return;
+        }
         this.isLooping = !this.isLooping;
         
         if (this.loopButton) {
@@ -327,8 +240,9 @@ class Player {
     }
 
     next() {
-        if(this.isPlayerDisabled()) return;
-        
+        if (this.isPlayerDisabled()) {
+            return;
+        }
         const nextSong = this.getNextSong();
         if (nextSong) {
             this.play(nextSong, this.currentPlaylist);
@@ -336,8 +250,9 @@ class Player {
     }
 
     previous() {
-        if(this.isPlayerDisabled()) return;
-        
+        if (this.isPlayerDisabled()) {
+            return;
+        }
         if (this.audio.currentTime > 2) {
             this.audio.currentTime = 0;
         } else {
@@ -370,22 +285,18 @@ class Player {
         if (this.titleElement && titleEl) {
             this.titleElement.textContent = titleEl.textContent;
         }
-        
         if (this.artistElement && artistEl) {
             this.artistElement.textContent = artistEl.textContent;
         }
-        
         if (this.timeElement && timeEl) {
             this.timeElement.textContent = timeEl.textContent;
         }
-        
         if (this.thumbElement && thumbEl) {
             this.thumbElement.src = thumbEl.src;
         }
     }
 
     syncButtons(songElement) {
-        // Remover active de todos os botões
         document.querySelectorAll('.play-button').forEach(button => button.classList.remove('active'));
         document.querySelectorAll('.song').forEach(song => song.classList.remove('active'));
 
@@ -426,7 +337,6 @@ class Player {
             document.removeEventListener('mousemove', dragHandler);
             document.removeEventListener('mouseup', stopDrag);
         };
-        
         document.addEventListener('mousemove', dragHandler);
         document.addEventListener('mouseup', stopDrag);
 
@@ -434,33 +344,24 @@ class Player {
     }
 }
 
-// Inicialização melhorada
-function initializePlayer() {
-    if (document.querySelector('#player-main')) {
-        window.globalPlayer = new Player();
+// Inicializar o player apenas se o elemento existir
+if (document.querySelector('#player-main')) {
+    window.globalPlayer = new Player(); // Define como global
 
-        // Configurar eventos para as músicas
-        document.addEventListener('click', (event) => {
-            const playButton = event.target.closest('.play-button');
-            if (!playButton) return;
+    // Configurar eventos para as músicas
+    document.addEventListener('click', (event) => {
+        const playButton = event.target.closest('.play-button');
+        if (!playButton) return;
 
-            const song = playButton.closest('.song');
-            const playlist = playButton.closest('.playlist');
-            
-            if (!song || !playlist) return;
+        const song = playButton.closest('.song');
+        const playlist = playButton.closest('.playlist');
+        
+        if (!song || !playlist) return;
 
-            if (window.globalPlayer.currentSong === song && window.globalPlayer.isPlaying) {
-                window.globalPlayer.pause(song);
-            } else {
-                window.globalPlayer.play(song, playlist);
-            }
-        });
-    }
-}
-
-// Garantir que o DOM esteja pronto
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initializePlayer);
-} else {
-    initializePlayer();
+        if (window.globalPlayer && window.globalPlayer.currentSong === song && window.globalPlayer.isPlaying) {
+            window.globalPlayer.pause(song);
+        } else if (window.globalPlayer) {
+            window.globalPlayer.play(song, playlist);
+        }
+    });
 }

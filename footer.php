@@ -51,6 +51,8 @@ $is_premium = Users::check_user_premium_status();
     if(!$is_premium):
 ?>
 <script>
+document.addEventListener('DOMContentLoaded', () => {
+    
 const mainPlayer = document.querySelector('#player-main');
 if(mainPlayer){
     const songs = document.querySelectorAll('.playlist .song');
@@ -100,5 +102,7 @@ if(mainPlayer){
         originalHandleSongEnd();
     };
 }
+});
+
 </script>
 <?php endif; ?> 

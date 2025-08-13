@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
 const mainPlayer = document.querySelector('#player-main');
 if(mainPlayer){
     const songs = document.querySelectorAll('.playlist .song');
-    const adAudioSrc = "https://od.lk/s/Ml8yMzcxOTQ5MTVf/vinheta_portugues.mp3";
+    const adAudioSrc = "https://soniica.b-cdn.net/soniica/adds/01/vinheta_portugues.mp3";
     window.songsPlayedCount = 0;
     const originalHandleSongEnd = globalPlayer.handleSongEnd.bind(globalPlayer);
     const stopPlay = globalPlayer.pause.bind(globalPlayer);

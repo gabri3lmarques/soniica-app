@@ -232,7 +232,7 @@ require_once get_template_directory() . '/components/search/Search.php';
             <!-- /Cards -->
 
             <!-- /playlist -->
-             <div class="playlist">
+            <div class="playlist">
                 <h3>🐣 Saindo do forno</h3>
                 <?php
                     // IDs das músicas que você deseja exibir
@@ -350,12 +350,12 @@ require_once get_template_directory() . '/components/search/Search.php';
             <div class="cards">
                 <div class="card">
                     <div class="card-image">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/artists/jay_jordan.jpg" alt="Um senhor de cabelos e barba branca, vestindo uma tunica branca e um brilho em suas maos  colocando fones de ouvido em um jovem hipster, com um fundo colorido.">
+                        <img src="https://soniica.b-cdn.net/Artists/Money%20Machine/img/artist.jpg" alt="Um senhor de cabelos e barba branca, vestindo uma tunica branca e um brilho em suas maos  colocando fones de ouvido em um jovem hipster, com um fundo colorido.">
                     </div>
                     <div class="card-content">
-                        <h3 class="card-title">Jay Jordan</h3>
+                        <h3 class="card-title">Money Machine</h3>
                         <p class="card-text"></p>
-                        <a href="/about-us" class="card-button">
+                        <a href="/category/artist/money-machine/" class="card-button">
                             conferir
                         </a>
                     </div>
@@ -363,12 +363,12 @@ require_once get_template_directory() . '/components/search/Search.php';
                 <!--/card  -->
                 <div class="card">
                     <div class="card-image">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/artists/kayko.jpg" alt="Um casal sentado em ua mesa de lanchonete dos anos 50 confeindo a conta, ela tomando milshake.">
+                        <img src="https://soniica.b-cdn.net/Artists/The%20Naked%20Kings/img/artist.jpg" alt="">
                     </div>
                     <div class="card-content">
-                        <h3 class="card-title">K-Queen</h3>
+                        <h3 class="card-title">The Naked Kings</h3>
                         <p class="card-text"></p>
-                        <a href="/pricing" class="card-button">
+                        <a href="/category/artist/the-naked-kings/" class="card-button">
                             conferir
                         </a>
                     </div>
@@ -376,12 +376,12 @@ require_once get_template_directory() . '/components/search/Search.php';
                 <!--/card  -->
                 <div class="card">
                     <div class="card-image">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/artists/Sean.jpg" alt="Um jovem de aparencia nerd e tatuado está numa chamada web usando um headset.">
+                        <img src="https://soniica.b-cdn.net/Artists/Diva%20Dynasty/artist.jpg" alt="">
                     </div>
                     <div class="card-content">
-                        <h3 class="card-title">Sean</h3>
+                        <h3 class="card-title">Diva Dinasty</h3>
                         <p class="card-text"></p>
-                        <a href="/contact" class="card-button">
+                        <a href="/category/artist/diva-dynasty/" class="card-button">
                             conferir
                         </a>
                     </div>
@@ -389,12 +389,12 @@ require_once get_template_directory() . '/components/search/Search.php';
                 <!--/card  -->
                 <div class="card">
                     <div class="card-image">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/artists/dookie.jpg" alt="">
+                        <img src="https://soniica.b-cdn.net/Artists/Strings%20And%20Souls/artist.jpg" alt="">
                     </div>
                     <div class="card-content">
-                        <h3 class="card-title">Mr.Dookie</h3>
+                        <h3 class="card-title">Strings And Souls</h3>
                         <p class="card-text"></p>
-                        <a href="/license" class="card-button">
+                        <a href="/category/artist/strings-and-souls/" class="card-button">
                             conferir
                         </a>
                     </div>

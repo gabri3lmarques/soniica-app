@@ -171,6 +171,7 @@
             border-radius: 5px;  /* Cantos arredondados */
             outline: none;  /* Remove o contorno ao focar */
             transition: background 0.3s ease;  /* Transição suave */
+            padding: 0;
         }
         /* Estilo do "thumb" (o botão do slider) */
         #volume-slider::-webkit-slider-thumb {

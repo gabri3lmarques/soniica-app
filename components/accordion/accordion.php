@@ -14,12 +14,12 @@ class Accordion {
                     </div>
                     <div class="accordion-content">
                         <ul>
-                            <li><a href="/tag/happy/">Happy</a></li>
-                            <li><a href="/tag/acoustic">Acoustic</a></li>
-                            <li><a href="/tag/viral">Viral</a></li>
-                            <li><a href="/tag/tech">Tech</a></li>
-                            <li><a href="/tag/trending">Trending</a></li>
-                            <li><a href="/tag/trending">Rock</a></li>
+                            <li><a href="/tag/instrumental/">Instrumental/a></li>
+                            <li><a href="/tag/acoustic/">Acoustic</a></li>
+                            <li><a href="/tag/emotional/">Emotional</a></li>
+                            <li><a href="/tag/indie/">Indie</a></li>
+                            <li><a href="/tag/chillhop/">Chillhop</a></li>
+                            <li><a href="/tag/pop/">Pop</a></li>
                         </ul>
                     </div>
                 </div>

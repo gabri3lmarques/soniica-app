@@ -48,22 +48,22 @@ require_once get_template_directory() . '/components/search/Search.php';
                 <h3>🔊 Tá bombando!</h3>
                 <?php
                     // Obtém as músicas (posts do tipo 'song')
-                    $songs = get_posts([
-                        'post_type' => 'song',
-                        'post_status' => 'publish',
-                        'numberposts' => 5
-                    ]);
+                    // $songs = get_posts([
+                    //     'post_type' => 'song',
+                    //     'post_status' => 'publish',
+                    //     'numberposts' => 5
+                    // ]);
 
                     //para pegar sons poir id
-                    //$song_ids = [123, 456, 789, 321, 654, 987, 111, 222, 333, 444];
+                    $song_ids = [276, 259, 213, 179, 136];
 
-                    // $songs = get_posts([
-                    //     'post_type'      => 'song',
-                    //     'post_status'    => 'publish',
-                    //     'post__in'       => $song_ids,
-                    //     'numberposts'    => -1,
-                    //     'orderby'        => 'post__in'
-                    // ]);
+                    $songs = get_posts([
+                        'post_type'      => 'song',
+                        'post_status'    => 'publish',
+                        'post__in'       => $song_ids,
+                        'numberposts'    => -1,
+                        'orderby'        => 'post__in'
+                    ]);
 
                     // Obtém as playlists do usuário logado
                     $current_user_id = get_current_user_id();
@@ -188,7 +188,7 @@ require_once get_template_directory() . '/components/search/Search.php';
                     $selected_songs = get_posts([
                         'post_type'   => 'song',
                         'post_status' => 'publish',
-                        'post__in'    => [50, 51,52],
+                        'post__in'    => [257,242,228,211,173],
                         'orderby'     => 'post__in',
                         'numberposts' => 5
                     ]);

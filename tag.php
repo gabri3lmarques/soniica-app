@@ -153,7 +153,13 @@ get_header();
                 </ul>
                 <div class="nav-links">
                 <?php
-                    echo paginate_links();
+                    echo paginate_links(array(
+                        'mid_size' => 0,        
+                        'end_size' => 1,        
+                        'prev_text' => '&#129032;',
+                        'next_text' => '&#129034;',
+                        'show_all' => false, 
+                    ));
                 ?>
                 </div>
                 <?php else : ?>

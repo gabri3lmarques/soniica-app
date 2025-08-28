@@ -33,7 +33,7 @@ add_filter('show_admin_bar', '__return_false');
 function filtrar_songs_em_tags( $query ) {
     if ( ! is_admin() && $query->is_main_query() && $query->is_tag() ) {
         $query->set( 'post_type', 'song' );
-        $query->set( 'posts_per_page', 1 );
+        $query->set( 'posts_per_page', 10 );
     }
 }
 add_action( 'pre_get_posts', 'filtrar_songs_em_tags' );

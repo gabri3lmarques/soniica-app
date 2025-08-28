@@ -63,7 +63,7 @@ if(mainPlayer){
     const initializeFirstSong = globalPlayer.initializeFirstSong.bind(globalPlayer);
     globalPlayer.handleSongEnd = function() {
         window.songsPlayedCount++;
-        if (window.songsPlayedCount === 1) {
+        if (window.songsPlayedCount === 5) {
             // Pausa e muta o player principal
             stopPlay();
             songs.forEach(song => {

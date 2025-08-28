@@ -14,7 +14,7 @@ class Accordion {
                     </div>
                     <div class="accordion-content">
                         <ul>
-                            <li><a href="/tag/instrumental/">Instrumental/a></li>
+                            <li><a href="/tag/instrumental/">Instrumental</li>
                             <li><a href="/tag/acoustic/">Acoustic</a></li>
                             <li><a href="/tag/emotional/">Emotional</a></li>
                             <li><a href="/tag/indie/">Indie</a></li>

@@ -8,29 +8,6 @@ require_once get_template_directory() . '/components/player/Player.php';
 require_once get_template_directory() . '/components/search/Search.php';
 ?>
 <?php 
-// Processamento do formulário — DEVE VIR ANTES DE QUALQUER HTML!
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_song_to_playlist'])) {
-    $playlist = new Playlist();
-    $playlist_id = (int) $_POST['playlist_id'];
-    $song_id = (int) $_POST['song_id'];
-    $playlist_post = get_post($playlist_id);
-    if ($playlist_post && (int) $playlist_post->post_author === get_current_user_id()) {
-        $result = $playlist->add_song_to_playlist([
-            'id' => $playlist_id,
-            'song_id' => $song_id
-        ]);
-        if ($result['success']) {
-            FlashMessage::set('success', $result['message']);
-        } else {
-            FlashMessage::set('error', $result['message']);
-        }
-    } else {
-        FlashMessage::set('error', 'Você não tem permissão para adicionar música a esta playlist.');
-    }
-    // Redireciona antes de qualquer HTML
-    wp_redirect($_SERVER['REQUEST_URI']);
-    exit;
-}
 //pega a mensagem de sucesso, se existir
 $success_message = FlashMessage::get('success');
 if ($success_message) {
@@ -74,7 +51,7 @@ get_header();
             $tag_name = $tag->name;
         ?>
         <h2 class="tags-title"><?php echo($tag_name ); ?> Songs</h2>
-        <div class="playlist">
+        <div class="playlist" style="margin-top:40px">
              <?php if ( have_posts() ) : ?>
                 <ul class="song-list">
                     <?php while ( have_posts() ) : the_post(); ?>
@@ -103,66 +80,75 @@ get_header();
                             }
                             $tags = get_the_terms($song_id, 'post_tag');                        
                         ?>
-                                <div class="song" data-song-id="<?php echo $song_id; ?>" data-src="<?php echo $safe_url; ?>">
-                                    <div class="song-cover">
-                                        <img class="thumb" src="<?php echo esc_url($song_img); ?>" alt="Capa da música">
-                                        <div class="sound-wave">
-                                            <div class="bar"></div>
-                                            <div class="bar"></div>
-                                            <div class="bar"></div>
-                                            <div class="bar"></div>
-                                        </div>
+                            <!-- song -->
+                            <div class="song" data-song-id="<?php echo $song_id; ?>" data-src="<?php echo $safe_url; ?>">
+                                <div class="song-cover">
+                                    <img class="thumb" src="<?php echo esc_url($song_img); ?>" alt="Capa da música">
+                                    <div class="sound-wave">
+                                        <div class="bar"></div>
+                                        <div class="bar"></div>
+                                        <div class="bar"></div>
+                                        <div class="bar"></div>
                                     </div>
-                                    <div class="title-artist">
-                                        <span class="title"><?php echo esc_html($song_title); ?></span>
-                                        <a class="artist" href="<?php echo $artist_link; ?>"><?php echo esc_html($artist->name ?? 'Desconhecido'); ?></a>
-                                    </div>
-                                    <button class="play-button"></button>
-                                    <span class="time"><?php echo esc_html($song_duration); ?></span>
-                                    <div class="new-tag-spot">
-                                        <?php if ($song_life_cycle === "new") echo '<span class="is-new">new</span>'; ?>
-                                    </div>
-                                    <?php 
-                                        if (is_user_logged_in()) {
-                                            if ($song_life_cycle === "new" && !Users::check_user_premium_status()) {
-                                                ?>
-                                                <a class="download-link" href="<?php echo esc_url(home_url('/get-premium')); ?>"><img style="width:15px" src="<?php echo get_template_directory_uri(); ?>/assets/img/icons/download.png"></a>
-                                                <?php
-                                            } else {
-                                                echo DownloadController::getDownloadLink($safe_download_link);
-                                            }
-                                        } else {
-                                            ?>
-                                            <a class="download-link" href="/login"><img style="width:15px" src="<?php echo get_template_directory_uri(); ?>/assets/img/icons/download.png"></a>
-                                            <?php
-                                        }
-                                    ?>
-                                    <?php if (is_user_logged_in()) : ?>
-                                        <form class="hide-992" method="POST" style="margin-top: 10px;">
-                                            <input type="hidden" name="song_id" value="<?php echo $song_id; ?>">
-                                            <label for="playlist_id_<?php echo $song_id; ?>"></label>
-                                            <select name="playlist_id" id="playlist_id_<?php echo $song_id; ?>" required>
-                                                <option value="">select playlist</option>
-                                                <?php foreach ($user_playlists as $playlist) : ?>
-                                                    <option value="<?php echo $playlist->ID; ?>">
-                                                        <?php echo esc_html($playlist->post_title); ?>
-                                                    </option>
-                                                <?php endforeach; ?>
-                                            </select>
-                                            <button class="add-to-playlist" type="submit" name="add_song_to_playlist">+</button>
-                                        </form>
-                                    <?php endif; ?>
-                                    <ul class="genders">
-                                        <?php if (!empty($tags) && !is_wp_error($tags)) : ?>
-                                            <?php foreach ($tags as $tag) : ?>
-                                                <li><?php echo esc_html($tag->name); ?></li>
-                                            <?php endforeach; ?>
-                                        <?php endif; ?>
-                                    </ul>
                                 </div>
+                                <div class="title-artist">
+                                    <a href="<?php echo($song_link); ?>"><span class="title"><?php echo esc_html($song_title); ?></span></a>
+                                    <a class="artist" href="<?php echo $artist_link; ?>"><?php echo esc_html($artist->name ?? 'Desconhecido'); ?></a>
+                                </div>
+                                <button class="play-button"></button>
+                                <span class="time"><?php echo esc_html($song_duration); ?></span>
+                                <div class="new-tag-spot"><?php if ($song_life_cycle === "new") { echo '<span class="is-new">new</span>'; } ?></div>
                                 <?php
+                                    if (is_user_logged_in()) {
+                                        if ($song_life_cycle === "new" && !Users::check_user_premium_status()) {
+                                            ?>
+                                            <a class="download-link" href="<?php echo esc_url(home_url('/get-premium')); ?>">
+                                                <img style="width:15px" src="<?php echo get_template_directory_uri(); ?>/assets/img/icons/download.png">
+                                            </a>
+                                            <?php
+                                        } else {
+                                            echo DownloadController::getDownloadLink($safe_download_link);
+                                        }
+                                    } else {
+                                        ?>
+                                        <a class="download-link" href="/login">
+                                            <img style="width:15px" src="<?php echo get_template_directory_uri(); ?>/assets/img/icons/download.png">
+                                        </a>
+                                        <?php
+                                    }
+                                ?>
+                                <?php 
+                                    if(is_user_logged_in()):
+                                ?>
+                                <button class="add-to-playlist-button"></button>
+                                <?php endif; ?>
+                                <?php if (is_user_logged_in()) : ?>
+                                    <form class="playlist-form" method="POST" style="margin-top: 10px;">
+                                        <input type="hidden" name="song_id" value="<?php echo $song_id; ?>">
+                                        <label for="playlist_id_<?php echo $song_id; ?>"></label>
+                                        <select name="playlist_id" id="playlist_id_<?php echo $song_id; ?>" required>
+                                            <option value="">select playlist</option>
+                                            <?php foreach ($user_playlists as $playlist) : ?>
+                                                <option value="<?php echo $playlist->ID; ?>">
+                                                    <?php echo esc_html($playlist->post_title); ?>
+                                                </option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                        <button class="add-to-playlist" type="submit" name="add_song_to_playlist">+</button>
+                                    </form>
+                                <?php endif; ?>
+                                <ul class="genders">
+                                    <?php if (!empty($tags) && !is_wp_error($tags)) : ?>
+                                        <?php foreach ($tags as $tag) : ?>
+                                            <li><?php echo esc_html($tag->name); ?></li>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
+                                </ul>
+                            </div>
+                            <!-- /song -->
+                        <?php
                             echo '</ul>';
-                            ?>                       
+                        ?>                       
                     <?php endwhile; ?>
                 </ul>
                 <div class="nav-links">
@@ -184,6 +170,52 @@ get_header();
         echo PlayerComponent::render();
     ?>
 </div>
+    <div class="playlist-modal-background">
+        <div class="playlist-modal">
+            <div class="playlist-modal-close">
+                <svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+                    <style>.a{fill:#fff}</style>
+                    <path fill-rule="evenodd" class="a" d="m0.4 0.4c0.6-0.5 1.5-0.5 2.1 0l7.5 7.6 7.5-7.6c0.6-0.5 1.5-0.5 2.1 0 0.5 0.6 0.5 1.5 0 2.1l-7.6 7.5 7.6 7.5c0.5 0.6 0.5 1.5 0 2.1-0.6 0.5-1.5 0.5-2.1 0l-7.5-7.6-7.5 7.6c-0.6 0.5-1.5 0.5-2.1 0-0.5-0.6-0.5-1.5 0-2.1l7.6-7.5-7.6-7.5c-0.5-0.6-0.5-1.5 0-2.1z"></path>
+                </svg>                  
+            </div>
+            <div class="playlist-modal-head">
+                <h3>Selecione uma playlist</h3>
+            </div>
+            <div class="playlist-modal-body"></div>
+        </div>
+    </div>
+<?php
+// Processamento do formulário de envio de musica para a playlist
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_song_to_playlist'])) {
+    $playlist = new Playlist();
+    $playlist_id = (int) $_POST['playlist_id'];
+    $song_id = (int) $_POST['song_id'];
+    // Verifica se a playlist pertence ao usuário logado
+    $playlist_post = get_post($playlist_id);
+    if ($playlist_post && (int) $playlist_post->post_author === get_current_user_id()) {
+        $result = $playlist->add_song_to_playlist([
+            'id' => $playlist_id,
+            'song_id' => $song_id
+        ]);
+        if ($result['success']) {
+            FlashMessage::set('success', $result['message']);
+            ?>
+            <script>window.location.href = window.location.href;</script>
+            <?php
+        } else {
+            FlashMessage::set('error', $result['message']);
+            ?>
+            <script>window.location.href = window.location.href;</script>
+            <?php
+        }
+    } else {
+        FlashMessage::set('error', 'Você não tem permissão para adicionar musica a esta playlist.');
+        ?>
+            <script>window.location.href = window.location.href;</script>
+        <?php
+    }
+}
+?>      
 <?php get_footer(); ?>
 
 
